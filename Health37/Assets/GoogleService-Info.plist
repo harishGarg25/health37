@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>CLIENT_ID</key>
+	<string>527528127919-t5ukduci11r85tif7i13i33vl2titb94.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.527528127919-t5ukduci11r85tif7i13i33vl2titb94</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>527528127919-9phkngp1r5llemlaf5lt9grqk6cmuv5h.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCeGQ9WtTxI9i0SlESRkpqXj0WqPaGzwZY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>527528127919</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.zonetech.health37</string>
+	<key>PROJECT_ID</key>
+	<string>health37-da34f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>health37-da34f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:527528127919:ios:2e4909f17c29d71e80135a</string>
+	<key>DATABASE_URL</key>
+	<string>https://health37-da34f.firebaseio.com</string>
+</dict>
+</plist>

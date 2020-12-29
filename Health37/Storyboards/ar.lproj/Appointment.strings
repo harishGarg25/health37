@@ -1,0 +1,180 @@
+
+/* Class = "UILabel"; text = "Lunch Time"; ObjectID = "2JK-Cw-fQJ"; */
+"2JK-Cw-fQJ.text" = "Lunch Time";
+
+/* Class = "UILabel"; text = "This patient currently has no appointments"; ObjectID = "4QN-iS-KK6"; */
+"4QN-iS-KK6.text" = "This patient currently has no appointments";
+
+/* Class = "UILabel"; text = "To date"; ObjectID = "58H-wn-fnk"; */
+"58H-wn-fnk.text" = "To date";
+
+/* Class = "UILabel"; text = "September 25, 2017"; ObjectID = "5WE-A5-gih"; */
+"5WE-A5-gih.text" = "September 25, 2017";
+
+/* Class = "UILabel"; text = "Note"; ObjectID = "5cr-Uu-nSQ"; */
+"5cr-Uu-nSQ.text" = "Note";
+
+/* Class = "UIButton"; normalTitle = "Edit Patient"; ObjectID = "7DK-7U-VvR"; */
+"7DK-7U-VvR.normalTitle" = "Edit Patient";
+
+/* Class = "UILabel"; text = "Thu"; ObjectID = "8HS-oZ-qPY"; */
+"8HS-oZ-qPY.text" = "Thu";
+
+/* Class = "UIBarButtonItem"; title = "Ok"; ObjectID = "8q9-cq-QFw"; */
+"8q9-cq-QFw.title" = "Ok";
+
+/* Class = "UILabel"; text = "Time of Appointment"; ObjectID = "AWg-pS-Pe1"; */
+"AWg-pS-Pe1.text" = "Time of Appointment";
+
+/* Class = "UILabel"; text = "Mon"; ObjectID = "B2N-TM-Vj5"; */
+"B2N-TM-Vj5.text" = "Mon";
+
+/* Class = "UILabel"; text = "619 1234567"; ObjectID = "BIO-PE-8M4"; */
+"BIO-PE-8M4.text" = "619 1234567";
+
+/* Class = "UILabel"; text = "Fri"; ObjectID = "Bc0-nc-FeR"; */
+"Bc0-nc-FeR.text" = "Fri";
+
+/* Class = "UIButton"; normalTitle = "00:00"; ObjectID = "C78-PV-piG"; */
+"C78-PV-piG.normalTitle" = "00:00";
+
+/* Class = "UINavigationItem"; title = "New Appointment"; ObjectID = "CRT-gb-6PF"; */
+"CRT-gb-6PF.title" = "New Appointment";
+
+/* Class = "UILabel"; text = "Patient Name"; ObjectID = "CtN-Gw-ld1"; */
+"CtN-Gw-ld1.text" = "Patient Name";
+
+/* Class = "UILabel"; text = "to"; ObjectID = "EW5-Lp-ZQI"; */
+"EW5-Lp-ZQI.text" = "to";
+
+/* Class = "UILabel"; text = "1:00 - 1:30 PM"; ObjectID = "FLk-DW-PDW"; */
+"FLk-DW-PDW.text" = "1:00 - 1:30 PM";
+
+/* Class = "UILabel"; text = "T"; ObjectID = "G3Q-7T-ejr"; */
+"G3Q-7T-ejr.text" = "T";
+
+/* Class = "UILabel"; text = "M"; ObjectID = "GN0-RA-xOY"; */
+"GN0-RA-xOY.text" = "M";
+
+/* Class = "UILabel"; text = "619 1234567"; ObjectID = "Gjp-Cq-evz"; */
+"Gjp-Cq-evz.text" = "619 1234567";
+
+/* Class = "UITableViewSection"; headerTitle = "Patient Info"; ObjectID = "HR2-Ig-Tux"; */
+"HR2-Ig-Tux.headerTitle" = "Patient Info";
+
+/* Class = "UILabel"; text = "S"; ObjectID = "HXj-Jf-inB"; */
+"HXj-Jf-inB.text" = "S";
+
+/* Class = "UITableViewSection"; headerTitle = "Appointment Info"; ObjectID = "KR7-RE-ZCE"; */
+"KR7-RE-ZCE.headerTitle" = "Appointment Info";
+
+/* Class = "UILabel"; text = "Sun"; ObjectID = "KfO-42-CHz"; */
+"KfO-42-CHz.text" = "Sun";
+
+/* Class = "UIBarButtonItem"; title = "Today"; ObjectID = "MuG-eH-Dis"; */
+"MuG-eH-Dis.title" = "Today";
+
+/* Class = "UIButton"; normalTitle = "00:00"; ObjectID = "N46-4R-Gaa"; */
+"N46-4R-Gaa.normalTitle" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "00:00"; ObjectID = "N9b-vr-zlx"; */
+"N9b-vr-zlx.normalTitle" = "00:00";
+
+/* Class = "UILabel"; text = "From date"; ObjectID = "NA6-W7-36e"; */
+"NA6-W7-36e.text" = "From date";
+
+/* Class = "UILabel"; text = "to"; ObjectID = "Nx2-E8-THU"; */
+"Nx2-E8-THU.text" = "to";
+
+/* Class = "UILabel"; text = "user@domain.com"; ObjectID = "OvA-dP-Iss"; */
+"OvA-dP-Iss.text" = "user@domain.com";
+
+/* Class = "UILabel"; text = "1:00 PM"; ObjectID = "PqD-W5-pLr"; */
+"PqD-W5-pLr.text" = "1:00 PM";
+
+/* Class = "UIButton"; normalTitle = "00:00"; ObjectID = "SEk-Fr-f7w"; */
+"SEk-Fr-f7w.normalTitle" = "00:00";
+
+/* Class = "UILabel"; text = "Mobile Phone"; ObjectID = "Scu-YD-rhV"; */
+"Scu-YD-rhV.text" = "Mobile Phone";
+
+/* Class = "UILabel"; text = "Available Hours"; ObjectID = "T3H-jx-Plo"; */
+"T3H-jx-Plo.text" = "Available Hours";
+
+/* Class = "UILabel"; text = "To date"; ObjectID = "U6E-fZ-YmP"; */
+"U6E-fZ-YmP.text" = "To date";
+
+/* Class = "UILabel"; text = "Wed"; ObjectID = "VWe-o4-KX0"; */
+"VWe-o4-KX0.text" = "Wed";
+
+/* Class = "UILabel"; text = "Day of Month"; ObjectID = "XFY-Lj-v6H"; */
+"XFY-Lj-v6H.text" = "Day of Month";
+
+/* Class = "UIButton"; normalTitle = "Edit Appointment"; ObjectID = "XGy-Oy-ui4"; */
+"XGy-Oy-ui4.normalTitle" = "Edit Appointment";
+
+/* Class = "UILabel"; text = "Home Phone"; ObjectID = "Yc7-OO-bQs"; */
+"Yc7-OO-bQs.text" = "Home Phone";
+
+/* Class = "UITableViewSection"; headerTitle = "Notes"; ObjectID = "aTK-r9-B7D"; */
+"aTK-r9-B7D.headerTitle" = "Notes";
+
+/* Class = "UITabBarItem"; title = "Appointments"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Appointments";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "cdO-Pa-v6j"; */
+"cdO-Pa-v6j.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "NOV 24"; ObjectID = "cgN-dZ-6Zb"; */
+"cgN-dZ-6Zb.text" = "NOV 24";
+
+/* Class = "UILabel"; text = "F"; ObjectID = "fhR-KZ-EDQ"; */
+"fhR-KZ-EDQ.text" = "F";
+
+/* Class = "UILabel"; text = "W"; ObjectID = "gGJ-5Q-rgE"; */
+"gGJ-5Q-rgE.text" = "W";
+
+/* Class = "UILabel"; text = "Available Days"; ObjectID = "hxm-r1-9dk"; */
+"hxm-r1-9dk.text" = "Available Days";
+
+/* Class = "UILabel"; text = "Sat"; ObjectID = "jf0-n6-TPA"; */
+"jf0-n6-TPA.text" = "Sat";
+
+/* Class = "UILabel"; text = "T"; ObjectID = "kSp-Gb-eEc"; */
+"kSp-Gb-eEc.text" = "T";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nNf-pb-3w7"; */
+"nNf-pb-3w7.text" = "Label";
+
+/* Class = "UILabel"; text = "Cost"; ObjectID = "nVm-NA-OtR"; */
+"nVm-NA-OtR.text" = "Cost";
+
+/* Class = "UITabBarItem"; title = "Activity"; ObjectID = "rJO-tK-SB5"; */
+"rJO-tK-SB5.title" = "Activity";
+
+/* Class = "UILabel"; text = "Patient Name"; ObjectID = "skY-qF-Gjb"; */
+"skY-qF-Gjb.text" = "Patient Name";
+
+/* Class = "UILabel"; text = "From date"; ObjectID = "t3f-3E-Vox"; */
+"t3f-3E-Vox.text" = "From date";
+
+/* Class = "UITableViewSection"; headerTitle = "Appointments"; ObjectID = "uDi-EE-rgq"; */
+"uDi-EE-rgq.headerTitle" = "Appointments";
+
+/* Class = "UILabel"; text = "Tue"; ObjectID = "uL4-Kl-fZj"; */
+"uL4-Kl-fZj.text" = "Tue";
+
+/* Class = "UILabel"; text = "Time Slot"; ObjectID = "vxA-9P-JDf"; */
+"vxA-9P-JDf.text" = "Time Slot";
+
+/* Class = "UIBarButtonItem"; title = "Appointment"; ObjectID = "wVn-TJ-2GT"; */
+"wVn-TJ-2GT.title" = "Appointment";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "x4Z-gE-VtH"; */
+"x4Z-gE-VtH.text" = "Email";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "yrm-cF-1w8"; */
+"yrm-cF-1w8.text" = "00:00";
+
+/* Class = "UILabel"; text = "S"; ObjectID = "zOp-5L-O5q"; */
+"zOp-5L-O5q.text" = "S";

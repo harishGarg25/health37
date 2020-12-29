@@ -1,0 +1,318 @@
+/* 
+  Localizable.strings
+  Gulflink
+
+  Created by Deepak iOS on 16/10/17.
+  Copyright © 2017 Anveshan It Solutions. All rights reserved.
+*/
+
+//// Login Screen && SignUp
+
+"Email" = "Email";
+
+"SIGN IN" = "SIGN IN";
+"Password" = "Password";
+"SIGN UP" = "SIGN UP";
+"Forgot Password" = "Forgot Password";
+"Write here..." = "Write here...";
+"Name" = "Name";
+"User Name" = "User Name";
+"Category" = "Category";
+"Members" = "Members";
+
+"Join" = "Join";
+"Leave" = "Leave";
+"Yes" = "Yes";
+"No" = "No";
+
+"User profile updated" = "User profile updated";
+
+"Are you sure you want to Logout?" = "Are you sure you want to Logout?";
+
+"+91" = "+91";
+"Mobile No." = "Mobile No.";
+
+"By signing up, You agree with Terms and Conditions" = "By signing up, You agree with Terms and Conditions";
+"Sub category" = "Sub category";
+"English" = "English";
+"FORGOT PASSWORD?" = "FORGOT PASSWORD?";
+"Enter Your Email Address to retrieve Your Password." = "Enter Your Email Address to retrieve Your Password.";
+"CANCEL" = "CANCEL";
+"Done" = "Done";
+"Settings" = "Settings";
+"creationDate" = "creationDate";
+
+
+////OTP Screen
+"Otp" = "Otp";
+"SMS Verification code has been sent to your registered mobile number" = "SMS Verification code has been sent to your registered mobile number";
+"ENTER VERIFICATION CODE" = "ENTER VERIFICATION CODE";
+"VERIFY" = "VERIFY";
+"RESEND OTP" = "RESEND OTP";
+"Chose image" = "Chose image";
+"Terms and conditions" = "Terms and conditions";
+
+"Languages" = "Languages";
+"Privacy policy" = "Privacy policy";
+
+
+"Camera" = "Camera";
+"Gallery" = "Gallery";
+"Cancel" = "Cancel";
+"Warning" = "Warning";
+"Health37" = "Health37";
+"All Friends" = "All Friends";
+"Conversation" = "Conversation";
+"Logout Successfully." = "Logout Successfully.";
+
+"Please enter the add comments." = "Please enter the add comments.";
+"You don't have camera" = "You don't have camera";
+"Gallery permission is not granted. Go to settings and allow app to access your gallery." = "Gallery permission is not granted. Go to settings and allow app to access your gallery.";
+
+////Add Friends Screen
+"Timeline" = "Timeline";
+"Notifications" = "Notifications";
+"Inbox" = "Inbox";
+"ADD FRIEND" = "ADD FRIEND";
+
+////Contact Us Screen
+"Description" = "Description";
+"SUBMIT" = "SUBMIT";
+
+////Home Cell
+"Groups" = "Groups";
+
+////Map Screen
+"Search...." = "Search....";
+"Enter discount %..." = "Enter discount %...";
+"Search" = "Search";
+"Comments" = "Comments";
+
+////TimeLine Screen
+"Are you sure, you want to delete this post?" = "Are you sure, you want to delete this post?";
+"OK" = "OK";
+"Are you sure you want to report this post?" = "Are you sure you want to report this post?";
+"FOLLOW" = "FOLLOW";
+"UNFOLLOW" = "UNFOLLOW";
+
+"Ask Me" = "Ask Me";
+"Followers" = "Followers";
+"Following" = "Following";
+"0" = "0";
+"ADD POST" = "ADD POST";
+"Continue reading" = "Continue reading";
+"(0)" = "(0)";
+"Enter Description here" = "Enter Description here";
+"CONTACT US" = "CONTACT US";
+
+////Profile Screen
+"NEW POST" = "NEW POST";
+"Add your comment here" = "Add your comment here";
+"POST" = "POST";
+"Post" = "Post";
+"Are you sure, you want to Logout?" = "Are you sure, you want to Logout?";
+
+////Group Screen
+"All Groups" = "All Groups";
+"My Groups" = "My Groups";
+"Add Message..." = "Add Message...";
+
+////Followers Screen
+"Record not found" = "Record not found";
+
+////UserDetails Screen
+"Cross Thing" = "Cross Thing";
+"Audiologist" = "Audiologist";
+"Cardiac" = "Cardiac";
+"null" = "null";
+"UPDATE" = "UPDATE";
+"CHANGE PASSWORD" = "CHANGE PASSWORD";
+
+"Old Password" = "Old Password";
+"New Password" = "New Password";
+"Confirm Password" = "Confirm Password";
+"show like successfully" = "show like successfully";
+"You have successfully left the group." = "You have successfully left the group.";
+
+////Map Profile Screen
+"Save/ Remove event location" = "Save/ Remove event location";
+"Save" = "Save";
+"Remove" = "Remove";
+
+////Home Search Screen
+"USERS" = "USERS";
+"GROUPS" = "GROUPS";
+"POSTS" = "POSTS";
+"Write something about yourself..." = "Write something about yourself...";
+
+////Chat Screen
+"Type a message" = "Type a message";
+
+////Notification Add Screen
+"Add Comment..." = "Add Comment...";
+
+"Reply" = "Reply";
+"NO, THANKS" = "NO, THANKS";
+"Enter your reviews here..." = "Enter your reviews here...";
+
+"Aim of groups is to raise the level of society health awareness. Make sure that your post is scientifically reliable, contains no indecent photos, does not contain or refers to advertisements such as names, phone numbers." = "Aim of groups is to raise the level of society health awareness. Make sure that your post is scientifically reliable, contains no indecent photos, does not contain or refers to advertisements such as names, phone numbers.";
+
+
+///All Alerts
+"The SMS verification code is invalid." = "The SMS verification code is invalid.";
+"Verification failed, please check your phone number" = "Verification failed, please check your phone number";
+"Enter some description or query first." = "Enter some description or query first.";
+"Please check internet connection" = "Please check internet connection";
+"Make sure your device is connected to the internet." = "Make sure your device is connected to the internet.";
+"Please enter the name." = "Please enter the name.";
+"Please enter the user name." = "Please enter the user name.";
+"Please enter full name." = "Please enter full name.";
+"Please enter the email address." = "Please enter the email address.";
+"Please enter your reviews." = "Please enter your reviews.";
+"Please enter the valid email address." = "Please enter the valid email address.";
+"Please enter search text." = "Please enter search text.";
+"Please select country code." = "Please select country code.";
+"Please enter the phone number." = "Please enter the phone number.";
+"Phone Number must be of minimum 8 characters." = "Phone Number must be of minimum 8 characters.";
+"Please enter the password." = "Please enter the password.";
+"Please enter the confirm password." = "Please enter the confirm password.";
+"Password and Confirm Password should be match." = "Password and Confirm Password should be match.";
+"Password must be of minimum 6 characters." = "Password must be of minimum 6 characters.";
+"Please enter the otp." = "Please enter the otp.";
+"Please write something or atleast select a photo." = "Please write something or atleast select a photo.";
+"OTP must be of minimum 6 characters." = "OTP must be of minimum 6 characters.";
+"Please enter new password." = "Please enter new password.";
+"Having some issue.Please try again." = "Having some issue.Please try again.";
+
+
+"u5V4VyTz28lRK4vGdC2cC6Qgs" = "u5V4VyTz28lRK4vGdC2cC6Qgs";
+"mCYJpgJQd1gX5RnUa1f739v5T1qLyPgrEEBe8uaLN7VFwDJrLK" = "mCYJpgJQd1gX5RnUa1f739v5T1qLyPgrEEBe8uaLN7VFwDJrLK";
+
+
+"Lunch Time" = "Lunch Time";
+"This patient currently has no appointments" = "This patient currently has no appointments";
+"To date" = "To date";
+"Edit Patient" = "Edit Patient";
+"Time of Appointment" = "Time of Appointment";
+"New Appointment" = "New Appointment";
+"Patient Name" = "Patient Name";
+"to" = "to";
+"Patient Info" = "Patient Info";
+"Appointment Info" = "Appointment Info";
+"From date" = "From date";
+"00:00" = "00:00";
+"Mobile Phone" = "Mobile Phone";
+"Available Hours" = "Available Hours";
+"To date" = "To date";
+"Day of Month" = "Day of Month";
+"Edit Appointment" = "Edit Appointment";
+"Home Phone" = "Home Phone";
+"Notes" = "Notes";
+"Appointments" = "Appointments";
+"Available Days" = "Available Days";
+"Activity" = "Activity";
+"Patient Name" = "Patient Name";
+"From date" = "From date";
+"Time Slot" = "Time Slot";
+"Appointment" = "Appointment";
+"My Appointments" = "My Appointments";
+"Back" = "Back";
+"Are you sure you want to cancel the Appointment?" = "Are you sure you want to cancel the Appointment?";
+"Notes(Optional)" = "Notes(Optional)";
+"Coupon Code(Optional)" = "Coupon Code(Optional)";
+"Please Select Slot Time" = "Please Select Slot Time";
+"Appointment Cancelled" = "Appointment Cancelled";
+"Appointment Booked" = "Appointment Booked";
+"Sun" = "Sun";
+"Fri" = "Fri";
+"Sat" = "Sat";
+"Thu" = "Thu";
+"Wed" = "Wed";
+"Tue" = "Tue";
+"Mon" = "Mon";
+"Alert" = "Alert";
+"Select Slot" = "Select Slot";
+"Manage Discount" = "Manage Discount";
+"Enable Discount" = "Enable Discount";
+"Please Select Coupon Discount and it should be above or equal to 10%." = "Please Select Coupon Discount and it should be above or equal to 10%.";
+"Discount setting updated" = "Discount setting updated";
+"Coupon Code:" = "Coupon Code:";
+"Discount Amount" = "Discount Amount";
+"Edit" = "Edit";
+"BOOK APPOINTMENT" = "BOOK APPOINTMENT";
+"Book" = "Book";
+"Discount" = "Discount";
+"Note" = "Note";
+"This discount amount deserved only when you attend on time." = "This discount amount deserved only when you attend on time.";
+"This discount amount price Deducted from treatment invoice." = "This discount amount price Deducted from treatment invoice.";
+"Discount Amount" = "Discount Amount";
+"Reschedule" = "Reschedule";
+"Appointment edited successfully" = "Appointment edited successfully";
+"Appointment got cancelled or expired." = "Appointment got cancelled or expired.";
+"15 mins" = "15 mins";
+"30 mins" = "30 mins";
+"45 mins" = "45 mins";
+"60 mins" = "60 mins";
+"(0.25 hour)" = "(0.25 hour)";
+"(0.5 hour)" = "(0.5 hour)";
+"(0.75 hour)" = "(0.75 hour)";
+"(1 hour)" = "(1 hour)";
+"$120" ="$120";
+"$220" = "$220";
+"6 Months" = "6 Months";
+"1 Year" = "1 Year";
+"Weekdays" ="Weekdays";
+"Long Week" = "Long Week";
+"Everyday" = "Everyday";
+"(Sun-Thu)" = "(Sun-Thu)";
+"(Sun-Fri)" = "(Sun-Fri)";
+"(Sun-Sat)" = "(Sun-Sat)";
+"from" = "from";
+"Work Location" = "Work Location";
+"Continue" = "Continue";
+"Appointment Slots Detail" = "Appointment Slots Detail";
+"Please enter discount." = "Please enter discount.";
+"No Coupon code Present." = "No Coupon code Present.";
+"Lunch Time Should Be Between Office Time." ="Lunch Time Should Be Between Office Time.";
+"Doctor not available." = "Doctor not available.";
+"Please select today's or future date." ="Please select today's or future date.";
+"Might be user has not enabled his/her appointment feature." = "Might be user has not enabled his/her appointment feature.";
+"Appointment Feature Enabled." = "Appointment Feature Enabled.";
+"Please Select Future Time" = "Please Select Future Time";
+"No Doctor Found" = "No Doctor Found";
+"No Appointment Found" = "No Appointment Found";
+"By adding up, You agree with" = "By adding up, You agree with";
+"ADD" = "ADD";
+"Add New Doctor" = "Add New Doctor";
+"Write About Experience" = "Write About Experience";
+"Add Photo" = "Add Photo";
+"100 characters" = "100 characters";
+"Doctors List" = "Doctors List";
+"Add notes" = "Add notes";
+"Enable  appointments" = "Enable  appointments";
+"Subscribe" = "Subscribe";
+"SELECT PLAN" = "SELECT PLAN";
+"Time Slot Modified Successfully." = "Time Slot Modified Successfully.";
+"Appointment not booked" = "Appointment not booked";
+"Subscription" = "Subscription";
+"You can add up to 100 doctors" = "You can add up to 100 doctors";
+"Accepted Cards" = "Accepted Cards";
+"Cardholder's Name" = "Cardholder's Name";
+"Expiration Date*" = "Expiration Date*";
+"CVV*" = "CVV*";
+"Card Number*" = "Card Number*";
+"Payment" = "Payment";
+"SUBSCRIBE" = "SUBSCRIBE";
+"Pay" = "Pay";
+"Doctor added Successfully." = "Doctor added Successfully.";
+"Delete" = "Delete";
+"Are you sure you want to delete this doctor." = "Are you sure you want to delete this doctor.";
+"Doctor updated Successfully." = "Doctor updated Successfully.";
+"Hospital/Clinic Name" = "Hospital/Clinic Name";
+"You can’t book 2 appointments in one day." = "You can’t book 2 appointments in one day.";
+"Subscription Detail" = "Subscription Detail";
+"Subscribed to:" = "Subscribed to:";
+"Subscription valid till:" = "Subscription valid till:";
+"Cancel Subscription" =  "Cancel Subscription";
+"Upgrade Plan" = "Upgrade Plan";
+"Are you sure you want to cancel the Subscription?" = "Are you sure you want to cancel the Subscription?";

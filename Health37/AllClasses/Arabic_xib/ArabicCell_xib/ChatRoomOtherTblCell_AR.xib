@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular_0.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatRoomOtherTblCell" customModule="Health37" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_selectedImg2.png" translatesAutoresizingMaskIntoConstraints="NO" id="mDt-Tc-0fV">
+                    <rect key="frame" x="67" y="12" width="113" height="54"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifW-R1-KLy">
+                    <rect key="frame" x="80" y="39" width="90" height="14"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xE-4e-Xjv">
+                    <rect key="frame" x="79" y="14" width="91" height="17"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MenuPlace.png" translatesAutoresizingMaskIntoConstraints="NO" id="jDk-Pb-QY0">
+                    <rect key="frame" x="8" y="15" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="ewG-oK-qLO"/>
+                        <constraint firstAttribute="height" constant="50" id="uBu-rx-IoS"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVZ-jN-G5Z">
+                    <rect key="frame" x="8" y="15" width="52" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="kl9-Yd-e6E"/>
+                        <constraint firstAttribute="width" constant="52" id="n23-qm-0CJ"/>
+                    </constraints>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IFx-yJ-SJX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ifW-R1-KLy" secondAttribute="trailing" constant="20" id="283-4d-FuI"/>
+                <constraint firstItem="ifW-R1-KLy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0xE-4e-Xjv" secondAttribute="trailing" id="41E-7a-qib"/>
+                <constraint firstItem="ifW-R1-KLy" firstAttribute="top" secondItem="0xE-4e-Xjv" secondAttribute="bottom" constant="8" id="6tY-IW-GPG"/>
+                <constraint firstItem="ifW-R1-KLy" firstAttribute="trailing" secondItem="mDt-Tc-0fV" secondAttribute="trailing" constant="-10" id="7c7-1i-N1l"/>
+                <constraint firstItem="IFx-yJ-SJX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0xE-4e-Xjv" secondAttribute="trailing" constant="20" id="8UI-ym-AxS"/>
+                <constraint firstItem="IFx-yJ-SJX" firstAttribute="bottom" secondItem="mDt-Tc-0fV" secondAttribute="bottom" constant="14" id="AhS-dZ-dHV"/>
+                <constraint firstItem="ifW-R1-KLy" firstAttribute="top" secondItem="0xE-4e-Xjv" secondAttribute="bottom" constant="8" id="HcW-7G-J1l"/>
+                <constraint firstItem="mDt-Tc-0fV" firstAttribute="leading" secondItem="DVZ-jN-G5Z" secondAttribute="trailing" constant="7" id="JjB-n8-ZcA"/>
+                <constraint firstItem="IFx-yJ-SJX" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ifW-R1-KLy" secondAttribute="bottom" constant="16" id="K9N-yk-V1y"/>
+                <constraint firstItem="DVZ-jN-G5Z" firstAttribute="leading" secondItem="IFx-yJ-SJX" secondAttribute="leading" constant="8" id="LnQ-Qq-utr"/>
+                <constraint firstItem="jDk-Pb-QY0" firstAttribute="leading" secondItem="IFx-yJ-SJX" secondAttribute="leading" constant="8" id="N7T-tU-Rp1"/>
+                <constraint firstItem="0xE-4e-Xjv" firstAttribute="leading" secondItem="DVZ-jN-G5Z" secondAttribute="trailing" constant="19" id="Xbm-3C-mCK"/>
+                <constraint firstItem="ifW-R1-KLy" firstAttribute="leading" secondItem="DVZ-jN-G5Z" secondAttribute="trailing" constant="20" id="aPe-RB-O52"/>
+                <constraint firstItem="jDk-Pb-QY0" firstAttribute="top" secondItem="IFx-yJ-SJX" secondAttribute="top" constant="15" id="koe-oU-wV8"/>
+                <constraint firstItem="mDt-Tc-0fV" firstAttribute="top" secondItem="IFx-yJ-SJX" secondAttribute="top" constant="12" id="nCS-Fi-Uhp"/>
+                <constraint firstItem="0xE-4e-Xjv" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mDt-Tc-0fV" secondAttribute="trailing" constant="-10" id="nte-Rf-1fx"/>
+                <constraint firstItem="0xE-4e-Xjv" firstAttribute="top" secondItem="IFx-yJ-SJX" secondAttribute="top" constant="14" id="oES-Ie-vsj"/>
+                <constraint firstItem="DVZ-jN-G5Z" firstAttribute="top" secondItem="IFx-yJ-SJX" secondAttribute="top" constant="15" id="wbc-QZ-Cel"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="IFx-yJ-SJX"/>
+            <connections>
+                <outlet property="btnUserProfile" destination="DVZ-jN-G5Z" id="gHE-7h-4Ng"/>
+                <outlet property="imgTextMessage" destination="mDt-Tc-0fV" id="qcu-k4-cIP"/>
+                <outlet property="imgUserFriend" destination="jDk-Pb-QY0" id="s5Z-lB-nyW"/>
+                <outlet property="lblMSG" destination="0xE-4e-Xjv" id="NDO-GH-3XD"/>
+                <outlet property="lblTimes" destination="ifW-R1-KLy" id="qXh-rE-hMe"/>
+            </connections>
+            <point key="canvasLocation" x="40" y="46.776611694152926"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="MenuPlace.png" width="68.5" height="68.5"/>
+        <image name="chat_selectedImg2.png" width="113" height="41.5"/>
+    </resources>
+</document>

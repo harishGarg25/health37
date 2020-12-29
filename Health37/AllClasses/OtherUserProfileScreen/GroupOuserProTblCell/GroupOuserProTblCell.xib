@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Semibold_0.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="390" id="KGk-i7-Jjw" customClass="GroupOuserProTblCell" customModule="Health37" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="390"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="390"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wcr-2Z-bNg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="240" id="j7N-ko-RJQ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="265-nk-FYo">
+                        <rect key="frame" x="24" y="297" width="272" height="16"/>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="18"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-mt-vka">
+                        <rect key="frame" x="0.0" y="239" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.59607843140000005" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="nKC-PU-jqd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYD-mt-WDE">
+                        <rect key="frame" x="0.0" y="349" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="8EE-5o-udb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlace.png" translatesAutoresizingMaskIntoConstraints="NO" id="lFq-T0-Dct">
+                        <rect key="frame" x="115" y="195" width="90" height="90"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="D5i-NF-Gjj"/>
+                            <constraint firstAttribute="width" constant="90" id="QkZ-ee-HDg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-AX-vcf">
+                        <rect key="frame" x="24" y="321" width="272" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                        <color key="textColor" red="0.26271003479999999" green="0.2941361368" blue="0.29407781360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FG0-Lg-joT">
+                        <rect key="frame" x="227" y="248" width="73" height="26"/>
+                        <color key="backgroundColor" red="0.0028594916220000001" green="0.59611362219999997" blue="0.62344777579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="kEW-E3-VZD"/>
+                            <constraint firstAttribute="width" constant="73" id="tEe-tw-swh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="13"/>
+                        <state key="normal" title="JOIN"/>
+                        <state key="selected" title="LEAVE"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="7pN-Vq-CfE">
+                        <rect key="frame" x="24" y="333" width="272" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                        <color key="textColor" red="0.26271003479999999" green="0.2941361368" blue="0.29407781360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ov-Cy-EMl">
+                        <rect key="frame" x="0.0" y="350" width="320" height="40"/>
+                        <color key="backgroundColor" red="0.0039215686274509803" green="0.59607843137254901" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="jSK-YC-asI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="15"/>
+                        <state key="normal" title="ADD POST">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Wcr-2Z-bNg" secondAttribute="trailing" id="2M0-1d-9YG"/>
+                    <constraint firstItem="FG0-Lg-joT" firstAttribute="top" secondItem="Wcr-2Z-bNg" secondAttribute="bottom" constant="8" id="6yw-Z2-JDq"/>
+                    <constraint firstItem="7pN-Vq-CfE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="CGw-qw-BWW"/>
+                    <constraint firstItem="Wcr-2Z-bNg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DfO-kx-igS"/>
+                    <constraint firstAttribute="trailing" secondItem="265-nk-FYo" secondAttribute="trailing" constant="24" id="Fic-N7-fYz"/>
+                    <constraint firstAttribute="trailing" secondItem="7Ic-AX-vcf" secondAttribute="trailing" constant="24" id="Mbe-F2-maP"/>
+                    <constraint firstAttribute="trailing" secondItem="MuX-mt-vka" secondAttribute="trailing" id="NEt-fD-uZB"/>
+                    <constraint firstAttribute="trailing" secondItem="FG0-Lg-joT" secondAttribute="trailing" constant="20" id="PPD-P8-sQn"/>
+                    <constraint firstItem="Wcr-2Z-bNg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="U6c-Rz-p8W"/>
+                    <constraint firstItem="7pN-Vq-CfE" firstAttribute="top" secondItem="7Ic-AX-vcf" secondAttribute="bottom" constant="12" id="WZ5-xD-uNc"/>
+                    <constraint firstAttribute="trailing" secondItem="7pN-Vq-CfE" secondAttribute="trailing" constant="24" id="a3E-oX-Wyt"/>
+                    <constraint firstItem="MuX-mt-vka" firstAttribute="bottom" secondItem="Wcr-2Z-bNg" secondAttribute="bottom" id="bNL-Yx-IUz"/>
+                    <constraint firstItem="MuX-mt-vka" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bz2-wC-dGq"/>
+                    <constraint firstItem="7Ic-AX-vcf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="cPN-S8-r0O"/>
+                    <constraint firstItem="6ov-Cy-EMl" firstAttribute="top" secondItem="DYD-mt-WDE" secondAttribute="bottom" id="f0q-ak-GNO"/>
+                    <constraint firstAttribute="trailing" secondItem="6ov-Cy-EMl" secondAttribute="trailing" id="fJ4-rD-5WW"/>
+                    <constraint firstAttribute="bottom" secondItem="6ov-Cy-EMl" secondAttribute="bottom" id="gBs-gi-6Lv"/>
+                    <constraint firstItem="6ov-Cy-EMl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gnv-eZ-doz"/>
+                    <constraint firstItem="DYD-mt-WDE" firstAttribute="top" secondItem="7pN-Vq-CfE" secondAttribute="bottom" constant="16" id="gun-2F-aSf"/>
+                    <constraint firstItem="DYD-mt-WDE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iif-dG-wKo"/>
+                    <constraint firstItem="lFq-T0-Dct" firstAttribute="top" secondItem="Wcr-2Z-bNg" secondAttribute="bottom" constant="-45" id="jnb-BB-0bw"/>
+                    <constraint firstItem="lFq-T0-Dct" firstAttribute="centerX" secondItem="Wcr-2Z-bNg" secondAttribute="centerX" id="kRf-m8-pe4"/>
+                    <constraint firstAttribute="trailing" secondItem="DYD-mt-WDE" secondAttribute="trailing" id="nyP-fB-i2z"/>
+                    <constraint firstItem="265-nk-FYo" firstAttribute="top" secondItem="lFq-T0-Dct" secondAttribute="bottom" constant="12" id="pPT-Pl-Kl8"/>
+                    <constraint firstItem="265-nk-FYo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="xT1-Jg-KWG"/>
+                    <constraint firstItem="7Ic-AX-vcf" firstAttribute="top" secondItem="265-nk-FYo" secondAttribute="bottom" constant="8" id="y5O-KI-w2e"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnAddPost" destination="6ov-Cy-EMl" id="a15-3z-sNR"/>
+                <outlet property="btnLeaveJoin" destination="FG0-Lg-joT" id="amy-ya-lgN"/>
+                <outlet property="imgCover" destination="Wcr-2Z-bNg" id="yCD-zJ-MSj"/>
+                <outlet property="imgUserProfile" destination="lFq-T0-Dct" id="Mkh-na-X7e"/>
+                <outlet property="lblDesignation" destination="7pN-Vq-CfE" id="wgt-y2-be2"/>
+                <outlet property="lblGroupCount" destination="7Ic-AX-vcf" id="d5W-hy-FpW"/>
+                <outlet property="lblUserName" destination="265-nk-FYo" id="7Rg-o8-whd"/>
+            </connections>
+            <point key="canvasLocation" x="40" y="9.8950524737631191"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="image.png" width="429.5" height="132.5"/>
+        <image name="imagePlace.png" width="92.5" height="92.5"/>
+    </resources>
+</document>

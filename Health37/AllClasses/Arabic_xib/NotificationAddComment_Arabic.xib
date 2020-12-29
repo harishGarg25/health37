@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular_0.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="Lato-Semibold_0.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationAddComment" customModule="Health37" customModuleProvider="target">
+            <connections>
+                <outlet property="btnCancel" destination="o5O-cO-kXW" id="sJ5-eZ-F51"/>
+                <outlet property="btnSubmit" destination="bWt-b3-BYB" id="vZ0-yB-ez2"/>
+                <outlet property="imgLogoHeader" destination="n12-Zu-bzp" id="6xG-Cf-Zd3"/>
+                <outlet property="imgPostUser" destination="oyT-O6-h49" id="dko-Jw-hui"/>
+                <outlet property="lblUserName" destination="ZZa-lP-de5" id="R59-2X-h26"/>
+                <outlet property="tblNotificationList" destination="qP9-XD-q2t" id="sfp-M9-a67"/>
+                <outlet property="txtAddComments" destination="BXf-ee-Rm6" id="HnE-Jh-nKm"/>
+                <outlet property="txtUserInfo" destination="3Ks-bO-cGI" id="tS8-rz-iiG"/>
+                <outlet property="txtmsgs" destination="1Pp-g3-72N" id="tTG-DK-p10"/>
+                <outlet property="view" destination="iN0-l3-epB" id="W2z-pJ-Uxm"/>
+                <outlet property="viewBottomTxtField" destination="2Km-TH-4Fa" id="FSz-oC-hk6"/>
+                <outlet property="viewCommentBG" destination="30X-lI-Fef" id="Pyu-C2-I6T"/>
+                <outlet property="viewCommentPopup" destination="koK-ri-ai9" id="YcP-Fc-7TI"/>
+                <outlet property="viewCommentPopupBG" destination="lAk-Ij-nwJ" id="L39-CZ-341"/>
+                <outlet property="viewHeader" destination="ZwH-0W-jJi" id="MIX-xv-NJY"/>
+                <outlet property="viewTxtFBG" destination="e3k-fe-zgO" id="fuz-C0-ab5"/>
+                <outlet property="viewcommenttext" destination="eUK-Ua-S2J" id="13T-WA-if3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="NotificationAddComment" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="U1s-MH-CuT">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZwH-0W-jJi">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="n12-Zu-bzp">
+                            <rect key="frame" x="116" y="0.0" width="143" height="44"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0028594916220000001" green="0.59611362219999997" blue="0.62344777579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="n12-Zu-bzp" firstAttribute="centerY" secondItem="ZwH-0W-jJi" secondAttribute="centerY" id="2Kg-7W-7nt"/>
+                        <constraint firstItem="n12-Zu-bzp" firstAttribute="top" secondItem="ZwH-0W-jJi" secondAttribute="top" id="Mjx-cv-on0"/>
+                        <constraint firstAttribute="bottom" secondItem="n12-Zu-bzp" secondAttribute="bottom" id="YLr-T5-JZX"/>
+                        <constraint firstItem="n12-Zu-bzp" firstAttribute="centerX" secondItem="ZwH-0W-jJi" secondAttribute="centerX" id="jwN-7G-NAP"/>
+                        <constraint firstAttribute="height" constant="44" id="xgl-TD-DKJ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Km-TH-4Fa">
+                    <rect key="frame" x="0.0" y="612.5" width="375" height="54.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ew3-HW-kXs">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" red="0.65490196079999996" green="0.65490196079999996" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="8e7-gU-qLY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Gisha" family="Gisha" pointSize="18"/>
+                            <color key="textColor" red="0.14901960780000001" green="0.1450980392" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlc-ei-taX">
+                            <rect key="frame" x="6" y="11" width="37" height="33"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="GCH-RH-24p"/>
+                                <constraint firstAttribute="width" constant="37" id="IGZ-8o-iOQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Gisha" family="Gisha" pointSize="14"/>
+                            <state key="normal" image="send_btn.png">
+                                <color key="titleColor" red="0.1450980392" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="methodSendMSG:" destination="-1" eventType="touchUpInside" id="ecP-ea-YiY"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3k-fe-zgO">
+                            <rect key="frame" x="46" y="10" width="315" height="36"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="BXf-ee-Rm6" customClass="GrowingTextView" customModule="GrowingTextView">
+                                    <rect key="frame" x="12" y="0.0" width="291" height="35"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="minHeight">
+                                            <real key="value" value="30"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Add comment..."/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="maxHeight">
+                                            <real key="value" value="150"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="8Yn-Ak-xiU"/>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="BXf-ee-Rm6" firstAttribute="leading" secondItem="e3k-fe-zgO" secondAttribute="leading" constant="12" id="OPS-8W-Ozl"/>
+                                <constraint firstItem="BXf-ee-Rm6" firstAttribute="top" secondItem="e3k-fe-zgO" secondAttribute="top" id="WUJ-o2-IY5"/>
+                                <constraint firstAttribute="trailing" secondItem="BXf-ee-Rm6" secondAttribute="trailing" constant="12" id="YR1-je-g0e"/>
+                                <constraint firstAttribute="bottom" secondItem="BXf-ee-Rm6" secondAttribute="bottom" id="bTO-mh-s0f"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.59607843140000005" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ew3-HW-kXs" secondAttribute="trailing" id="7MC-2C-lkR"/>
+                        <constraint firstItem="e3k-fe-zgO" firstAttribute="top" secondItem="ew3-HW-kXs" secondAttribute="bottom" constant="9" id="99z-5I-uqJ"/>
+                        <constraint firstAttribute="bottom" secondItem="e3k-fe-zgO" secondAttribute="bottom" constant="9" id="AAM-79-09b"/>
+                        <constraint firstItem="mlc-ei-taX" firstAttribute="leading" secondItem="2Km-TH-4Fa" secondAttribute="leading" constant="6" id="Bq2-IW-TJW"/>
+                        <constraint firstItem="ew3-HW-kXs" firstAttribute="leading" secondItem="2Km-TH-4Fa" secondAttribute="leading" id="E27-Fc-ZV6"/>
+                        <constraint firstItem="ew3-HW-kXs" firstAttribute="top" secondItem="2Km-TH-4Fa" secondAttribute="top" id="IkK-4Z-Q2e"/>
+                        <constraint firstItem="mlc-ei-taX" firstAttribute="centerY" secondItem="2Km-TH-4Fa" secondAttribute="centerY" id="cn5-Ff-8Sv"/>
+                        <constraint firstItem="e3k-fe-zgO" firstAttribute="leading" secondItem="mlc-ei-taX" secondAttribute="trailing" constant="3" id="hqg-1I-0LB"/>
+                        <constraint firstAttribute="trailing" secondItem="e3k-fe-zgO" secondAttribute="trailing" constant="14" id="y1J-Il-EDw"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" tag="1000001" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qP9-XD-q2t">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="612.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="x2j-kD-v1S"/>
+                        <outlet property="delegate" destination="-1" id="Tuh-Ho-0Kc"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2Km-TH-4Fa" firstAttribute="top" secondItem="qP9-XD-q2t" secondAttribute="bottom" id="0Y0-mh-4Xy"/>
+                <constraint firstItem="U1s-MH-CuT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Bzm-8g-s3X"/>
+                <constraint firstItem="ZwH-0W-jJi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LTI-qU-i92"/>
+                <constraint firstItem="U1s-MH-CuT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Wjy-dj-hb8"/>
+                <constraint firstAttribute="trailing" secondItem="2Km-TH-4Fa" secondAttribute="trailing" id="aaD-yp-OoL"/>
+                <constraint firstAttribute="trailing" secondItem="ZwH-0W-jJi" secondAttribute="trailing" id="c0o-4d-yMx"/>
+                <constraint firstAttribute="bottom" secondItem="2Km-TH-4Fa" secondAttribute="bottom" id="eUK-Ua-S2J"/>
+                <constraint firstItem="qP9-XD-q2t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="frk-zh-8WO"/>
+                <constraint firstItem="qP9-XD-q2t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="n66-9E-CVv"/>
+                <constraint firstItem="2Km-TH-4Fa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rfc-Eu-kEO"/>
+                <constraint firstItem="ZwH-0W-jJi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sMZ-ag-7Qu"/>
+                <constraint firstItem="2Km-TH-4Fa" firstAttribute="top" secondItem="qP9-XD-q2t" secondAttribute="bottom" id="tOg-9Z-rJY"/>
+                <constraint firstAttribute="bottom" secondItem="U1s-MH-CuT" secondAttribute="bottom" id="wIz-I1-m7r"/>
+                <constraint firstAttribute="trailing" secondItem="U1s-MH-CuT" secondAttribute="trailing" id="xJa-T5-I7B"/>
+                <constraint firstAttribute="trailing" secondItem="qP9-XD-q2t" secondAttribute="trailing" id="xRn-SV-sdK"/>
+            </constraints>
+            <point key="canvasLocation" x="35.507246376811594" y="34.486607142857139"/>
+        </view>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="koK-ri-ai9">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6s-KV-81T" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lAk-Ij-nwJ">
+                            <rect key="frame" x="24" y="216" width="327" height="234"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5O-cO-kXW">
+                                    <rect key="frame" x="84" y="193" width="90" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <state key="normal" title="CANCEL">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="methodCancelSubmitComment:" destination="-1" eventType="touchUpInside" id="5TY-do-iHZ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWt-b3-BYB">
+                                    <rect key="frame" x="0.0" y="193" width="74" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <state key="normal" title="SUBMIT">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="methodCancelSubmitComment:" destination="-1" eventType="touchUpInside" id="ZH2-n2-Uck"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imagePlace.png" translatesAutoresizingMaskIntoConstraints="NO" id="oyT-O6-h49">
+                                    <rect key="frame" x="261" y="12" width="54" height="54"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZa-lP-de5">
+                                    <rect key="frame" x="43" y="27" width="214" height="23"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30X-lI-Fef">
+                                    <rect key="frame" x="12" y="136" width="303" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <subviews>
+                                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="أضف تعليق..." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PfM-kW-nCG">
+                                            <rect key="frame" x="12" y="4" width="279" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="pQv-t7-c9y"/>
+                                            </connections>
+                                        </textField>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-g3-72N" customClass="GrowingTextView" customModule="GrowingTextView">
+                                            <rect key="frame" x="12" y="4" width="279" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="minHeight">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Add comment..."/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="FzV-bf-6JR"/>
+                                            </connections>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ks-bO-cGI">
+                                    <rect key="frame" x="12" y="68" width="303" height="54"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="p0u-4V-aDf"/>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                    <color key="value" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.59840539380000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="dby-64-2q0"/>
+            <point key="canvasLocation" x="-1177.536231884058" y="34.486607142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg.png" width="414" height="736"/>
+        <image name="imagePlace.png" width="92.5" height="92.5"/>
+        <image name="logo.png" width="71.5" height="37.5"/>
+        <image name="send_btn.png" width="30.5" height="27.5"/>
+    </resources>
+</document>

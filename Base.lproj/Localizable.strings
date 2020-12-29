@@ -1,0 +1,321 @@
+/* 
+  Localizable.strings
+  Gulflink
+
+  Created by Deepak iOS on 16/10/17.
+  Copyright © 2017 Anveshan It Solutions. All rights reserved.
+*/
+
+
+//// Login Screen && SignUp
+
+"Email" = "البريد الإلكتروني";
+
+"SIGN IN" = "تسجيل الدخول";
+"Password" = "كلمه السر";
+"SIGN UP" = "سجل";
+"Forgot Password" = "هل نسيت كلمة المرور";
+"Write here..." = "اكتب هنا...";
+"Name" = "اسم";
+"User Name" = "اسم المستخدم";
+"Members" = "أفراد";
+
+"Join" = "انضم";
+"Leave" = "غادر";
+
+"Languages" = "اللغات";
+"Privacy policy" = "سياسة الخصوصية";
+
+
+"Comments" = "تعليقات";
+"show like successfully" = "تظهر مثل بنجاح";
+"You have successfully left the group." = "لقد غادرت المجموعة بنجاح.";
+"User profile updated" = "تم تحديث ملفك";
+
+"Terms and conditions" = "الأحكام والشروط";
+
+"Category" = "الفئة";
+"+91" = "+91";
+"Mobile No." = "رقم الموبايل.";
+"By signing up, You agree with Terms and Conditions" = "بالاشتراك ، أنت توافق على الشروط والأحكام";
+"Sub category" = "الفئة الفرعية";
+"English" = "الإنجليزية";
+"FORGOT PASSWORD?" = "هل نسيت كلمة المرور؟";
+"Enter Your Email Address to retrieve Your Password." = "أدخل عنوان البريد الإلكتروني الخاص بك لاسترداد كلمة المرور الخاصة بك.";
+"CANCEL" = "إلغاء";
+"SUBMIT" = "ارسل";
+"Done" = "فعله";
+"creationDate" = "تاريخ الإنشاء";
+
+////OTP Screen
+"Otp" = "مكتب المدعي العام";
+"SMS Verification code has been sent to your registered mobile number" = "تم إرسال رمز التحقق من SMS إلى رقم هاتفك المحمول المسجل";
+"ENTER VERIFICATION CODE" = "أدخل رمز التحقق";
+"VERIFY" = "التحقق";
+"RESEND OTP" = "إعادة إرسال مكتب المدعي العام";
+"Chose image" = "اختر صوره";
+
+////Add Friends Screen
+"Timeline" = "الجدول الزمني";
+"Notifications" = "إخطارات";
+"Inbox" = "صندوق الوارد";
+"ADD FRIEND" = "أضف صديق";
+"Camera" = "كاميرا";
+"Gallery" = "البوم الصور";
+"Cancel" = "إلغاء";
+"Warning" = "تحذير";
+
+"You don't have camera" = "ليس لديك كاميرا";
+
+////Contact Us Screen
+"Description" = "وصف";
+"CONTACT US" = "اتصل بنا";
+"Gallery permission is not granted. Go to settings and allow app to access your gallery." = "إذن المعرض غير مقبول. انتقل إلى الإعدادات واسمح لتطبيق بالوصول إلى معرض الصور الخاص بك.";
+
+"Settings" = "الإعدادات";
+
+////Home Cell
+"Groups" = "المجموعات";
+
+////Map Screen
+"Search...." = "بحث....";
+"Enter discount %..." = "أدخل نسبة الخصم ...";
+"Search" = "بحث";
+"Old Password" = "كلمة المرور القديمة";
+"New Password" = "كلمة السر الجديدة";
+"Confirm Password" = "تأكيد كلمة المرور";
+
+"All Friends" = "كل الأصدقاء";
+"Conversation" = "محادثة";
+
+"Write something about yourself..." = "أكتب شيئا عن نفسك...";
+
+////TimeLine Screen
+"Are you sure, you want to delete this post?" = "هل أنت متأكد أنك تريد حذف هذه المشاركة؟";
+"OK" = "حسنا";
+"Are you sure you want to report this post?" = "هل أنت متأكد من أنك تريد الإبلاغ عن هذه المشاركة؟";
+"FOLLOW" = "إتبع";
+"UNFOLLOW" = "الغاء المتابعة";
+
+"Ask Me" = "اسألني";
+"Followers" = "متابعون";
+"Following" = "اتابع";
+"0" = "0";
+"ADD POST" = "أضف منشورا";
+"Continue reading" = "أكمل القراءة";
+"(0)" = "(0)";
+"Yes" = "نعم فعلا";
+"No" = "لا";
+
+"Are you sure you want to Logout?" = "هل أنت متأكد أنك تريد تسجيل الخروج؟";
+
+////Profile Screen
+"NEW POST" = "منشور جديد";
+"Add your comment here" = "أضف تعليقك هنا";
+"POST" = "بريد";
+"Post" = "بريد";
+
+"Are you sure, you want to Logout?" = "هل أنت متأكد أنك تريد تسجيل الخروج؟";
+
+////Group Screen
+"All Groups" = "كل المجموعات";
+"My Groups" = "مجموعاتي";
+"Health37" = "هيلث٣٧";
+"Add Message..." = "اضافة رسالة...";
+"Logout Successfully." = "تسجيل الخروج بنجاح.";
+
+"Please enter the add comments." = "الرجاء إدخال التعليقات الإضافة.";
+
+////Followers Screen
+"Record not found" = "لم يتم العثور على السجل";
+
+////UserDetails Screen
+"Cross Thing" = "عبر الشيء";
+"Audiologist" = "السمعيات";
+"Cardiac" = "عضلات قلبية";
+"null" = "لا شيء";
+"UPDATE" = "تحديث";
+"CHANGE PASSWORD" = "غير كلمة السر";
+
+////Map Profile Screen
+"Save/ Remove event location" = "حفظ / إزالة موقع الحدث";
+"Save" = "حفظ";
+"Remove" = "إزالة";
+"Enter Description here" = "أدخل الوصف هنا";
+
+
+////Home Search Screen
+"USERS" = "المستخدمين";
+"GROUPS" = "فئات";
+"POSTS" = "المشاركات";
+
+////Chat Screen
+"Type a message" = "اكتب رسالة";
+
+////Notification Add Screen
+"Add Comment..." = "أضف تعليق...";
+
+"Reply" = "الرد";
+"NO, THANKS" = "لا شكرا";
+"Enter your reviews here..." = "أدخل مراجعاتك هنا ...";
+
+"Aim of groups is to raise the level of society health awareness. Make sure that your post is scientifically reliable, contains no indecent photos, does not contain or refers to advertisements such as names, phone numbers." = "الهدف من المجموعات هو رفع مستوى الوعي الصحي المجتمعي. تأكد من أن مشاركتك موثوق بها علميا ، لا تحتوي على صور غير لائقة ، ولا تحتوي أو تشير إلى إعلانات مثل الأسماء وأرقام الهواتف.";
+
+
+///All Alerts
+"The SMS verification code is invalid." = "رمز التحقق من SMS غير صالح.";
+"Verification failed, please check your phone number" = "فشل التحقق ، يرجى التحقق من رقم هاتفك";
+"Enter some description or query first." = "أدخل وصفًا أو استعلامًا أولاً.";
+"Please check internet connection" = "يرجى التحقق من اتصال الإنترنت";
+"Make sure your device is connected to the internet." = "تأكد من اتصال جهازك بالإنترنت.";
+"Please enter the name." = "يرجى إدخال الاسم.";
+"Please enter the user name." = "يرجى إدخال اسم المستخدم.";
+"Please enter full name." = "يرجى إدخال الاسم الكامل.";
+"Please enter the email address." = "يرجى إدخال عنوان البريد الإلكتروني.";
+"Please enter your reviews." = "يرجى إدخال الاستعراضات الخاصة بك.";
+"Please enter the valid email address." = "الرجاء إدخال عنوان البريد الإلكتروني الصحيح.";
+"Please enter search text." = "يرجى إدخال نص البحث.";
+"Please select country code." = "يرجى تحديد رمز البلد.";
+"Please enter the phone number." = "يرجى إدخال رقم الهاتف.";
+"Phone Number must be of minimum 8 characters." = "يجب أن يكون رقم الهاتف 8 أحرف على الأقل.";
+"Please enter the password." = "يرجى إدخال كلمة المرور.";
+"Please enter the confirm password." = "يرجى إدخال كلمة مرور التأكيد.";
+"Password and Confirm Password should be match." = "كلمة المرور وتأكيد كلمة المرور يجب أن تكون متطابقة.";
+"Password must be of minimum 6 characters." = "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.";
+"Please enter the otp." = "يرجى إدخال otp.";
+"Please write something or atleast select a photo." = "يرجى كتابة شيء ما أو على الأقل حدد صورة.";
+"OTP must be of minimum 6 characters." = "يجب أن يكون OTP بحد أدنى 6 أحرف.";
+"Please enter new password." = "يرجى إدخال كلمة المرور الجديدة.";
+"Having some issue.Please try again." = "وجود بعض المشاكل. يرجى المحاولة مرة أخرى.";
+
+"u5V4VyTz28lRK4vGdC2cC6Qgs" = "u5V4VyTz28lRK4vGdC2cC6Qgs";
+"mCYJpgJQd1gX5RnUa1f739v5T1qLyPgrEEBe8uaLN7VFwDJrLK" = "mCYJpgJQd1gX5RnUa1f739v5T1qLyPgrEEBe8uaLN7VFwDJrLK";
+
+
+
+"Lunch Time" = "موعد الغذاء";
+"This patient currently has no appointments" = "هذا المريض ليس لديه مواعيد حاليا";
+"To date" = "حتى الآن";
+"Edit Patient" = "تحرير المريض";
+"Time of Appointment" = "موعد التعيين";
+"New Appointment" = "موعد جديد";
+"Patient Name" = "اسم المريض";
+"to" = "إلى";
+"Patient Info" = "معلومات المريض";
+"Appointment Info" = "معلومات الموعد";
+"From date" = "من التاريخ";
+"00:00" = "00:00";
+"Mobile Phone" = "هاتف محمول";
+"Available Hours" = "الساعات المتاحة";
+"Day of Month" = "يوم من الشهر";
+"Edit Appointment" = "تحرير موعد";
+"Notes" = "ملاحظات";
+"Appointments" = "المواعيد";
+"Available Days" = "الأيام المتاحة";
+"Activity" = "نشاط";
+"Patient Name" = "اسم المريض";
+"From date" = "من التاريخ";
+"Time Slot" = "مدة الزيارة";
+"Appointment" = "موعد";
+"My Appointments" = "مواعيدي";
+"Back" = "عودة";
+"Are you sure you want to cancel the Appointment?" = "هل أنت متأكد من أنك تريد إلغاء الموعد؟";
+"Notes(Optional)" = "ملاحظات (اختياري)";
+"Select Slot" = "اختر فترة الزيارة";
+"Coupon Code(Optional)" = "رمز الكوبون (اختياري)";
+"Please Select Slot Time" = "الرجاء تحديد وقت الفتحة";
+"Appointment Cancelled" = "تم إلغاء الموعد";
+"Appointment Booked" = "تم الحجز";
+"Sun" = "الاحد";
+"Sat" = "السبت";
+"Fri" = "الجمعة";
+"Thu" = "الخميس";
+"Wed" = "الأربعاء";
+"Tue" = "الثلاثاء";
+"Mon" = "الإثنين";
+"Alert" = "تنبيه";
+"Manage Discount" = "إدارة الخصم";
+"Enable Discount" = "تمكين الخصم";
+"Please Select Coupon Discount and it should be above or equal to 10%." = "اختر قيمة الخصم على ان يكون ١٠ ٪؜  أو اكثر.";
+"Discount setting updated" = "تم تحديث الخصم";
+"Coupon Code:" = "رمز الكوبون:";
+"Discount Amount" = "مقدار الخصم";
+"Edit" = "تعديل";
+"BOOK APPOINTMENT" = "احجز موعد";
+"Book" = "احجز";
+"Discount" = "خصم";
+"Note" = "ملحوظة";
+"This discount amount deserved only when you attend on time." = "مبلغ الخصم هذا مستحق فقط عندما تحضر في الوقت المحدد.";
+"This discount amount price Deducted from treatment invoice." = "سعر مبلغ الخصم هذا يتم خصمه من فاتورة العلاج.";
+"Discount Amount" = "مقدار الخصم";
+"Reschedule" = "إعادة الجدولة";
+"Appointment edited successfully" = "تم تعديل الموعد بنجاح";
+"Appointment got cancelled or expired." = "تم إلغاء الموعد أو انتهاء صلاحيته.";
+
+"15 mins" = "15 دقيقة";
+"30 mins" = "30 دقيقة";
+"45 mins" = "45 دقيقة";
+"60 mins" = "60 دقيقة";
+"(0.25 hour)" = "(0.25 ساعة)";
+"(0.5 hour)" = "(0.5 ساعة)";
+"(0.75 hour)" = "(0.75 ساعة)";
+"(1 hour)" = "(ساعة واحدة)";
+"$120" ="$120";
+"$220" = "$220";
+"6 Months" = "6 اشهر";
+"1 Year" = "سنة واحدة";
+"Weekdays" ="أيام الأسبوع";
+"Long Week" = "اسبوع طويل";
+"Everyday" = "كل يوم";
+"(Sun-Thu)" = "(الأحد-الخميس)";
+"(Sun-Fri)" = "(الأحد-الجمعة)";
+"(Sun-Sat)" = "(الأحد-السبت)";
+"from" = "من عند";
+"Work Location" = "مكان العمل";
+"Continue" = "استمر";
+"Appointment Slots Detail" = "تفاصيل خانات المواعيد";
+"Please enter discount." = "الرجاء إدخال الخصم.";
+"No Coupon code Present." = "لا يوجد رمز قسيمة موجود.";
+"Lunch Time Should Be Between Office Time." = "يجب أن يكون وقت الغداء بين وقت المكتب.";
+"Doctor not available." = "الطبيب غير متوفر.";
+"Please select today's or future date." = "الرجاء تحديد تاريخ اليوم أو المستقبل.";
+"Might be user has not enabled his/her appointment feature." = "لم يتم تفعيل خدمة المواعيد بواسطة المستخدم.";
+"Appointment Feature Enabled." = "ميزة التعيين ممكنة.";
+"Please Select Future Time" = "الرجاء تحديد وقت المستقبل";
+"No Doctor Found" = "لم يتم العثور على طبيب";
+"No Appointment Found" = "لم يتم العثور على موعد";
+"By adding up, You agree with" = "من خلال الإضافة ، أنت توافق على";
+"ADD" = "إضافة";
+"Add New Doctor" = "إضافة طبيب جديد";
+"Write About Experience" = "اكتب عن الخبرة";
+"Add Photo" = "إضافة صورة";
+"100 characters" = "100 حرف";
+"Doctors List" = "قائمة الاطباء والمعالجين ";
+"Add notes" = "اضف ملاحظات";
+"Enable  appointments" = "تمكين المواعيد";
+"Subscribe" = "اشترك";
+"SELECT PLAN" = "اختر خطة";
+"Time Slot Modified Successfully." = "تم تعديل الفترة الزمنية بنجاح.";
+"Appointment not booked" = "الحجز لم يتم";
+"Subscription" = "الاشتراك";
+"You can add up to 100 doctors" = "بالامكان اضافة حتى ١٠٠ طبيب";
+"Accepted Cards" = "البطاقات المقبولة";
+"Cardholder's Name" = "اسم حامل البطاقة";
+"Expiration Date*" = "*تاريخ الانتهاء";
+"CVV*" = "*رمز الامان";
+"Card Number*" = "*رقم البطاقة";
+"Payment" = "الدفع";
+"SUBSCRIBE" = "الإشتراك";
+"Pay" = "دفع";
+"Doctor added Successfully." = "تم اضافة الطبيب بنجاح";
+"Delete" = "حذف";
+"Are you sure you want to delete this doctor." = "هل أنت متأكد أنك تريد حذف هذا الطبيب.";
+"Doctor updated Successfully." = "تم تحديث الطبيب بنجاح.";
+"Hospital/Clinic Name" = "اسم المستشفى / العيادة";
+"You can’t book 2 appointments in one day." = "لا يمكنك حجز موعدين بنفس اليوم.";
+"Subscription Detail" = "تفاصيل الاشتراك";
+"Subscribed to:" = "الاشتراك في:";
+"Subscription valid till:" = "الاشتراك صالح حتى:";
+"Cancel Subscription" =  "إلغاء الاشتراك";
+"Upgrade Plan" = "خطة الترقية";
+"Are you sure you want to cancel the Subscription?" = "هل أنت متأكد أنك تريد إلغاء الاشتراك؟";

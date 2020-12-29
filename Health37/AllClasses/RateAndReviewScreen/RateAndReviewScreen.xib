@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Semibold_0.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RateAndReviewScreen" customModule="Health37" customModuleProvider="target">
+            <connections>
+                <outlet property="btnNoThanks" destination="pTj-9s-6jd" id="F92-Ti-IlA"/>
+                <outlet property="btnSubmit" destination="anO-wm-9TN" id="4PC-ec-g4n"/>
+                <outlet property="ratingReviews" destination="bqM-8R-vkZ" id="Mty-Hr-38O"/>
+                <outlet property="tblRateReview" destination="6gO-JH-Foi" id="QTP-rO-YIC"/>
+                <outlet property="toolBar" destination="pE1-7e-bNG" id="bqB-eb-w2S"/>
+                <outlet property="txtEnterReview" destination="sIe-hU-BAo" id="frL-TE-ohm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewHeaderRateReview" destination="s1c-PR-VoT" id="CJy-Oc-NEG"/>
+                <outlet property="viewRateReviewBG" destination="hji-Dj-9Dr" id="L9Z-wT-vcd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="RateAndReviewScreen" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-JH-Foi">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lv4-HI-uki"/>
+                        <outlet property="delegate" destination="-1" id="3md-v4-O5w"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6gO-JH-Foi" firstAttribute="trailing" secondItem="Mfv-NM-ekN" secondAttribute="trailing" id="CLF-D8-dTl"/>
+                <constraint firstItem="6gO-JH-Foi" firstAttribute="bottom" secondItem="Mfv-NM-ekN" secondAttribute="bottom" id="fZG-xz-iDX"/>
+                <constraint firstItem="6gO-JH-Foi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="v8N-kp-BD2"/>
+                <constraint firstItem="6gO-JH-Foi" firstAttribute="leading" secondItem="Mfv-NM-ekN" secondAttribute="leading" id="xoL-aT-Fjf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Mfv-NM-ekN"/>
+            <point key="canvasLocation" x="25" y="53"/>
+        </view>
+        <view contentMode="scaleToFill" id="s1c-PR-VoT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-8R-vkZ" customClass="FloatRatingView" customModule="Health37" customModuleProvider="target">
+                    <rect key="frame" x="68" y="14" width="240" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hji-Dj-9Dr">
+                    <rect key="frame" x="16" y="66" width="343" height="130"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sIe-hU-BAo" customClass="SZTextView">
+                            <rect key="frame" x="8" y="0.0" width="327" height="130"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your reviews here..."/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="jwI-2g-aDr"/>
+                            </connections>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTj-9s-6jd">
+                    <rect key="frame" x="0.0" y="215" width="186" height="42"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0039215686274509803" green="0.59607843137254901" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="14"/>
+                    <state key="normal" title="NO, THANKS">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="methodSubmitNoThanks:" destination="-1" eventType="touchUpInside" id="pwg-s6-j64"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anO-wm-9TN">
+                    <rect key="frame" x="189" y="215" width="186" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.59607843140000005" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="14"/>
+                    <state key="normal" title="SUBMIT">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="methodSubmitNoThanks:" destination="-1" eventType="touchUpInside" id="tr0-uK-vWT"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="xaL-So-Ere"/>
+            <point key="canvasLocation" x="678" y="-169"/>
+        </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pE1-7e-bNG">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="3C9-aQ-Vf6"/>
+            <items>
+                <barButtonItem title="Cancel" id="xZT-zh-96z">
+                    <connections>
+                        <action selector="methodKeyPadCancel:" destination="-1" id="1xq-sC-QNG"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="3vr-a6-DEX"/>
+                <barButtonItem title="Done" id="ANP-lL-Kav">
+                    <connections>
+                        <action selector="methodKeyPadDone:" destination="-1" id="Pxf-uO-qxP"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+            <point key="canvasLocation" x="461" y="123"/>
+        </toolbar>
+    </objects>
+</document>

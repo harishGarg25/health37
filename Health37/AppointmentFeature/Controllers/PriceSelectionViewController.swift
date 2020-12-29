@@ -22,7 +22,10 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
     @IBOutlet weak var currencyText: UILabel!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var countLable: UILabel!
-    
+    @IBOutlet weak var freeTrialButton: UIButton!
+    @IBOutlet weak var freeTrialLable: UILabel!
+    @IBOutlet weak var trialDurationLable: UILabel!
+
     var planPrice: [Slot] = []
     let timeslotecellID = "timeslotecell"
     var selectedDurationIndex: Int = -1
@@ -113,6 +116,8 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
         titleLable.text = "SELECT PLAN".localized
         countLable.text = "You can add up to 100 doctors".localized
         continueButton.setTitle("SUBSCRIBE".localized, for: .normal)
+        freeTrialLable.text = "Free Trial".localized
+        trialDurationLable.text = "2 Months".localized
         cardViewController.delegate = self
         cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
         continueButton.disableButton()

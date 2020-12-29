@@ -55,7 +55,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
         let strUserName = UserDefaults.standard.object(forKey: kFullName) as? String
         nameLable.text = strUserName
         
-        if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
+        if UserDefaults.standard.object(forKey: "applanguage") != nil && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             mainView.semanticContentAttribute = .forceRightToLeft
             upgradeField.textAlignment = .right

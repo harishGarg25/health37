@@ -19,6 +19,15 @@ extension UserDefaults {
         set(authorization, forKey: "user_type")
     }
     
+    var userDetail: NSMutableArray? {
+        return object(forKey: "user_detail") as? NSMutableArray
+    }
+    
+    func setUserDetail(_ detail: NSMutableArray) {
+        set(detail, forKey: "user_detail")
+    }
+    
+    
     var getAppointmentStatus: String? {
         return string(forKey: "appointmentStatus")
     }

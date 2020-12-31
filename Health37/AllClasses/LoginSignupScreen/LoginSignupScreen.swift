@@ -14,9 +14,6 @@ import GoogleSignIn
 class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CountryListViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIWebViewDelegate, FHSTwitterEngineAccessTokenDelegate, GIDSignInUIDelegate, GIDSignInDelegate  {
     
     @IBOutlet var lblSeprator_AR: UILabel!
-    var dictSocialDetails = NSMutableDictionary()
-    
-    ///IBoutlets SignIN
     @IBOutlet var btnSignIn: UIButton!
     @IBOutlet var btnForgotPass: UIButton!
     @IBOutlet var btnPickerDone: UIBarButtonItem!
@@ -42,38 +39,34 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     @IBOutlet var txtMobileNo: UITextField!
     @IBOutlet var txtCountryCode: UITextField!
     @IBOutlet var hospitalNameTF: UITextField!
-
+    @IBOutlet weak var landlineTextField: UITextField!
+    @IBOutlet weak var landlineView: UIView!
     @IBOutlet var scrollingBar: UIScrollView!
     @IBOutlet var toolBar: UIToolbar!
-    var strCountryName = ""
-    var strSocialType = ""
-    var strTextValue = ""
-    @IBOutlet var btnChooseLanguage: UIButton!
-    ///IBoutlets PickerView
-    @IBOutlet var pickerHealth: UIPickerView!
-    
-    @IBOutlet var viewLanguageBG: UIView!
-    //Iboutlet forgotPassword popup
-    @IBOutlet var txtEmailForgotPass: UITextField!
-    @IBOutlet var viewForgotPasswordBG: UIView!
-    
-    @IBOutlet var imgBackGround: UIImageView!
-    
-    @IBOutlet var viewTxtEmailBG: UIView!
-    var strLanguageSlt = NSString()
-    var isSltedTextF : Bool = false
-    var categoryID = String()
-    
-    var  arrSubCategory = NSMutableArray()
     @IBOutlet var btnTermsConditions: UIButton!
     @IBOutlet var viewSubcategoryBG: UIView!
-    
     @IBOutlet var btnEnglish: UIButton!
     @IBOutlet var btnArebic: UIButton!
     @IBOutlet var lblHeaderForgot: UILabel!
     @IBOutlet var lblTitleEnterEmail: UILabel!
     @IBOutlet var btnCancelForgot: UIButton!
     @IBOutlet var btnSubmitForgot: UIButton!
+    @IBOutlet var btnChooseLanguage: UIButton!
+    @IBOutlet var pickerHealth: UIPickerView!
+    @IBOutlet var viewLanguageBG: UIView!
+    @IBOutlet var txtEmailForgotPass: UITextField!
+    @IBOutlet var viewForgotPasswordBG: UIView!
+    @IBOutlet var imgBackGround: UIImageView!
+    @IBOutlet var viewTxtEmailBG: UIView!
+    
+    var strLanguageSlt = NSString()
+    var isSltedTextF : Bool = false
+    var categoryID = String()
+    var dictSocialDetails = NSMutableDictionary()
+    var  arrSubCategory = NSMutableArray()
+    var strCountryName = ""
+    var strSocialType = ""
+    var strTextValue = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,16 +100,16 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
         btnSignUpClick.layer.borderColor = UIColor.init(red: 1/255.0, green: 152/255.0, blue: 159/255.0, alpha: 1.0).cgColor
         
         DispatchQueue.main.async
-            {
-                self.viewSignUPBG.frame = CGRect.init(x: 0, y: 202, width: self.scrollingBar.frame.size.width, height: 597)
-                self.scrollingBar.contentSize = CGSize.init(width: self.scrollingBar.frame.size.width, height: 590)
+        {
+            self.viewSignUPBG.frame = CGRect.init(x: 0, y: 202, width: self.scrollingBar.frame.size.width, height: 597)
+            self.scrollingBar.contentSize = CGSize.init(width: self.scrollingBar.frame.size.width, height: 590)
         }
         
         self.imgBackGround.layer.masksToBounds = true
         self.viewSubcategoryBG.isHidden = true
-        self.btnTermsConditions.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.hospitalNameTF.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
+        self.btnTermsConditions.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.landlineView.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
         
-        self.lblTermsCondition.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.hospitalNameTF.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
+        self.lblTermsCondition.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.landlineView.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
         
         self.btnSignUpClick.frame = CGRect.init(x: (self.btnSignUpClick.frame.origin.x), y: (self.btnTermsConditions.frame.origin.y) + 42, width: (self.btnSignUpClick.frame.size.width), height: (self.btnSignUpClick.frame.size.height))
         
@@ -132,7 +125,8 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             txtPassword.placeholder = "Write here...".localized
             txtEmail.placeholder = "Write here...".localized
             hospitalNameTF.placeholder = "Hospital/Clinic Name".localized
-
+            landlineTextField.placeholder = "Landline Number".localized
+            
             txtUserName.placeholder = "User Name".localized
             txtPasswordSignup.placeholder = "Password".localized
             
@@ -370,6 +364,10 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             hospitalNameTF.text = ""
             self.hospitalNameTF.frame.size.height = categoryID == "4" ? 40 : 0
             hospitalNameTF.isHidden = !(categoryID == "4")
+            landlineTextField.text = ""
+            self.landlineView.frame.size.height = categoryID == "4" ? 40 : 0
+            landlineView.isHidden = !(categoryID == "4")
+            
             UserDefaults.standard.set(txtTherapyType.text!, forKey: "catName")
             UserDefaults.standard.set(categoryID, forKey: "catID")
             self.showActivity(text: "")
@@ -669,25 +667,25 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         self.appDelegate.strUrlAuthanticateType = "FACEBOOK"
         fbLoginManager.logIn(withReadPermissions: ["public_profile","email"], from: self, handler:
-            { (result, error) -> Void in
-                print("result && Error",result,error)
-                if (error == nil)
-                {
-                    let fbloginresult : FBSDKLoginManagerLoginResult = result!
-                    
-                    if(fbloginresult.isCancelled)
-                    {
-                    }
-                    else if(fbloginresult.grantedPermissions.contains(kEmail))
-                    {
-                        self.UserFaceBookDataFatch()
-                    }
-                }
-                else
-                {
-                    print("FBError")
-                }
-        })
+                                { (result, error) -> Void in
+                                    print("result && Error",result,error)
+                                    if (error == nil)
+                                    {
+                                        let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                                        
+                                        if(fbloginresult.isCancelled)
+                                        {
+                                        }
+                                        else if(fbloginresult.grantedPermissions.contains(kEmail))
+                                        {
+                                            self.UserFaceBookDataFatch()
+                                        }
+                                    }
+                                    else
+                                    {
+                                        print("FBError")
+                                    }
+                                })
     }
     
     //MARK:FBUserExitInfo
@@ -695,66 +693,60 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     {
         if((FBSDKAccessToken.current()) != nil)
         {
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email,friends{id, name,first_name, last_name, picture}"]).start(completionHandler:
-                { (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email,friends{id, name,first_name, last_name, picture}"]).start(completionHandler:{ (connection, result, error) -> Void in
+                if (error == nil)
+                {
+                    let dic = result as! NSDictionary
+                    self.dictSocialDetails = NSMutableDictionary()
+                    self.appDelegate.strUrlAuthanticateType = "FACEBOOK"
+                    self.strSocialType = "facebook"
+                    var strEmail = ""
+                    var strSocialID = ""
+                    var profileUrl : URL!
+                    var strFirstName = ""
+                    var strLastName = ""
                     
-                    if (error == nil)
+                    print("DicPrint-------%@",dic)
+                    
+                    strSocialID = dic.object(forKey: "id")! as! String
+                    if dic.object(forKey: kEmail) != nil
                     {
-                        let dic = result as! NSDictionary
-                        
-                        self.dictSocialDetails = NSMutableDictionary()
-                        
-                        self.appDelegate.strUrlAuthanticateType = "FACEBOOK"
-                        
-                        self.strSocialType = "facebook"
-                        var strEmail = ""
-                        var strSocialID = ""
-                        var profileUrl : URL!
-                        var strFirstName = ""
-                        var strLastName = ""
-                        
-                        print("DicPrint-------%@",dic)
-                        
-                        strSocialID = dic.object(forKey: "id")! as! String
-                        
-                        if dic.object(forKey: kEmail) != nil
-                        {
-                            strEmail = dic.object(forKey: kEmail)! as! String
-                        }
-                        if dic.object(forKey: kFirstName) != nil
-                        {
-                            strFirstName = dic.object(forKey: kFirstName)! as! String
-                        }
-                        if dic.object(forKey: kLastName) != nil
-                        {
-                            strLastName = dic.object(forKey: kLastName)! as! String
-                        }
-                        if dic.object(forKey: "picture") != nil && (dic.object(forKey: "picture") as! NSDictionary).object(forKey: "data") != nil && ((dic.object(forKey: "picture") as! NSDictionary).object(forKey: "data") as! NSDictionary).object(forKey: "url") != nil
-                        {
-                            profileUrl =  URL(string:((dic.object(forKey: "picture") as! NSDictionary).object(forKey: "data") as! NSDictionary).object(forKey: "url") as! String)
-                        }
-                        
-                        self.dictSocialDetails.setValue(strSocialID, forKey: (kSocialId as NSCopying) as! String)
-                        self.dictSocialDetails.setValue(strEmail, forKey: (kEmail as NSCopying) as! String)
-                        self.dictSocialDetails.setValue(self.strSocialType, forKey: (kSocialType as NSCopying) as! String)
-                        self.dictSocialDetails.setValue(strFirstName, forKey: (kFullName as NSCopying) as! String)
-                        self.dictSocialDetails.setValue(kDeviceName, forKey: (kDeviceType as NSCopying) as! String)
-                        self.dictSocialDetails.setValue(profileUrl, forKey: (kProfilePic as NSCopying) as! String)
-                        if self.appDelegate.isInternetAvailable() == true
-                        {
-                            self.showActivity(text: "")
-                            self.performSelector(inBackground: #selector(self.methodCheckSocialUserApi), with: nil)
-                        }
-                        else
-                        {
-                            self.onShowAlertController(title: kInternetError.localized , message: kInternetErrorMessage.localized)
-                        }
+                        strEmail = dic.object(forKey: kEmail)! as! String
+                    }
+                    if dic.object(forKey: kFirstName) != nil
+                    {
+                        strFirstName = dic.object(forKey: kFirstName)! as! String
+                    }
+                    if dic.object(forKey: kLastName) != nil
+                    {
+                        strLastName = dic.object(forKey: kLastName)! as! String
+                    }
+                    if dic.object(forKey: "picture") != nil && (dic.object(forKey: "picture") as! NSDictionary).object(forKey: "data") != nil && ((dic.object(forKey: "picture") as! NSDictionary).object(forKey: "data") as! NSDictionary).object(forKey: "url") != nil
+                    {
+                        profileUrl =  URL(string:((dic.object(forKey: "picture") as! NSDictionary).object(forKey: "data") as! NSDictionary).object(forKey: "url") as! String)
+                    }
+                    
+                    self.dictSocialDetails.setValue(strSocialID, forKey: (kSocialId as NSCopying) as! String)
+                    self.dictSocialDetails.setValue(strEmail, forKey: (kEmail as NSCopying) as! String)
+                    self.dictSocialDetails.setValue(self.strSocialType, forKey: (kSocialType as NSCopying) as! String)
+                    self.dictSocialDetails.setValue(strFirstName, forKey: (kFullName as NSCopying) as! String)
+                    self.dictSocialDetails.setValue(kDeviceName, forKey: (kDeviceType as NSCopying) as! String)
+                    self.dictSocialDetails.setValue(profileUrl, forKey: (kProfilePic as NSCopying) as! String)
+                    if self.appDelegate.isInternetAvailable() == true
+                    {
+                        self.showActivity(text: "")
+                        self.performSelector(inBackground: #selector(self.methodCheckSocialUserApi), with: nil)
                     }
                     else
                     {
-                        print("FBFrnd error")
-                        //  MBProgressHUD.hideAllHUDs(for:  self.view, animated: true)
+                        self.onShowAlertController(title: kInternetError.localized , message: kInternetErrorMessage.localized)
                     }
+                }
+                else
+                {
+                    print("FBFrnd error")
+                    //  MBProgressHUD.hideAllHUDs(for:  self.view, animated: true)
+                }
             })
         }
     }
@@ -793,7 +785,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             let strEmail = ""
             var strSocialID = ""
             var strName = ""
-            var profileUrl : URL! = nil
+            let profileUrl : URL! = nil
             
             self.strSocialType = "twitter"
             
@@ -821,7 +813,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             }
             
             
-            } as UIViewController
+        } as UIViewController
         self .present(loginController, animated: true, completion: nil)
     }
     
@@ -900,6 +892,9 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             hospitalNameTF.text = ""
             self.hospitalNameTF.frame.size.height = categoryID == "4" ? 40 : 0
             hospitalNameTF.isHidden = !(categoryID == "4")
+            landlineTextField.text = ""
+            self.landlineView.frame.size.height = categoryID == "4" ? 40 : 0
+            landlineView.isHidden = !(categoryID == "4")
             UserDefaults.standard.set(txtTherapyType.text!, forKey: "catName")
             UserDefaults.standard.set(categoryID, forKey: "catID")
             self.showActivity(text: "")
@@ -1064,6 +1059,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                         dicUserInfo.setValue(self.categoryID, forKey: "user_cat")
                         dicUserInfo.setValue(self.strCountryName, forKey: "User_country")
                         dicUserInfo.setValue(self.hospitalNameTF.text ?? "", forKey: "hospital_name")
+                        dicUserInfo.setValue(self.landlineTextField.text ?? "", forKey: "landline")
 
                         UserDefaults.standard.set(self.categoryID, forKey: "catID")
                         UserDefaults.standard.set(self.txtTherapyType.text!, forKey: "catName")
@@ -1257,9 +1253,9 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                             self.txtCardiac.text = (self.arrSubCategory.object(at: 0) as AnyObject).object(forKey: kCatName) as? String
                         }
                         
-                        self.btnTermsConditions.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.hospitalNameTF.frame.origin.y) + 68, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
+                        self.btnTermsConditions.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.landlineView.frame.origin.y) + 68, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
                         
-                        self.lblTermsCondition.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.hospitalNameTF.frame.origin.y) + 68, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
+                        self.lblTermsCondition.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.landlineView.frame.origin.y) + 68, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
                         
                         self.btnSignUpClick.frame = CGRect.init(x: (self.btnSignUpClick.frame.origin.x), y: (self.btnTermsConditions.frame.origin.y) + 42, width: (self.btnSignUpClick.frame.size.width), height: (self.btnSignUpClick.frame.size.height))
                     }
@@ -1267,9 +1263,9 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                     {
                         self.viewSubcategoryBG.isHidden = true
                         
-                        self.btnTermsConditions.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.hospitalNameTF.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
+                        self.btnTermsConditions.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.landlineView.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
                         
-                        self.lblTermsCondition.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.hospitalNameTF.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
+                        self.lblTermsCondition.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.landlineView.frame.origin.y) + 56, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
                         
                         self.btnSignUpClick.frame = CGRect.init(x: (self.btnSignUpClick.frame.origin.x), y: (self.btnTermsConditions.frame.origin.y) + 42, width: (self.btnSignUpClick.frame.size.width), height: (self.btnSignUpClick.frame.size.height))
                     }

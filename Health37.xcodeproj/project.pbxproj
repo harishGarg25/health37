@@ -4025,7 +4025,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = Dev29July2020;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/harishgarg/Desktop/HealthApp/health37-ios/Health37/Assets/Health37-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/harishgarg/Desktop/health37/Health37/Assets/Health37-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -4051,7 +4051,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = Dev29July2020;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/harishgarg/Desktop/HealthApp/health37-ios/Health37/Assets/Health37-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/harishgarg/Desktop/health37/Health37/Assets/Health37-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

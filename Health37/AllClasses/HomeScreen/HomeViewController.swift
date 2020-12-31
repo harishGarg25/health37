@@ -301,6 +301,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell?.viewCellBG.layer.cornerRadius = 25.0
         return cell!
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         self.view.endEditing(true)
@@ -387,9 +388,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         == "1"
                     {
                         let arrProfileData = (responseData?.object(forKey: kUserSavedDetails)as!NSArray).mutableCopy() as! NSMutableArray
-                        
                         print("self.arrProfileData",arrProfileData)
                         
+                        UserDefaults.standard.setUserDetail(arrProfileData)
+
                         let dic = NSMutableDictionary()
                         
                         let imgUrl = (arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "user_avatar")
@@ -450,6 +452,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
+    
     func getNotificationCounts() -> NSMutableDictionary
     {
         let dictUser = NSMutableDictionary()
@@ -459,6 +462,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         return dictUser
     }
+    
     // MARK:- Get NotificationCount Integration.................
     @objc func methodNotificationCount()
     {

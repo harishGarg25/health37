@@ -483,9 +483,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 {
                     print("responseData",responseData!)
                     self.arrAllCategory = (responseData?.object(forKey: kUserSavedDetails)as!NSArray).mutableCopy() as! NSMutableArray
+                    if self.arrAllCategory.count > 0
+                    {
+                        self.arrAllCategory.insert(self.arrAllCategory[self.arrAllCategory.count - 1], at: 0)
+                        self.arrAllCategory.removeLastObject()
+                    }
                     print("arrAllCategory",self.arrAllCategory)
-                    //  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateHomeData"), object: nil)
-                    
                 }
                 else
                 {
@@ -494,7 +497,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         self.logoutAndClearDefaults()
                     }
                     print("responseData",responseData!)
-                    //self.onShowAlertController(title: "Error" , message: responseData?.object(forKey: "message")! as! String?)
                 }
             }
         }
@@ -935,8 +937,6 @@ enum NavigateScreen: String {
         return NavigateScreen(rawValue: screenName.replacingOccurrences(of: "-", with: ""))?.controller
     }
 }
-
-
 
 
 

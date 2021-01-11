@@ -2391,7 +2391,7 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Months" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xeo-Ro-hxF">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Months" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xeo-Ro-hxF">
                                         <rect key="frame" x="20" y="155" width="73.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2508,8 +2508,8 @@
                                     <constraint firstItem="Xeo-Ro-hxF" firstAttribute="leading" secondItem="7uA-Ub-Wit" secondAttribute="leading" constant="20" symbolic="YES" id="mgi-vq-Hge"/>
                                     <constraint firstItem="89W-vR-PDc" firstAttribute="leading" secondItem="7uA-Ub-Wit" secondAttribute="leading" constant="20" symbolic="YES" id="pM4-a9-uqH"/>
                                     <constraint firstItem="uuT-RK-Qd1" firstAttribute="centerX" secondItem="7uA-Ub-Wit" secondAttribute="centerX" id="sbx-Xz-OZE"/>
+                                    <constraint firstItem="gaL-EH-nmX" firstAttribute="top" secondItem="Xeo-Ro-hxF" secondAttribute="bottom" constant="9.5" id="y10-jF-iBE"/>
                                     <constraint firstItem="PdY-Bu-ccd" firstAttribute="trailing" secondItem="uuT-RK-Qd1" secondAttribute="trailing" id="yUx-vd-v0Z"/>
-                                    <constraint firstItem="gaL-EH-nmX" firstAttribute="top" secondItem="t5e-fe-D6o" secondAttribute="bottom" constant="30" id="zPD-fR-a2A"/>
                                 </constraints>
                             </view>
                         </subviews>

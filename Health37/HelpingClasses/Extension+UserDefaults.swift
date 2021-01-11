@@ -27,13 +27,20 @@ extension UserDefaults {
         set(detail, forKey: "user_detail")
     }
     
-    
     var getAppointmentStatus: String? {
         return string(forKey: "appointmentStatus")
     }
     
     func isAppointmentActive(_ authorization: String) {
         set(authorization, forKey: "appointmentStatus")
+    }
+    
+    var getAppointmentFeatureActive: String? {
+        return string(forKey: "show_subscription")
+    }
+    
+    func isAppointmentFeatureActive(_ authorization: Int) {
+        set("\(authorization)", forKey: "show_subscription")
     }
     
     var user_id: String? {

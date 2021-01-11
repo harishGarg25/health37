@@ -411,6 +411,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             dic.setObject(cat_parent_id, forKey: "cat_parent_id" as NSCopying)
                         }
                         
+                        if let show_subscription = (arrProfileData.object(at: 0) as? NSDictionary)?.object(forKey: "show_subscription") as? Int
+                        {
+                            UserDefaults.standard.isAppointmentFeatureActive(show_subscription)
+                        }
+                        
+                        
                         if let is_appointment_enable = (arrProfileData.object(at: 0) as? NSDictionary)?.object(forKey: "is_appointment_enable") as? String
                         {
                             UserDefaults.standard.isAppointmentActive(is_appointment_enable)

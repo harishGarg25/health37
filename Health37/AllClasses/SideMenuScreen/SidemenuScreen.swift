@@ -44,29 +44,34 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
     
     @objc func updateHomeScreenData()
     {
-        self.arr_img =  ["homeW.png","timelineW.png","profile.png","profile.png", "addFriend.png","contact.png", "logout.png"]
+        self.arr_img =  ["homeW.png","timelineW.png","profile.png","addFriend.png","contact.png", "logout.png"]
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             self.arr_tittle = ["الصفحة الرئيسية", "الجدول الزمني", "الملف الشخصي", "أصدقاء / اضافة اصدقاء", "اتصل بنا", "الخروج"]
-            if userType != "-111"
+            if UserDefaults.standard.getAppointmentFeatureActive == "0"
             {
-                if UserDefaults.standard.getAppointmentStatus == "1"
+                if userType != "-111"
                 {
-                    self.arr_tittle.insert("المواعيد", at: 3)
-                    self.arr_tittle.insert("إدارة الخصم (اختياري)", at: 4)
-                    self.arr_img.insert("profile.png", at: 4)
-                }else
-                {
-                    self.arr_tittle.insert("تمكين المواعيد", at: 3)
+                    if UserDefaults.standard.getAppointmentStatus == "1"
+                    {
+                        self.arr_tittle.insert("المواعيد", at: 3)
+                        self.arr_img.insert("appointment-book.png", at: 3)
+                        self.arr_tittle.insert("إدارة الخصم (اختياري)", at: 4)
+                        self.arr_img.insert("coupon.png", at: 4)
+                    }else
+                    {
+                        self.arr_tittle.insert("تمكين المواعيد", at: 3)
+                        self.arr_img.insert("appointment-book.png", at: 3)
+                    }
                 }
-                self.arr_img.insert("profile.png", at: 3)
+                else
+                {
+                    self.arr_tittle.insert("مواعيدي", at: 3)
+                    self.arr_img.insert("appointment-book.png", at: 3)
+                }
+                self.arr_tittle.insert("الاشتراك", at: 5)
+                self.arr_img.insert("subscription.png", at: 5)
             }
-            else
-            {
-                self.arr_tittle.insert("مواعيدي", at: 3)
-            }
-            self.arr_tittle.insert("الاشتراك", at: 5)
-            self.arr_img.insert("subscription.png", at: 5)
             lblSureLogout.text = "Are you sure, you want to Logout?".localized
             btnOk.setTitle("OK".localized, for: .normal)
             btnCancel.setTitle("CANCEL".localized, for: .normal)
@@ -74,24 +79,29 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
         else
         {
             self.arr_tittle = ["Home", "Timeline", "Profile", "Friends / Add Friends", "Contact Us", "Logout"]
-            if userType != "-111"
+            if UserDefaults.standard.getAppointmentFeatureActive == "0"
             {
-                if UserDefaults.standard.getAppointmentStatus == "1"
+                if userType != "-111"
                 {
-                    self.arr_tittle.insert("Appointments", at: 3)
-                    self.arr_tittle.insert("Manage Discount (elective)", at: 4)
-                    self.arr_img.insert("profile.png", at: 4)
+                    if UserDefaults.standard.getAppointmentStatus == "1"
+                    {
+                        self.arr_tittle.insert("Appointments", at: 3)
+                        self.arr_img.insert("appointment-book.png", at: 3)
+                        self.arr_tittle.insert("Manage Discount (elective)", at: 4)
+                        self.arr_img.insert("coupon.png", at: 4)
+                    }else
+                    {
+                        self.arr_img.insert("appointment-book.png", at: 3)
+                        self.arr_tittle.insert("Enable Appointment Feature", at: 3)
+                    }
                 }else
                 {
-                    self.arr_tittle.insert("Enable Appointment Feature", at: 3)
+                    self.arr_tittle.insert("My Appointments", at: 3)
+                    self.arr_img.insert("appointment-book.png", at: 3)
                 }
-                self.arr_img.insert("profile.png", at: 3)
-            }else
-            {
-                self.arr_tittle.insert("My Appointments", at: 3)
+                self.arr_tittle.insert("Subscription", at: 5)
+                self.arr_img.insert("subscription.png", at: 5)
             }
-            self.arr_tittle.insert("Subscription", at: 5)
-            self.arr_img.insert("subscription.png", at: 5)
         }
         tbl_menu.reloadData()
     }
@@ -145,11 +155,6 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
     
     func updateUserDetails()
     {
-//        if appDelegate.health37UserInfo.strFull_name != nil
-//        {
-//            lbl_userName.text = appDelegate.health37UserInfo.strFull_name
-//        }
-//        else
         if UserDefaults.standard.object(forKey: kFullName) as? String != ""
         {
             lbl_userName.text = UserDefaults.standard.object(forKey: kFullName) as? String
@@ -262,7 +267,6 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        
         if indexPath.row == 0
         {
             let demoController: HomeViewController!
@@ -284,13 +288,7 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
 
             })
         }
-        else if (self.arr_img[indexPath.row] as? String ?? "") == "subscription.png"
-        {
-            let controller = SubscriptionDetailScreen.instantiate(fromAppStoryboard: .Appointment)
-            self.navigationController?.pushViewController(controller, animated:true)
-            self.menuContainerViewController .setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
-            })
-        }else if indexPath.row == 1
+        else if indexPath.row == 1
         {
             let demoController: TimelineScreen!
             if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
@@ -331,7 +329,15 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
             self.menuContainerViewController .setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
 
             })
-        }else if (indexPath.row == 3 && self.arr_tittle.count == 6) || (indexPath.row == 4 && self.arr_tittle.count == 7) || (indexPath.row == 5 && self.arr_tittle.count == 8)
+        }
+        else if (self.arr_img[indexPath.row] as? String ?? "") == "subscription.png"
+        {
+            let controller = SubscriptionDetailScreen.instantiate(fromAppStoryboard: .Appointment)
+            self.navigationController?.pushViewController(controller, animated:true)
+            self.menuContainerViewController .setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
+            })
+        }
+        else if (self.arr_img[indexPath.row] as? String ?? "") == "addFriend.png"
         {
             let demoController: AddFriendsScreen!
             if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
@@ -350,8 +356,9 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
             navigationController.viewControllers = controllers as! [UIViewController]
             self.menuContainerViewController .setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
             })
-        }else if indexPath.row == 3 && self.arr_tittle.count >= 7
+        }else if (self.arr_img[indexPath.row] as? String ?? "") == "appointment-book.png"
         {
+            
             if UserDefaults.standard.cat_parent_id == "4"
             {
                 if UserDefaults.standard.getAppointmentStatus == "1"
@@ -385,14 +392,15 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
             }
             self.menuContainerViewController.setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
             })
-        }else if indexPath.row == 4 && self.arr_tittle.count == 8
+        }else if (self.arr_img[indexPath.row] as? String ?? "") == "coupon.png"
         {
             let controller = ManageCouponViewController.instantiate(fromAppStoryboard: .Appointment)
             self.navigationController?.pushViewController(controller, animated:true)
             self.menuContainerViewController.setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
             })
-        }else if indexPath.row == self.arr_tittle.count - 2
+        }else if (self.arr_img[indexPath.row] as? String ?? "") == "contact.png"
         {
+            
             let demoController: ContactUsScreen!
             if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
             {
@@ -413,7 +421,6 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
         }else if indexPath.row == self.arr_tittle.count - 1
         {
             let window = UIApplication.shared.keyWindow!
-
             window.addSubview(viewLogoutPopup)
             viewLogoutPopup.frame = window.frame
         }

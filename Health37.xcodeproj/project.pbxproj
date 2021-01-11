@@ -202,6 +202,11 @@
 		30FB561C21AD5388007B35C7 /* AddFriendsTblCell_AR.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FB561B21AD5388007B35C7 /* AddFriendsTblCell_AR.xib */; };
 		30FB561E21AD569F007B35C7 /* CommentsTblCell_AR.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FB561D21AD569F007B35C7 /* CommentsTblCell_AR.xib */; };
 		30FD583121C3731200061D58 /* ProfileVC_AR.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FD583021C3731200061D58 /* ProfileVC_AR.xib */; };
+		387CA06625AC7C1E009BD2D3 /* friendMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06325AC7C1E009BD2D3 /* friendMenu@2x.png */; };
+		387CA06725AC7C1E009BD2D3 /* friendMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06425AC7C1E009BD2D3 /* friendMenu.png */; };
+		387CA06825AC7C1E009BD2D3 /* friendMenu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06525AC7C1E009BD2D3 /* friendMenu@3x.png */; };
+		387CA06B25AC820E009BD2D3 /* coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06A25AC820E009BD2D3 /* coupon.png */; };
+		387CA06E25AC857E009BD2D3 /* appointment-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06D25AC857E009BD2D3 /* appointment-book.png */; };
 		38A022D5259B159B006C6679 /* subscription.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A022D4259B159B006C6679 /* subscription.png */; };
 		38A022D8259B36D9006C6679 /* SubscriptionDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A022D7259B36D8006C6679 /* SubscriptionDetailScreen.swift */; };
 		8785BDAA237AB5AB0048C21C /* gplusN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8785BDA7237AB5AA0048C21C /* gplusN.png */; };
@@ -949,6 +954,11 @@
 		30FB561B21AD5388007B35C7 /* AddFriendsTblCell_AR.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendsTblCell_AR.xib; sourceTree = "<group>"; };
 		30FB561D21AD569F007B35C7 /* CommentsTblCell_AR.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTblCell_AR.xib; sourceTree = "<group>"; };
 		30FD583021C3731200061D58 /* ProfileVC_AR.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC_AR.xib; sourceTree = "<group>"; };
+		387CA06325AC7C1E009BD2D3 /* friendMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendMenu@2x.png"; sourceTree = "<group>"; };
+		387CA06425AC7C1E009BD2D3 /* friendMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendMenu.png; sourceTree = "<group>"; };
+		387CA06525AC7C1E009BD2D3 /* friendMenu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendMenu@3x.png"; sourceTree = "<group>"; };
+		387CA06A25AC820E009BD2D3 /* coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon.png; sourceTree = "<group>"; };
+		387CA06D25AC857E009BD2D3 /* appointment-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appointment-book.png"; sourceTree = "<group>"; };
 		38A022D4259B159B006C6679 /* subscription.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscription.png; sourceTree = "<group>"; };
 		38A022D7259B36D8006C6679 /* SubscriptionDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailScreen.swift; sourceTree = "<group>"; };
 		54EA007E1D9780D2FA7FD26A /* Pods-Health37.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Health37.release.xcconfig"; path = "Pods/Target Support Files/Pods-Health37/Pods-Health37.release.xcconfig"; sourceTree = "<group>"; };
@@ -2699,6 +2709,8 @@
 		D5E555AE20776DC900DBA3EC /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				387CA06A25AC820E009BD2D3 /* coupon.png */,
+				387CA06D25AC857E009BD2D3 /* appointment-book.png */,
 				87F6EAFC221D5640001CA506 /* addFriend.png */,
 				87F6EAFF221D5641001CA506 /* addFriend@2x.png */,
 				87F6EAFE221D5641001CA506 /* addFriend@3x.png */,
@@ -2726,6 +2738,9 @@
 				D5E555C120776DC900DBA3EC /* MenuPlace.png */,
 				D5E555C220776DC900DBA3EC /* MenuPlace@2x.png */,
 				D5E555C320776DC900DBA3EC /* MenuPlace@3x.png */,
+				387CA06425AC7C1E009BD2D3 /* friendMenu.png */,
+				387CA06325AC7C1E009BD2D3 /* friendMenu@2x.png */,
+				387CA06525AC7C1E009BD2D3 /* friendMenu@3x.png */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -3160,6 +3175,7 @@
 				3041E70C21A570520071D190 /* greystar@3x.png in Resources */,
 				30A9D64B216B7B9F00D5915F /* OtherUserProfileScreen.xib in Resources */,
 				CE8E8EBA24EFB6B500C5421C /* BB.png in Resources */,
+				387CA06E25AC857E009BD2D3 /* appointment-book.png in Resources */,
 				87F6EB2A221D56B0001CA506 /* langugage_icon_drawer.png in Resources */,
 				CE8E8E6224EFB6B400C5421C /* KW.png in Resources */,
 				D5E5565C20776DC900DBA3EC /* settng.png in Resources */,
@@ -3240,6 +3256,7 @@
 				CE8E8E1B24EFB6B400C5421C /* AD.png in Resources */,
 				87F6EB11221D5643001CA506 /* addFriend.png in Resources */,
 				D53A0992207B9CF400FF02E0 /* PostVC.xib in Resources */,
+				387CA06B25AC820E009BD2D3 /* coupon.png in Resources */,
 				CE8E8EC124EFB6B500C5421C /* VG.png in Resources */,
 				87F6EB2D221D56B0001CA506 /* langugage_icon_drawer@2x.png in Resources */,
 				CE8E8ED524EFB6B500C5421C /* WS.png in Resources */,
@@ -3443,12 +3460,14 @@
 				CE8E8E3824EFB6B400C5421C /* AC.png in Resources */,
 				D5E556CE20776DC900DBA3EC /* home.png in Resources */,
 				CE8E8EDB24EFB6B500C5421C /* BR.png in Resources */,
+				387CA06625AC7C1E009BD2D3 /* friendMenu@2x.png in Resources */,
 				305CEF0421AD7F52000641E5 /* FollowersTblCell_AR.xib in Resources */,
 				303BB504214BB0A40076177F /* capture_photo_btn@3x.png in Resources */,
 				CE8E8E4F24EFB6B400C5421C /* SV.png in Resources */,
 				D5E5563D20776DC900DBA3EC /* group@3x.png in Resources */,
 				CE8E8E8224EFB6B400C5421C /* FI.png in Resources */,
 				D5E5564F20776DC900DBA3EC /* logo@3x.png in Resources */,
+				387CA06825AC7C1E009BD2D3 /* friendMenu@3x.png in Resources */,
 				D5E556FE20778EEE00DBA3EC /* starBig.png in Resources */,
 				CE8E8E5B24EFB6B400C5421C /* DK.png in Resources */,
 				30734F6521CB9F7A0057972E /* UsersInfoTblCell_Arabic.xib in Resources */,
@@ -3494,6 +3513,7 @@
 				30E6B8B321887FA600894F73 /* green_back@3x.png in Resources */,
 				87F6EB27221D56B0001CA506 /* langugage_icon_drawer@3x.png in Resources */,
 				D5E557082077910800DBA3EC /* HomeOptionsTblCell.xib in Resources */,
+				387CA06725AC7C1E009BD2D3 /* friendMenu.png in Resources */,
 				30D4BADE21B6B9200014F8FF /* inner_logo.png in Resources */,
 				CE8E8E2E24EFB6B400C5421C /* MU.png in Resources */,
 				304AF4E721AE5121000E6A01 /* ChatImageTblCell_AR.xib in Resources */,

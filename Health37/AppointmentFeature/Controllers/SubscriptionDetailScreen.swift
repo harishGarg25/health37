@@ -43,24 +43,36 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
         cancelButton.layer.borderWidth = 1.0
         cancelButton.layer.borderColor = UIColor.init(red: 1/255.0, green: 152/255.0, blue: 159/255.0, alpha: 1.0).cgColor
         
-        if let imgUrl = UserDefaults.standard.object(forKey: "profileImage")
-        {
-            let url = URL.init(string: "\(imgUrl)")
-            print("imgUrl&&&URL", imgUrl)
-            self.userImage.sd_setImage(with: url, placeholderImage: UIImage.init(named: "imagePlace.png"), options: .refreshCached, completed: { (img, error, cacheType, url) in
-                self.userImage.sd_removeActivityIndicator()
-            })
-        }
-        
-        let strUserName = UserDefaults.standard.object(forKey: kFullName) as? String
-        nameLable.text = strUserName
-        
         if UserDefaults.standard.object(forKey: "applanguage") != nil && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             mainView.semanticContentAttribute = .forceRightToLeft
             upgradeField.textAlignment = .right
             upgradeView.semanticContentAttribute = .forceRightToLeft
             arrowIcon.semanticContentAttribute = .forceRightToLeft
+        }
+        subscriptionInformationUpdate()
+    }
+    
+    func subscriptionInformationUpdate()
+    {
+        if let detail = UserDefaults.standard.userDetail
+        {
+            if let detailDict = detail[0] as? [String : Any]
+            {
+                if let imgUrl = detailDict["user_avatar"] as? String
+                {
+                    let url = URL.init(string: "\(imgUrl)")
+                    print("imgUrl&&&URL", imgUrl)
+                    self.userImage.sd_setImage(with: url, placeholderImage: UIImage.init(named: "imagePlace.png"), options: .refreshCached, completed: { (img, error, cacheType, url) in
+                        self.userImage.sd_removeActivityIndicator()
+                    })
+                }
+                
+                nameLable.text = detailDict[kFullName] as? String
+                let started = "\(detailDict["package_months"] as? String ?? "") "//(\(detailDict["sub_start_date"] as? String ?? ""))
+                subscriptionPeriodLable.text = started
+                subscribeValidTillLable.text =  detailDict["sub_expiry_date"] as? String
+            }
         }
     }
     
@@ -79,7 +91,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
         self.showOptionAlert(title: "Alert".localized, message: "Are you sure you want to cancel the Subscription?".localized, button1Title: "Yes".localized, button2Title: "No".localized, completion: { (success) in
             if success
             {
-                
+                self.cancelSubscription()
             }
         })
     }
@@ -90,14 +102,38 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
         self.navigationController?.pushViewController(controller, animated:true)
     }
     
+    @objc func cancelSubscription()
+    {
+        self.showActivity(text: "")
+        getallApiResultwithGetMethod(strMethodname: kMethodCancelSubsciption, Details: self.addPostParams()) { (responseData, error) in
+            if error == nil
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    if let response = responseData?["response"] as? String, response == "1"
+                    {
+                        
+                    }
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
+                }
+            }
+        }
+    }
+    
+    
     func addPostParams() -> NSMutableDictionary
     {
         let dictUser = NSMutableDictionary()
         if  let userid : String = UserDefaults.standard.object(forKey: kUserID) as? String
         {
-            dictUser.setObject(userid, forKey: "created_by" as NSCopying)
+            dictUser.setObject(userid, forKey: "user_id" as NSCopying)
         }
-        dictUser.setObject(UserDefaults.standard.hospital_name ?? "", forKey: "hospital_name" as NSCopying)
 
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
@@ -110,14 +146,5 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
         return dictUser
     }
     
-    func convertToDictionary(text: String) -> [String: Any]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
+ 
 }

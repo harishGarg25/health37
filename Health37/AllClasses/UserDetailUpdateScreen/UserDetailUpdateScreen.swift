@@ -242,7 +242,7 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
         if (textField.text == "" && string == " ")
         {            return false
         }
-        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        let newLength = textField.text!.count + string.count - range.length
         
         if (textField == txtPassword) || (textField == txtNewPassword) || (textField == txtConfirmPass)
         {
@@ -623,8 +623,7 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 
                 if error == nil
                 {
-                    if (responseData != nil) && responseData?.object(forKey: "response") as! String
-                        == "1"
+                    if (responseData != nil) && responseData?.object(forKey: "response") as! String == "1"
                     {
                         print("responseData",responseData!)
                         self.arrSubCategory = (responseData?.object(forKey: "cat_data")as!NSArray).mutableCopy() as! NSMutableArray
@@ -682,7 +681,7 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
         dictUser.setValue(self.txtCountryCode.text!, forKey: kCountrycode)
         dictUser.setValue(self.txtMobileNo.text!, forKey: kPhoneNumber)
         dictUser.setValue(self.hospitalNameTF.text!, forKey: "hospital_name")
-        dictUser.setValue(self.landlineTextField.text!, forKey: "landline")
+        dictUser.setValue(self.landlineTextField.text!, forKey: "landline_number")
         
         if UserDefaults.standard.object(forKey: "catName") != nil
         {
@@ -730,7 +729,7 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                         dic.setObject(self.txtViewYourSelf.text!, forKey: kUserBrief as NSCopying)
                         dic.setObject(self.categoryID, forKey: kUserCat as NSCopying)
                         dic.setValue(self.hospitalNameTF.text ?? "", forKey: "hospital_name")
-                        dic.setValue(self.landlineTextField.text ?? "", forKey: "landline")
+                        dic.setValue(self.landlineTextField.text ?? "", forKey: "landline_number")
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserProfileUpdate"), object: nil, userInfo: dic as? [AnyHashable : Any])
                         

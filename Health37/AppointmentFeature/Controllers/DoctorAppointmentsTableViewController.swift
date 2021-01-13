@@ -208,7 +208,6 @@ class DoctorAppointmentsTableViewController: UITableViewController {
     }
     
     @objc func buttonTapped(sender : UIButton) {
-        
     }
 }
 

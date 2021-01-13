@@ -516,6 +516,7 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
                     else
                     {
                         print("responseData",responseData!)
+                        self.onShowAlertController(title: "Error" , message: responseData?.object(forKey: "message") as? String ?? "")
                     }
                 }
             }
@@ -544,6 +545,7 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
                     else
                     {
                         print("responseData",responseData!)
+                        self.onShowAlertController(title: "Error" , message: responseData?.object(forKey: "message") as? String ?? "")
                     }
                 }
             }

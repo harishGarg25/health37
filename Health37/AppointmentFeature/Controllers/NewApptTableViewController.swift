@@ -102,14 +102,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
                     formatter.dateFormat = "MMMM dd, yyyy"
                     selectedDate.text = formatter.string(from: date)
                     formatter.dateFormat = "yyyy-MM-dd"
-//                    if UserDefaults.standard.object(forKey: "applanguage") != nil  && (UserDefaults.standard.object(forKey: "applanguage") as? String ?? "") == "ar"
-//                    {
-//                        formatter.locale = NSLocale(localeIdentifier: "ar") as Locale
-//                    }
-//                    else
-//                    {
-                        formatter.locale = NSLocale(localeIdentifier: "en") as Locale
-//                    }
+                    formatter.locale = NSLocale(localeIdentifier: "en") as Locale
                     selectedDate.text?.accessibilityLabel = formatter.string(from: date)
                     self.calendarView.scrollToDate(date) {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -218,14 +211,7 @@ extension NewApptTableViewController {
         formatter.dateFormat = "MMMM dd, yyyy"
         selectedDate.text = formatter.string(from: date)
         formatter.dateFormat = "yyyy-MM-dd"
-//        if UserDefaults.standard.object(forKey: "applanguage") != nil  && (UserDefaults.standard.object(forKey: "applanguage") as? String ?? "") == "ar"
-//        {
-//            formatter.locale = NSLocale(localeIdentifier: "ar") as Locale
-//        }
-//        else
-//        {
-            formatter.locale = NSLocale(localeIdentifier: "en") as Locale
-//        }
+        formatter.locale = NSLocale(localeIdentifier: "en") as Locale
         selectedDate.text?.accessibilityLabel = formatter.string(from: date)
     }
     

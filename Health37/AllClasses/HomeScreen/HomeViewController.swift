@@ -389,8 +389,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     {
                         let arrProfileData = (responseData?.object(forKey: kUserSavedDetails)as!NSArray).mutableCopy() as! NSMutableArray
                         print("self.arrProfileData",arrProfileData)
-                        
-                        UserDefaults.standard.setUserDetail(arrProfileData)
+                        let result = (arrProfileData.object(at: 0) as! [String: Any]).compactMapValues { $0 }
+                        print("self.arrProfileData",result)
+                        UserDefaults.standard.setUserDetail([result])
 
                         let dic = NSMutableDictionary()
                         
@@ -401,13 +402,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         
                         if let user_cat_id = (arrProfileData.object(at: 0) as? NSDictionary)?.object(forKey: "user_cat_id") as? String
                         {
+                            UserDefaults.standard.setParentCategory(user_cat_id)
                             dic.setObject(user_cat_id, forKey: "user_cat_id" as NSCopying)
                             UserDefaults.standard.set(user_cat_id, forKey: "catID")
                         }
                         
                         if let cat_parent_id = (arrProfileData.object(at: 0) as? NSDictionary)?.object(forKey: "cat_parent_id") as? String
                         {
-                            UserDefaults.standard.setParentCategory(cat_parent_id)
                             dic.setObject(cat_parent_id, forKey: "cat_parent_id" as NSCopying)
                         }
                         

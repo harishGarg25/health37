@@ -112,7 +112,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
                     self.hideActivity()
                     if let response = responseData?["response"] as? String, response == "1"
                     {
-                        
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             }
@@ -145,6 +145,5 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
         }
         return dictUser
     }
-    
  
 }

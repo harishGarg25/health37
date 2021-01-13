@@ -220,6 +220,15 @@ class DoctorListTableViewController: UITableViewController {
     
     @objc func pressed(sender: UIButton!) {
         let alert = UIAlertController(title: "Action".localized, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
+                controller.doctorID = self.tableArray[sender.tag]["user_id"] as? String ?? ""
+                self.navigationController?.pushViewController(controller, animated:true)
+            }
+        }))
+        
         alert.addAction(UIAlertAction(title: "Edit".localized, style: .default, handler: { _ in
             DispatchQueue.main.async {
                 let controller = AddUserScreen.instantiate(fromAppStoryboard: .Appointment)

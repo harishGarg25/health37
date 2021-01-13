@@ -62,6 +62,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     var strLanguageSlt = NSString()
     var isSltedTextF : Bool = false
     var categoryID = String()
+    var subCategoryID = String()
     var dictSocialDetails = NSMutableDictionary()
     var  arrSubCategory = NSMutableArray()
     var strCountryName = ""
@@ -911,10 +912,9 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             {
                 txtCardiac.text = (arrSubCategory.object(at: temp) as AnyObject).object(forKey: kCatName) as? String
             }
-            self.categoryID = (arrSubCategory.object(at: temp) as! NSDictionary).valueForNullableKey(key: kCatID)
+            self.subCategoryID = (arrSubCategory.object(at: temp) as! NSDictionary).valueForNullableKey(key: kCatID)
             
             UserDefaults.standard.set(categoryID, forKey: "catID")
-            
             UserDefaults.standard.set(txtCardiac.text!, forKey: "subCatName")
         }
         
@@ -1033,7 +1033,6 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
         dictUser.setObject(self.txtEmailSignup.text!, forKey: kEmail as NSCopying)
         return dictUser
         
-        
     }
     
     @objc func methodCheckUser()
@@ -1046,8 +1045,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                     print("Result : \(responseData!)")
                     self.hideActivity()
                     
-                    if (responseData != nil) && responseData?.object(forKey: "response") as? String
-                        == "1"
+                    if (responseData != nil) && responseData?.object(forKey: "response") as? String == "1"
                     {
                         let dicUserInfo = NSMutableDictionary()
                         dicUserInfo.setValue(self.txtName.text!, forKey: kName)
@@ -1059,8 +1057,9 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                         dicUserInfo.setValue(self.categoryID, forKey: "user_cat")
                         dicUserInfo.setValue(self.strCountryName, forKey: "User_country")
                         dicUserInfo.setValue(self.hospitalNameTF.text ?? "", forKey: "hospital_name")
-                        dicUserInfo.setValue(self.landlineTextField.text ?? "", forKey: "landline")
-
+                        dicUserInfo.setValue(self.landlineTextField.text ?? "", forKey: "landline_number")
+                        dicUserInfo.setValue(self.subCategoryID, forKey: "sub_cat_id")
+                        
                         UserDefaults.standard.set(self.categoryID, forKey: "catID")
                         UserDefaults.standard.set(self.txtTherapyType.text!, forKey: "catName")
                         UserDefaults.standard.set(self.txtCardiac.text!, forKey: "subCatName")
@@ -1081,7 +1080,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                             demoController = OTPViewController(nibName: "OTPViewController",bundle: nil)
                         }
                         demoController.dicUserInfo = dicUserInfo
-                        
+                        debugPrint(dicUserInfo)
                         self.navigationController?.pushViewController(demoController, animated: true)
                         // }
                     }
@@ -1252,6 +1251,8 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                         {
                             self.txtCardiac.text = (self.arrSubCategory.object(at: 0) as AnyObject).object(forKey: kCatName) as? String
                         }
+                        
+                        self.subCategoryID = (self.arrSubCategory.object(at: 0) as! NSDictionary).valueForNullableKey(key: kCatID)
                         
                         self.btnTermsConditions.frame = CGRect.init(x: (self.btnTermsConditions.frame.origin.x), y: (self.landlineView.frame.origin.y) + 68, width: (self.btnTermsConditions.frame.size.width), height: (self.btnTermsConditions.frame.size.height))
                         

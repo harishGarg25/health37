@@ -35,6 +35,15 @@ struct Slot {
     
 }
 
+struct PlanDetail {
+    let id: String
+    var title: String
+    let `descrition`: String
+    var price: String
+    let months: String
+    let isFree: String
+}
+
 class AppointmentDetail {
     
     var slotTime: String?

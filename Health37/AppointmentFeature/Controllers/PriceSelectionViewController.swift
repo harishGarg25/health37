@@ -26,7 +26,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
     @IBOutlet weak var freeTrialLable: UILabel!
     @IBOutlet weak var trialDurationLable: UILabel!
 
-    var planPrice: [Slot] = []
+    var planPrice: [PlanDetail] = []
     let timeslotecellID = "timeslotecell"
     var selectedDurationIndex: Int = -1
     var selectedPlan: String?
@@ -117,11 +117,10 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
         countLable.text = "You can add up to 100 doctors".localized
         continueButton.setTitle("SUBSCRIBE".localized, for: .normal)
         freeTrialLable.text = "Free Trial".localized
-        trialDurationLable.text = "2 Months".localized
         cardViewController.delegate = self
         cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
         continueButton.disableButton()
-        planPrice = Slot.planPrice()
+        //planPrice = Slot.planPrice()
         timeSlotCollectionView.register(UINib(nibName: "SlotsCollectionViewCell", bundle: nil) , forCellWithReuseIdentifier: timeslotecellID)
         
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && (UserDefaults.standard.object(forKey: "applanguage") as? String ?? "") == "ar"
@@ -147,6 +146,8 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
                 getCurrencyValue()
             }
         }
+        
+        getPlansDetailAPI()
     }
     
     
@@ -160,22 +161,18 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
             print(getSymbolForCurrencyCode(code: currencies.currencyCode ?? "")!)
             if let currency = self.currencyRates["\(currencies.currencyCode ?? "")"] as? String
             {
-                selected6MonthPrice = String(format: "%.2f", (currency as NSString).floatValue * 187)
-                selectedYearPrice = String(format: "%.2f", (currency as NSString).floatValue * 347)
-                let priceFirst = "\(getSymbolForCurrencyCode(code: currencies.currencyCode ?? "")!) \(selected6MonthPrice)"
-                let priceSecond = "\(getSymbolForCurrencyCode(code: currencies.currencyCode ?? "")!) \(selectedYearPrice)"
-                updatePlanPrice(first: priceFirst,second: priceSecond)
+                for i in 0...planPrice.count - 1
+                {
+                    if planPrice[i].isFree == "0"
+                    {
+                        let updatedPrice = String(format: "%.2f", (currency as NSString).floatValue * Float(planPrice[i].price.toInt()))
+                        let priceFirst = "\(getSymbolForCurrencyCode(code: currencies.currencyCode ?? "")!) \(updatedPrice)"
+                        planPrice[i].title = priceFirst
+                        planPrice[i].price = updatedPrice
+                    }
+                }
+                self.timeSlotCollectionView.reloadData()
             }
-        }
-    }
-    
-    func updatePlanPrice(first: String,second: String){
-        if first != ""
-        {
-            let t1 = Slot(title: first, descrition: "6 Months", days: "6")
-            let t2 = Slot(title: second, descrition: "1 Year", days: "12")
-            planPrice = [t1,t2]
-            self.timeSlotCollectionView.reloadData()
         }
     }
     
@@ -201,6 +198,58 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
+    @objc func getPlansDetailAPI()
+    {
+        self.showActivity(text: "")
+        getallApiResultwithGetMethod(strMethodname: kMethodSubsciptionPlans, Details: self.getProfileParams()) { (responseData, error) in
+            if error == nil
+            {
+                DispatchQueue.main.async {
+                    if (responseData != nil) && responseData?.object(forKey: "response") as! String == "1"
+                    {
+                        debugPrint(responseData ?? "")
+                        if  let plans = responseData?["user_data"] as? [[String : Any]]
+                        {
+                            for plan in plans
+                            {
+                                if let free_sub : String = plan["free_sub"] as? String , free_sub == "0"
+                                {
+                                    let id = "\(plan["id"] as? String ?? "")"
+                                    let title = "$\(plan["price"] as? String ?? "")"
+                                    let name = "\(plan["name"] as? String ?? "")"
+                                    let price = "\(plan["price"] as? String ?? "")"
+                                    let months = plan["duration_in_months"] as? String ?? ""
+                                    let isFree = plan["free_sub"] as? String ?? ""
+                                    let t1 = PlanDetail(id: id, title: title, descrition: name, price: price, months: months, isFree: isFree)
+                                    self.planPrice.append(t1)
+                                }
+                                else
+                                {
+                                    let duration_in_months = "\(plan["duration_in_months"] as? String ?? "") Months"
+                                    self.trialDurationLable.text = duration_in_months.localized
+                                }
+                            }
+                            self.timeSlotCollectionView.reloadData()
+                        }
+                    }
+                    else
+                    {
+                        self.hideActivity()
+                        self.onShowAlertController(title: "" , message: responseData?.object(forKey: "message")! as! String?)
+                    }
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
+                }
+            }
+        }
+    }
+    
     
     @objc func paymentAPI()
     {
@@ -300,7 +349,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
             dictUser.setObject(UserDefaults.standard.object(forKey: kUserID)!, forKey: kUserID as NSCopying)
         }
         dictUser.setObject(cardTokenString, forKey: "token" as NSCopying)
-        dictUser.setObject(packageMonths == "6" ? selected6MonthPrice : selectedYearPrice, forKey: "amount" as NSCopying)
+        dictUser.setObject(planPrice[selectedDurationIndex].price, forKey: "amount" as NSCopying)
         dictUser.setObject(selectedCurrency ?? "", forKey: "currency" as NSCopying)
         dictUser.setObject(packageMonths, forKey: "package_months" as NSCopying)
         
@@ -318,7 +367,6 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
     
     func setTimeSlotsInformation()
     {
-        
         if  let userid : String = UserDefaults.standard.object(forKey: kUserID) as? String
         {
             self.showActivity(text: "")
@@ -405,7 +453,7 @@ extension PriceSelectionViewController: UICollectionViewDelegate, UICollectionVi
         if collectionView == timeSlotCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: timeslotecellID, for: indexPath) as! SlotsCollectionViewCell
             selectedDurationIndex == indexPath.row ? cell.selectCell() : cell.deSelectCell()
-            cell.configure(with: planPrice[indexPath.row])
+            cell.configurePlanDetail(with: planPrice[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
@@ -415,8 +463,8 @@ extension PriceSelectionViewController: UICollectionViewDelegate, UICollectionVi
             selectedDurationIndex = indexPath.row
         }
         selectedPlan = planPrice[indexPath.row].title
-        packageMonths = planPrice[indexPath.row].days
-        priceSavingLabel.isHidden = indexPath.row == 0 ? true : false
+        packageMonths = planPrice[indexPath.row].months
+       // priceSavingLabel.isHidden = indexPath.row == 0 ? true : false
         continueButton.enableButton()
         collectionView.reloadData()
     }

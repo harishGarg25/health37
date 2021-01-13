@@ -39,5 +39,13 @@ class SlotsCollectionViewCell: UICollectionViewCell {
         containerView.borderColor = Color.theme
         containerView.borderWidth = 1
     }
+    
+    func configurePlanDetail(with slot: PlanDetail){
+        titleLbl.text = slot.title.localized
+        subtitleLbl.text = slot.descrition.localized
+        //seperatorView.backgroundColor = Color.theme
+        containerView.borderColor = Color.theme
+        containerView.borderWidth = 1
+    }
 }
 

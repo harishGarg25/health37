@@ -19,11 +19,11 @@ struct ScreenSize
 //MARK:- BASE URL
 
 //let Base_DOMAIN = "http://health37.com/"
-let Base_DOMAIN = "https://dev.softprodigyphp.in/Health37/"
-//let Base_DOMAIN = "http://15.185.132.50/"
+//let Base_DOMAIN = "https://dev.softprodigyphp.in/Health37/"
+let Base_DOMAIN = "http://15.185.132.50/"
 //let Base_URL = "http://health37.com/services.php?serviceName="
-let Base_URL = "https://dev.softprodigyphp.in/Health37/services.php?serviceName="
-//let Base_URL = "http://15.185.132.50/services.php?serviceName="
+//let Base_URL = "https://dev.softprodigyphp.in/Health37/services.php?serviceName="
+let Base_URL = "http://15.185.132.50/services.php?serviceName="
 //let Base_URL = "http://192.168.0.25/health-app/services.php?serviceName="
 
 
@@ -97,7 +97,7 @@ let kMethodDeleteDoctor = "deleteDoctor"
 let kMethodUpdateUser = "updateDoctor"
 let kMethodAppointmentDetail = "getNotificationAppointment"
 let kMethodCancelSubsciption = "cancelSubscription"
-
+let kMethodSubsciptionPlans = "subcriptionPlanPrices"
 
 //allSignupCategories
 let kMethodSinglePost = "singlePosts"

@@ -207,6 +207,8 @@
 		387CA06825AC7C1E009BD2D3 /* friendMenu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06525AC7C1E009BD2D3 /* friendMenu@3x.png */; };
 		387CA06B25AC820E009BD2D3 /* coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06A25AC820E009BD2D3 /* coupon.png */; };
 		387CA06E25AC857E009BD2D3 /* appointment-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 387CA06D25AC857E009BD2D3 /* appointment-book.png */; };
+		387CA07D25ADCC98009BD2D3 /* MarkUnavailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387CA07B25ADCC97009BD2D3 /* MarkUnavailableViewController.swift */; };
+		387CA07E25ADCC98009BD2D3 /* UnavailableTimeSlotsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387CA07C25ADCC98009BD2D3 /* UnavailableTimeSlotsCVC.swift */; };
 		38A022D5259B159B006C6679 /* subscription.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A022D4259B159B006C6679 /* subscription.png */; };
 		38A022D8259B36D9006C6679 /* SubscriptionDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A022D7259B36D8006C6679 /* SubscriptionDetailScreen.swift */; };
 		8785BDAA237AB5AB0048C21C /* gplusN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8785BDA7237AB5AA0048C21C /* gplusN.png */; };
@@ -959,6 +961,8 @@
 		387CA06525AC7C1E009BD2D3 /* friendMenu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendMenu@3x.png"; sourceTree = "<group>"; };
 		387CA06A25AC820E009BD2D3 /* coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon.png; sourceTree = "<group>"; };
 		387CA06D25AC857E009BD2D3 /* appointment-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appointment-book.png"; sourceTree = "<group>"; };
+		387CA07B25ADCC97009BD2D3 /* MarkUnavailableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkUnavailableViewController.swift; sourceTree = "<group>"; };
+		387CA07C25ADCC98009BD2D3 /* UnavailableTimeSlotsCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnavailableTimeSlotsCVC.swift; sourceTree = "<group>"; };
 		38A022D4259B159B006C6679 /* subscription.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscription.png; sourceTree = "<group>"; };
 		38A022D7259B36D8006C6679 /* SubscriptionDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailScreen.swift; sourceTree = "<group>"; };
 		54EA007E1D9780D2FA7FD26A /* Pods-Health37.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Health37.release.xcconfig"; path = "Pods/Target Support Files/Pods-Health37/Pods-Health37.release.xcconfig"; sourceTree = "<group>"; };
@@ -2178,6 +2182,8 @@
 				CE08617324EA5EAB00BC5E4A /* DoctorListTableViewController.swift */,
 				CE7DA347251342A50079A88B /* SlotDetailForNewUserViewController.swift */,
 				CE08617524EA730A00BC5E4A /* AddUserScreen.swift */,
+				387CA07B25ADCC97009BD2D3 /* MarkUnavailableViewController.swift */,
+				387CA07C25ADCC98009BD2D3 /* UnavailableTimeSlotsCVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -3778,6 +3784,7 @@
 				CE417DC824B5D322001240AF /* ManageCouponViewController.swift in Sources */,
 				CE504D2E242B971800FE2FB7 /* HTMLString.swift in Sources */,
 				CEF161D424AF569200B378AF /* SlotsCollectionViewCell.swift in Sources */,
+				387CA07D25ADCC98009BD2D3 /* MarkUnavailableViewController.swift in Sources */,
 				D5E5554620774D4F00DBA3EC /* FloatRatingView.swift in Sources */,
 				D5E557162077A0A300DBA3EC /* MapViewController.swift in Sources */,
 				D53A0991207B9CF400FF02E0 /* PostVC.swift in Sources */,
@@ -3809,6 +3816,7 @@
 				CE8E8CF424EFB67A00C5421C /* Currency.swift in Sources */,
 				CE8E8CF824EFB68F00C5421C /* UIKitExtensions.swift in Sources */,
 				CE08617424EA5EAB00BC5E4A /* DoctorListTableViewController.swift in Sources */,
+				387CA07E25ADCC98009BD2D3 /* UnavailableTimeSlotsCVC.swift in Sources */,
 				D5E5553720774BF700DBA3EC /* MFSideMenuShadow.m in Sources */,
 				D5E5553C20774BF700DBA3EC /* TPKeyboardAvoidingTableView.m in Sources */,
 				CEF161B824AF569200B378AF /* TimeSlotsCVC.swift in Sources */,

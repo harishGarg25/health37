@@ -72,7 +72,28 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
                 let started = "\(detailDict["package_months"] as? String ?? "") "//(\(detailDict["sub_start_date"] as? String ?? ""))
                 subscriptionPeriodLable.text = started
                 subscribeValidTillLable.text =  detailDict["sub_expiry_date"] as? String
+                
+                if let is_appointment_enable = detailDict["is_appointment_enable"] as? String
+                {
+                    if is_appointment_enable == "0" || is_appointment_enable == ""
+                    {
+                        upgradeView.isHidden = false
+                        cancelButton.isHidden = true
+                    }else
+                    {
+                        upgradeView.isHidden = true
+                        cancelButton.isHidden = false
+                    }
+                }
+            }else
+            {
+                upgradeView.isHidden = true
+                cancelButton.isHidden = false
             }
+        }else
+        {
+            upgradeView.isHidden = false
+            cancelButton.isHidden = true
         }
     }
     

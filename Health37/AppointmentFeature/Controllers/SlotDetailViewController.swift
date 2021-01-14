@@ -10,8 +10,12 @@ import UIKit
 import LocationPickerViewController
 import CoreLocation
 
+protocol SubscriptionProtocol: class {
+    func sendData(detail: AppointmentDetail)
+}
+
 class SlotDetailViewController: UIViewController, UITextFieldDelegate {
-    
+   
     @IBOutlet weak var timeSlotCollectionView: UICollectionView!
     @IBOutlet weak var availableDaysCollectionView: UICollectionView!
     @IBOutlet weak var availableHourBtn1: UIButton!
@@ -33,6 +37,7 @@ class SlotDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var from1Label: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     
+    weak var delegate: SubscriptionProtocol? = nil
     var durationAvailable: [Slot] = []
     var daysAvailable: [Slot] = []
     lazy var dateTimeUtility: DateTimeUtility = DateTimeUtility()
@@ -49,8 +54,9 @@ class SlotDetailViewController: UIViewController, UITextFieldDelegate {
     var selectedLocationLat: String?
     var selectedLocationLong: String?
     var userID: String?
-
+    var isFreeTrial: String?
     var timePicker: UIDatePicker?
+    
     lazy var locationPicker : LocationPicker = {
         let locationPicker = LocationPicker()
         locationPicker.pickCompletion = {
@@ -135,9 +141,16 @@ class SlotDetailViewController: UIViewController, UITextFieldDelegate {
         else
         {
             let appointment = AppointmentDetail.init(slotTime: selectedSlotTime, availableDays: selectedDays, availableFromHours: availablFromTime, availableToHours: availablToTime, breakFromTime: lunchFromTime, breakToTime: lunchToTime, notes: notesTextfield.text ?? "", locationLat: selectedLocationLat ?? "", locationLong: selectedLocationLong ?? "", userID: userID ?? "")
-            let controller = TimeSlotsController.instantiate(fromAppStoryboard: .Appointment)
-            controller.appointmentDetail = appointment
-            self.navigationController?.pushViewController(controller, animated:true)
+            if isFreeTrial == "yes"
+            {
+                delegate?.sendData(detail: appointment)
+                self.dismiss(animated: true, completion: nil)
+            }else
+            {
+                let controller = TimeSlotsController.instantiate(fromAppStoryboard: .Appointment)
+                controller.appointmentDetail = appointment
+                self.navigationController?.pushViewController(controller, animated:true)
+            }
         }
     }
     

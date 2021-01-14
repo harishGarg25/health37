@@ -389,9 +389,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     {
                         let arrProfileData = (responseData?.object(forKey: kUserSavedDetails)as!NSArray).mutableCopy() as! NSMutableArray
                         print("self.arrProfileData",arrProfileData)
-                        let result = (arrProfileData.object(at: 0) as! [String: Any]).compactMapValues { $0 }
-                        print("self.arrProfileData",result)
-                        UserDefaults.standard.setUserDetail([result])
+                        UserDefaults.standard.setUserDetail(arrProfileData)
 
                         let dic = NSMutableDictionary()
                         

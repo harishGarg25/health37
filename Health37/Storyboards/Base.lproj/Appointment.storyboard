@@ -1837,6 +1837,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="continueButtonAction:" destination="nGo-Fg-JfS" eventType="touchUpInside" id="9jM-fc-4mA"/>
+                                            <action selector="freeSubscriptionButton:" destination="Jfw-GS-are" eventType="touchUpInside" id="O5M-6l-r1h"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2393,6 +2394,9 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Months" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xeo-Ro-hxF">
                                         <rect key="frame" x="20" y="155" width="73.5" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20.5" id="2Cd-Kj-jqp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -2404,13 +2408,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08 June 2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89W-vR-PDc">
-                                        <rect key="frame" x="20" y="205" width="104.5" height="20.5"/>
+                                        <rect key="frame" x="20" y="205" width="104.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="4ML-z0-Ehc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="io9-NU-g5y">
-                                        <rect key="frame" x="16" y="250" width="343" height="40"/>
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="io9-NU-g5y">
+                                        <rect key="frame" x="16" y="235" width="343" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="elR-BQ-Bgr">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="1"/>
@@ -2473,12 +2480,13 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hq-fJ-eTJ">
-                                        <rect key="frame" x="82.5" y="320" width="210" height="40"/>
+                                        <rect key="frame" x="82.5" y="275" width="210" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="210" id="DWI-Bu-SGl"/>
                                             <constraint firstAttribute="height" constant="40" id="Suk-AJ-7er"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Cancel Subscription">
                                             <color key="titleColor" red="0.0039215686269999999" green="0.59607843140000005" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -2489,13 +2497,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="9Hq-fJ-eTJ" firstAttribute="top" secondItem="io9-NU-g5y" secondAttribute="bottom" constant="30" id="37U-sc-vdt"/>
+                                    <constraint firstItem="9Hq-fJ-eTJ" firstAttribute="top" secondItem="io9-NU-g5y" secondAttribute="bottom" id="37U-sc-vdt"/>
                                     <constraint firstItem="PdY-Bu-ccd" firstAttribute="top" secondItem="uuT-RK-Qd1" secondAttribute="top" id="D32-uK-56q"/>
                                     <constraint firstItem="gaL-EH-nmX" firstAttribute="leading" secondItem="7uA-Ub-Wit" secondAttribute="leading" constant="20" id="HiD-Ni-rEU"/>
                                     <constraint firstItem="t5e-fe-D6o" firstAttribute="top" secondItem="rMV-Kl-wzQ" secondAttribute="bottom" constant="30" id="JIy-Pt-XEz"/>
                                     <constraint firstItem="Xeo-Ro-hxF" firstAttribute="top" secondItem="t5e-fe-D6o" secondAttribute="bottom" id="Mza-TT-I8g"/>
-                                    <constraint firstItem="io9-NU-g5y" firstAttribute="top" secondItem="gaL-EH-nmX" secondAttribute="bottom" constant="45" id="Nu5-hi-AdB"/>
                                     <constraint firstItem="PdY-Bu-ccd" firstAttribute="bottom" secondItem="uuT-RK-Qd1" secondAttribute="bottom" id="OWE-fp-ZMX"/>
+                                    <constraint firstItem="io9-NU-g5y" firstAttribute="top" secondItem="89W-vR-PDc" secondAttribute="bottom" constant="10" id="POr-T5-3N9"/>
                                     <constraint firstItem="PdY-Bu-ccd" firstAttribute="leading" secondItem="uuT-RK-Qd1" secondAttribute="leading" id="PhZ-lw-H2t"/>
                                     <constraint firstItem="io9-NU-g5y" firstAttribute="leading" secondItem="7uA-Ub-Wit" secondAttribute="leading" constant="16" id="Tzt-Hp-EQf"/>
                                     <constraint firstItem="t5e-fe-D6o" firstAttribute="leading" secondItem="7uA-Ub-Wit" secondAttribute="leading" constant="20" id="Z0h-rT-9MX"/>

@@ -12,7 +12,7 @@ import CoreLocation
 import Frames
 
 
-class PriceSelectionViewController: UIViewController,CardViewControllerDelegate {
+class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,SubscriptionProtocol {
     
     @IBOutlet weak var timeSlotCollectionView: UICollectionView!
     @IBOutlet weak var continueButton: UIButton!
@@ -83,6 +83,25 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
         {
             navigationController?.pushViewController(cardViewController, animated: true)
         }
+    }
+    
+    @IBAction func freeSubscriptionButton(_ sender: Any) {
+        
+        self.showOptionAlert(title: "Alert".localized, message: "Your free Subscription will strat from today.".localized, button1Title: "OK".localized, button2Title: "".localized, completion: { (success) in
+            if success
+            {
+                self.selectedDurationIndex = self.planPrice.count - 1
+                let controller = SlotDetailViewController.instantiate(fromAppStoryboard: .Appointment)
+                controller.isFreeTrial = "yes"
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    func sendData(detail: AppointmentDetail) {
+        appointmentDetail = detail
+        paymentAPI()
     }
     
     func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
@@ -206,6 +225,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
             if error == nil
             {
                 DispatchQueue.main.async {
+                    self.hideActivity()
                     if (responseData != nil) && responseData?.object(forKey: "response") as! String == "1"
                     {
                         debugPrint(responseData ?? "")
@@ -352,7 +372,9 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate 
         dictUser.setObject(planPrice[selectedDurationIndex].price, forKey: "amount" as NSCopying)
         dictUser.setObject(selectedCurrency ?? "", forKey: "currency" as NSCopying)
         dictUser.setObject(packageMonths, forKey: "package_months" as NSCopying)
-        
+        dictUser.setObject(planPrice[selectedDurationIndex].id, forKey: "sub_id" as NSCopying)
+        dictUser.setObject(planPrice[selectedDurationIndex].isFree, forKey: "is_free_sub_applied" as NSCopying)
+
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             dictUser.setObject("ar", forKey: "language" as NSCopying)

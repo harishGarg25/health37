@@ -102,12 +102,33 @@ class DoctorAppointmentsTableViewController: UITableViewController {
     }
     
     @objc func editTapped(){
-        let controller = SlotDetailViewController.instantiate(fromAppStoryboard: .Appointment)
-        if userType == "hospitalDoctor"
-        {
-            controller.userID = doctorID
-        }
-        self.navigationController?.pushViewController(controller, animated:true)
+        
+        let alert = UIAlertController(title: "Action".localized, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
+                if UserDefaults.standard.object(forKey: kUserID) != nil
+                {
+                    controller.doctorID = UserDefaults.standard.object(forKey: kUserID) as? String
+                }
+                self.navigationController?.pushViewController(controller, animated:true)
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Edit Slots".localized, style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                let controller = SlotDetailViewController.instantiate(fromAppStoryboard: .Appointment)
+                if self.userType == "hospitalDoctor"
+                {
+                    controller.userID = self.doctorID
+                }
+                self.navigationController?.pushViewController(controller, animated:true)
+            }
+        }))
+        alert.addAction(UIAlertAction.init(title: "Cancel".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     @IBAction func segmentedControl1ValueChanged(_ sender: BetterSegmentedControl) {
@@ -195,6 +216,21 @@ class DoctorAppointmentsTableViewController: UITableViewController {
                 }
             }else
             {
+                if let status : String = appointment[indexPath.row]["is_offline"] as? String, status == "1"
+                {
+                    DispatchQueue.main.async {
+                        self.showOptionAlert(title: "".localized, message: "Its an offline booking done by you. You want to make it available again?".localized, button1Title: "Available".localized, button2Title: "Cancel".localized, completion: { (success) in
+                            if success
+                            {
+                                if let id = appointment[indexPath.row]["appointment_id"] as? String
+                                {
+                                    self.cancelOfflineSlot(appointment_id: id)
+                                }
+                            }
+                        })
+                    }
+                }else
+                {
                 let controller = ApptDetailTVC.instantiate(fromAppStoryboard: .Appointment)
                 controller.appointmentType = self.selectedTab
                 controller.dateString = self.tableArray[indexPath.section]["date"] as? String ?? ""
@@ -203,6 +239,7 @@ class DoctorAppointmentsTableViewController: UITableViewController {
                     controller.appointmentDetail = appointment[indexPath.row]
                 }
                 self.navigationController?.pushViewController(controller, animated:true)
+                }
             }
         }
     }
@@ -327,6 +364,29 @@ extension DoctorAppointmentsTableViewController{
         }
     }
     
+    @objc func cancelOfflineSlot(appointment_id : String)
+    {
+        self.showActivity(text: "")
+        getallApiResultwithGetMethod(strMethodname: kMethodCancelOfflineSlot, Details: ["appointment_id" : appointment_id]) { (responseData, error) in
+            if error == nil
+            {
+                DispatchQueue.main.async {
+                    if let response = responseData?["response"] as? String, response == "1"
+                    {
+                        self.onShowAlertControllerAction(title: "" , message: "Marked Available".localized)
+                        self.getAppointment()
+                    }
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
+                }
+            }
+        }
+    }
     
     func getProfileParams() -> NSMutableDictionary
     {

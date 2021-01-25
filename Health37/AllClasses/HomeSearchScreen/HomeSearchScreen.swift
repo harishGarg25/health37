@@ -690,7 +690,7 @@ class HomeSearchScreen: UIViewController, UITableViewDataSource, UITableViewDele
             
             cell?.viewRating.contentMode = UIViewContentMode.scaleAspectFit
             cell?.viewRating.maxRating = 5
-            cell?.viewRating.minRating = Int(ratingCount)!
+            cell?.viewRating.minRating = Int(ratingCount) ?? 0
             cell?.viewRating.editable = false
             //  cell?.viewRating.halfRatings = true
             //  cell?.viewRating.floatRatings = false

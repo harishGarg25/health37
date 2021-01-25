@@ -15,7 +15,7 @@ extension UIViewController {
     {
         return UIApplication.shared.delegate as! AppDelegate
     }
-
+    
     func navigationBarWithBackButton(strTitle : String, leftbuttonImageName : String)
     {
         self.navigationItem.title = strTitle
@@ -46,11 +46,11 @@ extension UIViewController {
     {
         self.view.endEditing(true)
         self.menuContainerViewController.toggleLeftSideMenuCompletion
-            { () -> Void in
+        { () -> Void in
+        }
     }
-    }
-
-
+    
+    
     // show alert controller //onShowAlertControllerAction
     func onShowAlertControllerAction(title : String?,message : String?) {
         
@@ -77,7 +77,7 @@ extension UIViewController {
     func showLog(text : Any , type : String) {
         print("\(type) : \(text)")
     }
-
+    
     func isValidEmail(testStr:String) -> Bool
     {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
@@ -126,7 +126,7 @@ extension UIViewController {
         lbl.sizeToFit()
         return lbl.frame.size.height
     }
-
+    
     class activityView: UIView
     {
         
@@ -167,7 +167,7 @@ extension UIViewController {
         }
         
     }
-
+    
     // MARK: - ************  Image Orientation ************
     
     func fixedOrientation(img : UIImage) -> UIImage {
@@ -227,7 +227,60 @@ extension UIViewController {
         
         return UIImage(cgImage: cgImage)
     }
-  }
+    
+    func saveDataInLocal(fileName : String , data : NSMutableArray) -> Void
+    {
+        do {
+            let file = "\(fileName).txt"
+            if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            {
+                let jsonData = try JSONSerialization.data(withJSONObject: data, options:JSONSerialization.WritingOptions.prettyPrinted)
+                if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8)
+                {
+                    let path = dir.appendingPathComponent(file)
+                    do
+                    {
+                        try JSONString.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+                    }
+                    catch {/* error handling here */}
+                }
+            }
+        } catch {
+        }
+    }
+    
+    func getDataInLocal(fileName : String) -> NSMutableArray
+    {
+        
+        var results : NSMutableArray = NSMutableArray()
+        let file = "\(fileName).txt"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        {
+            let filePath = dir.appendingPathComponent(file)
+            let fileExists = FileManager().fileExists(atPath: filePath.path)
+            if fileExists
+            {
+                do
+                {
+                    let text = try String(contentsOf: filePath, encoding: String.Encoding.utf8)
+                    if let data = text.data(using: String.Encoding.utf8)
+                    {
+                        results = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSMutableArray
+                    }else
+                    {
+                        debugPrint("FILE NOT AVAILABLE")
+                    }
+                }
+                catch {/* error handling here */}
+            }
+            else
+            {
+                debugPrint("FILE NOT AVAILABLE")
+            }
+        }
+        return results
+    }
+}
 
 
 
@@ -238,25 +291,25 @@ extension UIView {
         mask.path = path.cgPath
         self.layer.mask = mask
     }
-
+    
     @IBInspectable var corner: CGFloat {
-           get {
-               return layer.cornerRadius
-           }
-           set {
-               layer.cornerRadius = newValue
-               layer.masksToBounds = newValue > 0
-           }
-       }
-       
-       @IBInspectable var shadowRadius: CGFloat {
-           get {
-               return layer.shadowRadius
-           }
-           set {
-               layer.shadowRadius = newValue
-           }
-       }
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable var shadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowRadius = newValue
+        }
+    }
 }
 
 extension Int
@@ -264,27 +317,27 @@ extension Int
     func getArabicWeekDay() -> String {
         var week = ""
         switch (self) {
-            case 1:
-                week = "الأحد";
-                break;
-            case 2:
-                week = "الاثنين";
-                break;
-            case 3:
-                week = "الثلاثاء";
-                break;
-            case 4:
-                week = "الأربعاء";
-                break;
-            case 5:
-                week = "الخميس";
-                break;
-            case 6:
-                week = "الجمعة";
-                break;
-            case 7:
-                week = "السبت";
-                break;
+        case 1:
+            week = "الأحد";
+            break;
+        case 2:
+            week = "الاثنين";
+            break;
+        case 3:
+            week = "الثلاثاء";
+            break;
+        case 4:
+            week = "الأربعاء";
+            break;
+        case 5:
+            week = "الخميس";
+            break;
+        case 6:
+            week = "الجمعة";
+            break;
+        case 7:
+            week = "السبت";
+            break;
         default:
             week = "";
             break;
@@ -295,42 +348,42 @@ extension Int
     func getArabicMonth() -> String {
         var month = ""
         switch (self) {
-            case 0:
-                month = "يناير";
-                break;
-            case 1:
-                month = "فبراير";
-                break;
-            case 2:
-                month = "مارس";
-                break;
-            case 3:
-                month = "ابريل";
-                break;
-            case 4:
-                month = "مايو";
-                break;
-            case 5:
-                month = "يونيو";
-                break;
-            case 6:
-                month = "يوليو";
-                break;
-            case 7:
-                month = "اغسطس";
-                break;
-            case 8:
-                month = "سبتمبر";
-                break;
-            case 9:
-                month = "أكتوبر";
-                break;
-            case 10:
-                month = "نوفمبر";
-                break;
-            case 11:
-                month = "ديسمبر";
-                break;
+        case 0:
+            month = "يناير";
+            break;
+        case 1:
+            month = "فبراير";
+            break;
+        case 2:
+            month = "مارس";
+            break;
+        case 3:
+            month = "ابريل";
+            break;
+        case 4:
+            month = "مايو";
+            break;
+        case 5:
+            month = "يونيو";
+            break;
+        case 6:
+            month = "يوليو";
+            break;
+        case 7:
+            month = "اغسطس";
+            break;
+        case 8:
+            month = "سبتمبر";
+            break;
+        case 9:
+            month = "أكتوبر";
+            break;
+        case 10:
+            month = "نوفمبر";
+            break;
+        case 11:
+            month = "ديسمبر";
+            break;
         default:
             month = "";
             break;

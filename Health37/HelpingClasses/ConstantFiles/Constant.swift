@@ -98,6 +98,10 @@ let kMethodUpdateUser = "updateDoctor"
 let kMethodAppointmentDetail = "getNotificationAppointment"
 let kMethodCancelSubsciption = "cancelSubscription"
 let kMethodSubsciptionPlans = "subcriptionPlanPrices"
+let kMethodBookOfflineSlot = "bookOfflineAppointment"
+let kMethodCancelOfflineSlot = "cancelOfflineBooking"
+
+
 
 //allSignupCategories
 let kMethodSinglePost = "singlePosts"

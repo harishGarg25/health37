@@ -105,13 +105,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             self.menuContainerViewController.toggleRightSideMenuCompletion
-                { () -> Void in
+            { () -> Void in
             }
         }
         else
         {
             self.menuContainerViewController.toggleLeftSideMenuCompletion
-                { () -> Void in
+            { () -> Void in
             }
         }
     }
@@ -122,13 +122,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             self.menuContainerViewController.toggleLeftSideMenuCompletion
-                { () -> Void in
+            { () -> Void in
             }
         }
         else
         {
             self.menuContainerViewController.toggleRightSideMenuCompletion
-                { () -> Void in
+            { () -> Void in
             }
         }
     }
@@ -268,7 +268,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             {
                 cell?.lblHomeOptions.text = "Search With Discount"
                 cell?.imgOptions.image = UIImage.init(named: "search_icon_main.png")
-
+                
                 if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
                 {
                     cell?.lblHomeOptions.text = "البحث بخصم"
@@ -389,8 +389,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     {
                         let arrProfileData = (responseData?.object(forKey: kUserSavedDetails)as!NSArray).mutableCopy() as! NSMutableArray
                         print("self.arrProfileData",arrProfileData)
-                        UserDefaults.standard.setUserDetail(arrProfileData)
-
+                        self.saveDataInLocal(fileName : "profile_data" , data : arrProfileData)
                         let dic = NSMutableDictionary()
                         
                         let imgUrl = (arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "user_avatar")
@@ -400,13 +399,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         
                         if let user_cat_id = (arrProfileData.object(at: 0) as? NSDictionary)?.object(forKey: "user_cat_id") as? String
                         {
-                            UserDefaults.standard.setParentCategory(user_cat_id)
                             dic.setObject(user_cat_id, forKey: "user_cat_id" as NSCopying)
                             UserDefaults.standard.set(user_cat_id, forKey: "catID")
                         }
                         
                         if let cat_parent_id = (arrProfileData.object(at: 0) as? NSDictionary)?.object(forKey: "cat_parent_id") as? String
                         {
+                            UserDefaults.standard.setParentCategory(cat_parent_id)
                             dic.setObject(cat_parent_id, forKey: "cat_parent_id" as NSCopying)
                         }
                         
@@ -421,19 +420,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             UserDefaults.standard.isAppointmentActive(is_appointment_enable)
                             dic.setObject(is_appointment_enable, forKey: "is_appointment_enable" as NSCopying)
                         }
+                        else
+                        {
+                            UserDefaults.standard.isAppointmentActive("0")
+                            dic.setObject("0", forKey: "is_appointment_enable" as NSCopying)
+                        }
                         
                         if let hospital_name = (arrProfileData.object(at: 0) as? NSDictionary)?.object(forKey: "hospital_name") as? String
                         {
                             UserDefaults.standard.setHospitalName(hospital_name)
                             dic.setObject(hospital_name, forKey: "hospital_name" as NSCopying)
                         }
-                                                
+                        
                         dic.setObject(imgUrl!, forKey: "profileImage" as NSCopying)
                         dic.setObject(strFullName, forKey: kFullName as NSCopying)
                         dic.setObject(strSuperKey, forKey: "super_user" as NSCopying)
                         
                         UserDefaults.standard.set(strFullName, forKey: kFullName)
-                        
                         UserDefaults.standard.set(imgUrl!, forKey: "profileImage")
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserUpdateSideMenu"), object: nil, userInfo: dic as? [AnyHashable : Any])

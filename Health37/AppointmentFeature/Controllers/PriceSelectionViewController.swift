@@ -27,13 +27,13 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
     @IBOutlet weak var trialDurationLable: UILabel!
 
     var planPrice: [PlanDetail] = []
+    var freePlan: [PlanDetail] = []
+    var selectedPlan: PlanDetail?
     let timeslotecellID = "timeslotecell"
     var selectedDurationIndex: Int = -1
-    var selectedPlan: String?
     var selectedCurrency: String?
     var cardTokenString = String()
     var amount = String()
-    var packageMonths = String()
     var currencyRates = [String : Any]()
     var selected6MonthPrice = String()
     var selectedYearPrice = String()
@@ -90,7 +90,8 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
         self.showOptionAlert(title: "Alert".localized, message: "Your free Subscription will strat from today.".localized, button1Title: "OK".localized, button2Title: "".localized, completion: { (success) in
             if success
             {
-                self.selectedDurationIndex = self.planPrice.count - 1
+                self.selectedDurationIndex = -1
+                self.selectedPlan = self.freePlan[0]
                 let controller = SlotDetailViewController.instantiate(fromAppStoryboard: .Appointment)
                 controller.isFreeTrial = "yes"
                 controller.delegate = self
@@ -244,6 +245,17 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                                     let t1 = PlanDetail(id: id, title: title, descrition: name, price: price, months: months, isFree: isFree)
                                     self.planPrice.append(t1)
                                 }
+                                else if let free_sub : String = plan["free_sub"] as? String , free_sub == "1"
+                                {
+                                    let id = "\(plan["id"] as? String ?? "")"
+                                    let title = "$\(plan["price"] as? String ?? "")"
+                                    let name = "\(plan["name"] as? String ?? "")"
+                                    let price = "\(plan["price"] as? String ?? "")"
+                                    let months = plan["duration_in_months"] as? String ?? ""
+                                    let isFree = plan["free_sub"] as? String ?? ""
+                                    let t1 = PlanDetail(id: id, title: title, descrition: name, price: price, months: months, isFree: isFree)
+                                    self.freePlan.append(t1)
+                                }
                                 else
                                 {
                                     let duration_in_months = "\(plan["duration_in_months"] as? String ?? "") Months"
@@ -369,11 +381,11 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             dictUser.setObject(UserDefaults.standard.object(forKey: kUserID)!, forKey: kUserID as NSCopying)
         }
         dictUser.setObject(cardTokenString, forKey: "token" as NSCopying)
-        dictUser.setObject(planPrice[selectedDurationIndex].price, forKey: "amount" as NSCopying)
+        dictUser.setObject(selectedPlan?.price ?? "", forKey: "amount" as NSCopying)
         dictUser.setObject(selectedCurrency ?? "", forKey: "currency" as NSCopying)
-        dictUser.setObject(packageMonths, forKey: "package_months" as NSCopying)
-        dictUser.setObject(planPrice[selectedDurationIndex].id, forKey: "sub_id" as NSCopying)
-        dictUser.setObject(planPrice[selectedDurationIndex].isFree, forKey: "is_free_sub_applied" as NSCopying)
+        dictUser.setObject(selectedPlan?.months ?? "", forKey: "package_months" as NSCopying)
+        dictUser.setObject(selectedPlan?.id ?? "", forKey: "sub_id" as NSCopying)
+        dictUser.setObject(selectedPlan?.isFree ?? "", forKey: "is_free_sub_applied" as NSCopying)
 
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
@@ -484,8 +496,7 @@ extension PriceSelectionViewController: UICollectionViewDelegate, UICollectionVi
         if collectionView == timeSlotCollectionView{
             selectedDurationIndex = indexPath.row
         }
-        selectedPlan = planPrice[indexPath.row].title
-        packageMonths = planPrice[indexPath.row].months
+        selectedPlan = planPrice[indexPath.row]
        // priceSavingLabel.isHidden = indexPath.row == 0 ? true : false
         continueButton.enableButton()
         collectionView.reloadData()

@@ -221,13 +221,13 @@ class DoctorListTableViewController: UITableViewController {
     @objc func pressed(sender: UIButton!) {
         let alert = UIAlertController(title: "Action".localized, message: nil, preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
-            DispatchQueue.main.async {
-                let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
-                controller.doctorID = self.tableArray[sender.tag]["user_id"] as? String ?? ""
-                self.navigationController?.pushViewController(controller, animated:true)
-            }
-        }))
+//        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
+//            DispatchQueue.main.async {
+//                let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
+//                controller.doctorID = self.tableArray[sender.tag]["user_id"] as? String ?? ""
+//                self.navigationController?.pushViewController(controller, animated:true)
+//            }
+//        }))
         
         alert.addAction(UIAlertAction(title: "Edit".localized, style: .default, handler: { _ in
             DispatchQueue.main.async {
@@ -263,14 +263,31 @@ class DoctorListTableViewController: UITableViewController {
                     }
                 }else
                 {
-                    let controller = ApptDetailTVC.instantiate(fromAppStoryboard: .Appointment)
-                    controller.appointmentType = 1
-                    controller.dateString = self.tableArray[indexPath.section]["date"] as? String ?? ""
-                    if let appointment = self.tableArray[indexPath.section]["appointments"] as? [[String : Any]]
+                    if let status : String = appointment[indexPath.row]["is_offline"] as? String, status == "1"
                     {
-                        controller.appointmentDetail = appointment[indexPath.row]
+                        DispatchQueue.main.async {
+                            self.showOptionAlert(title: "".localized, message: "Its an offline booking done by you. You want to make it available again?".localized, button1Title: "Available".localized, button2Title: "Cancel".localized, completion: { (success) in
+                                if success
+                                {
+                                    if let id = appointment[indexPath.row]["appointment_id"] as? String
+                                    {
+                                        self.cancelOfflineSlot(appointment_id: id)
+                                    }
+                                }
+                            })
+                        }
+                    }else
+                    {
+                        
+                        let controller = ApptDetailTVC.instantiate(fromAppStoryboard: .Appointment)
+                        controller.appointmentType = 1
+                        controller.dateString = self.tableArray[indexPath.section]["date"] as? String ?? ""
+                        if let appointment = self.tableArray[indexPath.section]["appointments"] as? [[String : Any]]
+                        {
+                            controller.appointmentDetail = appointment[indexPath.row]
+                        }
+                        self.navigationController?.pushViewController(controller, animated:true)
                     }
-                    self.navigationController?.pushViewController(controller, animated:true)
                 }
             }
         }
@@ -318,6 +335,7 @@ extension DoctorListTableViewController{
                     self.hideActivity()
                     if let response = responseData?["response"] as? String, response == "1"
                     {
+                        debugPrint(responseData ?? "")
                         if let data = responseData?["other_appointments"] as? [[String : Any]]
                         {
                             for appointment in data
@@ -414,6 +432,29 @@ extension DoctorListTableViewController{
         }
     }
     
+    @objc func cancelOfflineSlot(appointment_id : String)
+    {
+        self.showActivity(text: "")
+        getallApiResultwithGetMethod(strMethodname: kMethodCancelOfflineSlot, Details: ["appointment_id" : appointment_id]) { (responseData, error) in
+            if error == nil
+            {
+                DispatchQueue.main.async {
+                    if let response = responseData?["response"] as? String, response == "1"
+                    {
+                        self.onShowAlertControllerAction(title: "" , message: "Marked Available".localized)
+                        self.getAppointment()
+                    }
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
+                }
+            }
+        }
+    }
     
     func getProfileParams() -> NSMutableDictionary
     {

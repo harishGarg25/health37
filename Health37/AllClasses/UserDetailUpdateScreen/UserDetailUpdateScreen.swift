@@ -115,7 +115,8 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
     
     func userInformationUpdate()
     {
-        if let detail = UserDefaults.standard.userDetail
+        
+        if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
         {
             if let detailDict = detail[0] as? [String : Any]
             {
@@ -129,6 +130,12 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 txtMobileNo.text =  detailDict["phone_number"] as? String
                 hospitalNameTF.text =  detailDict["hospital_name"] as? String
                 landlineTextField.text =  detailDict["landline_number"] as? String
+                
+                if txtSubClinic.text?.count == 0
+                {
+                    self.viewSubcategoryBG.isHidden = true
+                    self.viewBottomBtns.frame = CGRect.init(x: (self.viewBottomBtns.frame.origin.x), y: (self.landlineView.frame.origin.y) + 58 , width: (self.viewBottomBtns.frame.size.width), height: (self.viewBottomBtns.frame.size.height))
+                }
             }
         }
     }
@@ -154,7 +161,6 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 self.landlineView.frame.size.height = categoryID == "4" ? 40 : 0
                 landlineView.isHidden = !(categoryID == "4")
                 
-                self.viewSubcategoryBG.isHidden = true
                 self.viewBottomBtns.frame = CGRect.init(x: (self.viewBottomBtns.frame.origin.x), y: (self.landlineView.frame.origin.y) + 58 , width: (self.viewBottomBtns.frame.size.width), height: (self.viewBottomBtns.frame.size.height))
             }
         }
@@ -488,7 +494,7 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 txtSubClinic.text = (arrSubCategory.object(at: temp) as AnyObject).object(forKey: kCatName) as? String
             }
             self.categoryID = (arrSubCategory.object(at: temp) as! NSDictionary).valueForNullableKey(key: kCatID)
-                        
+            
             UserDefaults.standard.set(txtSubClinic.text!, forKey: "subCatName")
         }
         

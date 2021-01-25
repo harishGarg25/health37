@@ -83,7 +83,8 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
         
         collectionOptions.isHidden = false
         viewHeaderTitle.isHidden = false
-        
+        btnSearchHere.isHidden = true
+
         if categoryName != "Search With Discount"
         {
             if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
@@ -113,7 +114,6 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
             collectionOptions.frame.size.height = 0
             collectionOptions.isHidden = true
             viewHeaderTitle.frame.size.height = 0
-            btnSearchHere.isHidden = true
             txtSearch.placeholder = "Enter discount %...".localized
             self.viewSearchBtnBG.isHidden = true
             txtSearch.keyboardType = .numberPad
@@ -652,8 +652,6 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
-        if categoryName == "Search With Discount"
-        {
             debugPrint(position.target.latitude)
             debugPrint(position.target.longitude)
             debugPrint(self.GMap.getRadius()/1000)
@@ -666,10 +664,15 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
             if isApiIdle && isTappedInfoWindow == false
             {
                 isApiIdle = false
-                methodSearchFriendWithCouponApi()
+                if categoryName == "Search With Discount"
+                {
+                    methodSearchFriendWithCouponApi()
+                }else
+                {
+                    methodGetLocationsApi()
+                }
             }
             isTappedInfoWindow = false
-        }
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView?
@@ -870,29 +873,18 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
         
         dictUser.setObject(categoryID, forKey: kMasterCatID as NSCopying)
         dictUser.setObject(catID, forKey: kCatID as NSCopying)
+        dictUser.setObject(latitude , forKey: "lat" as NSCopying)
+        dictUser.setObject(longitude , forKey: "lon" as NSCopying)
+        dictUser.setObject(radius , forKey: "distance" as NSCopying)
+        dictUser.setObject(UserDefaults.standard.object(forKey: kUserID)!, forKey: kUserID as NSCopying)
         
-        if self.appDelegate.currentLocation != nil
+        if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
-            print("strLatitude", strLatitude, strLontitude )
-            
-            if strLontitude != ""
-            {
-                dictUser.setObject(strLatitude, forKey: "lat" as NSCopying)
-                dictUser.setObject(strLontitude, forKey: "lon" as NSCopying)
-            }
-            else
-            {
-                let strLat = "\(appDelegate.currentLocation.coordinate.latitude)"
-                let  strLan = "\(appDelegate.currentLocation.coordinate.longitude)"
-                
-                dictUser.setObject(strLat, forKey: "lat" as NSCopying)
-                dictUser.setObject(strLan, forKey: "lon" as NSCopying)
-            }
+            dictUser.setObject("ar", forKey: "language" as NSCopying)
         }
         else
         {
-            dictUser.setObject("0.0", forKey: "lat" as NSCopying)
-            dictUser.setObject("0", forKey: "lon" as NSCopying)
+            dictUser.setObject("en", forKey: "language" as NSCopying)
         }
         
         return dictUser
@@ -904,7 +896,7 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
             DispatchQueue.main.async
             {
                 self.hideActivity()
-                
+                self.isApiIdle = true
                 if error == nil
                 {
                     if (responseData != nil) && responseData?.object(forKey: "response") as! String

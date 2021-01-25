@@ -1187,7 +1187,7 @@ class TimelineScreen: UIViewController, UITableViewDataSource, UITableViewDelega
                             // Optional params
                             cell?.viewRating.contentMode = UIViewContentMode.left
                             cell?.viewRating.maxRating = 5
-                            cell?.viewRating.minRating = Int(ratingCount)!
+                            cell?.viewRating.minRating = Int(ratingCount) ?? 0
                             cell?.viewRating.editable = false
                             
                             if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
@@ -1322,7 +1322,7 @@ class TimelineScreen: UIViewController, UITableViewDataSource, UITableViewDelega
                     
                     cell?.viewRating.contentMode = UIViewContentMode.scaleAspectFit
                     cell?.viewRating.maxRating = 5
-                    cell?.viewRating.minRating = Int(ratingCount)!
+                    cell?.viewRating.minRating = Int(ratingCount) ?? 0
                     cell?.viewRating.editable = false
                     // cell?.viewRating.halfRatings = true
                     //  cell?.viewRating.floatRatings = false
@@ -1333,9 +1333,7 @@ class TimelineScreen: UIViewController, UITableViewDataSource, UITableViewDelega
                     }
                     
                     cell?.viewPostBG.layer.cornerRadius = 6.0
-                    
-                    
-                    
+                                        
                     cell?.btnComments.tag = indexPath.row
                     cell?.btnComments.addTarget(self, action: #selector(methodAllComments), for: .touchUpInside)
                     

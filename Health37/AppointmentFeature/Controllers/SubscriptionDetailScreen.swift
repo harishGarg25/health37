@@ -55,7 +55,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
     
     func subscriptionInformationUpdate()
     {
-        if let detail = UserDefaults.standard.userDetail
+        if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
         {
             if let detailDict = detail[0] as? [String : Any]
             {
@@ -84,6 +84,11 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
                         upgradeView.isHidden = true
                         cancelButton.isHidden = false
                     }
+                }
+                else
+                {
+                    upgradeView.isHidden = false
+                    cancelButton.isHidden = true
                 }
             }else
             {

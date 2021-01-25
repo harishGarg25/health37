@@ -319,3 +319,9 @@
 "Landline Number" = "Landline Number";
 "Book Slots" = "Book Slots";
 "Mark Unavailable" = "Mark Unavailable";
+"Offline Booking" = "Offline Booking";
+"Its an offline booking done by you. You want to make it available again?" = "Its an offline booking done by you. You want to make it available again?";
+"Available" = "Available";
+"Marked Available" = "Marked Available";
+"Edit Slots" = "Edit Slots";
+"Marked Unavailable" = "Marked Unavailable";

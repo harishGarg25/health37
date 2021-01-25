@@ -322,3 +322,9 @@
 "Landline Number" = "رقم الهاتف الثابت";
 "Book Slots" = "فتحات الكتاب";
 "Mark Unavailable" = "وضع علامة على أنه غير متوفر";
+"Offline Booking" = "الحجز دون اتصال";
+"Its an offline booking done by you. You want to make it available again?" = "إنه حجز قمت به دون اتصال بالإنترنت. هل تريد إتاحته مرة أخرى؟";
+"Available" = "متاح";
+"Marked Available" = "تم وضع علامة متاح ";
+"Edit Slots" = "تحرير الفتحات";
+"Marked Unavailable" = "تم تعليمه بأنه غير متوفر";

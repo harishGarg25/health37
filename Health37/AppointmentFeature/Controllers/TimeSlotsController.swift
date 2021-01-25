@@ -114,11 +114,6 @@ class TimeSlotsController: UIViewController, UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TimeSlotCell
         
-        if cell.isSelected {
-            cell.timeSlotView.backgroundColor = UIColor(hexCode: "#B75AFE")
-            cell.timeLabel.textColor = .white
-        }
-        
         let timeSlot = timeSlots[indexPath.row]
         formatter.dateFormat = "hh:mm a"
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && (UserDefaults.standard.object(forKey: "applanguage") as? String ?? "") == "ar"
@@ -130,6 +125,7 @@ class TimeSlotsController: UIViewController, UICollectionViewDelegate,UICollecti
             formatter.locale = NSLocale(localeIdentifier: "en") as Locale
         }
         let time = formatter.string(from: timeSlot)
+        cell.timeLabel.textColor = .black
         if self.lunchTiming.contains(time)
         {
             cell.timeLabel.textColor = .red

@@ -26,6 +26,11 @@ class ScheduleTableViewCell: UITableViewCell {
             startTimeLabel.text = (schedule["time_slot"] as? String ?? "").convertToStringDate()
             categoryLine.backgroundColor = schedule["status"] as? String ?? "1" == "1" ? .green : .red
             moreInfoButton.isHidden = schedule["status"] as? String ?? "1" == "1" ? false : true
+            
+            if let is_offline : String = schedule["is_offline"] as? String, is_offline == "1"
+            {
+                titleLabel.text = "\(titleLabel.text ?? "") (\("Offline Booking".localized))"
+            }
         }
     }
 }

@@ -59,22 +59,18 @@ class UnavailableTimeSlotsCVC:  UIViewController, UICollectionViewDelegate,UICol
     }
     
     @IBAction func continueButtonAction(_ sender: Any) {
-        self.showOptionAlert(title: "Alert".localized, message: "Slots marked as unavailable.".localized, button1Title: "OK".localized, button2Title: "", completion: { (success) in
-            if success
-            {
-//                if UserDefaults.standard.cat_parent_id == "4"
-//                {
-//                    let controller = DoctorListTableViewController.instantiate(fromAppStoryboard: .Appointment)
-//                    controller.hospitalID = ""
-//                    self.navigationController?.pushViewController(controller, animated:true)
-//                }else
-//                {
-//                    let controller = DoctorAppointmentsTableViewController.instantiate(fromAppStoryboard: .Appointment)
-//                    self.navigationController?.pushViewController(controller, animated:true)
-//                }
-            }
-        })
-       // bookAppointment()
+        if selectedCell.count == 0
+        {
+            self.onShowAlertController(title: "" , message: "Please select slots".localized)
+        }else
+        {
+            self.showOptionAlert(title: "Alert".localized, message: "Are you sure to mark slots as unavailable?".localized, button1Title: "YES".localized, button2Title: "NO".localized, completion: { (success) in
+                if success
+                {
+                    self.bookAppointment()
+                }
+            })
+        }
     }
     
     func updateDateDetailLabel(date: Date){
@@ -130,6 +126,7 @@ class UnavailableTimeSlotsCVC:  UIViewController, UICollectionViewDelegate,UICol
         formatter.dateFormat = "hh:mm a"
         formatter.locale = NSLocale(localeIdentifier: "en") as Locale
         let time = formatter.string(from: timeSlot)
+        cell.timeLabel.textColor = .black
         if self.bookedSlots.contains(time)
         {
             cell.timeLabel.textColor = .red
@@ -194,7 +191,7 @@ extension UnavailableTimeSlotsCVC{
     @objc func bookAppointment()
     {
         self.showActivity(text: "")
-        getallApiResultwithGetMethod(strMethodname: kMethodBookSlot, Details: self.getProfileParams()) { (responseData, error) in
+        getallApiResultwithGetMethod(strMethodname: kMethodBookOfflineSlot, Details: self.getProfileParams()) { (responseData, error) in
             self.hideActivity()
             if error == nil
             {
@@ -207,7 +204,7 @@ extension UnavailableTimeSlotsCVC{
                         }
                         else
                         {
-                            self.showOptionAlert(title: "Alert".localized, message: "Appointment Booked".localized, button1Title: "OK".localized, button2Title: "", completion: { (success) in
+                            self.showOptionAlert(title: "Alert".localized, message: "Marked Unavailable".localized, button1Title: "OK".localized, button2Title: "", completion: { (success) in
                                 if success
                                 {
                                     if UserDefaults.standard.cat_parent_id == "4"
@@ -241,17 +238,31 @@ extension UnavailableTimeSlotsCVC{
     
     func getProfileParams() -> NSMutableDictionary
     {
+        var selectedSlots = [String]()
+        for i in 0...timeSlots.count
+        {
+            if selectedCell.contains(i)
+            {
+                let timeSlot = timeSlots[i]
+                formatter.dateFormat = "hh:mm a"
+                formatter.locale = NSLocale(localeIdentifier: "en") as Locale
+                let time = formatter.string(from: timeSlot)
+                selectedSlots.append(time)
+            }
+        }
+        
         let dictUser = NSMutableDictionary()
         if UserDefaults.standard.object(forKey: kUserID) != nil
         {
             dictUser.setObject(UserDefaults.standard.object(forKey: kUserID)!, forKey: kUserID as NSCopying)
         }
         dictUser.setObject(doctorID ?? "", forKey: "doctor_id" as NSCopying)
-        dictUser.setObject([""], forKey: "date" as NSCopying)
+        let slotsString = selectedSlots.joined(separator: ",")
+        dictUser.setObject(selectedDate ?? "", forKey: "date" as NSCopying)
+        dictUser.setObject(slotsString , forKey: "time_slot" as NSCopying)
         
-//        let timeStamp = "\(selectedDate.text?.accessibilityLabel ?? "") \(timeSlotString)"
-//        let unixTimeStamp = timeStamp.convertToUnixTimestamp()
-//        dictUser.setObject(unixTimeStamp ?? "", forKey: "userTimeStamp" as NSCopying)
+        let unixTimeStamp = selectedDate?.convertToUnixTimestamp()
+        dictUser.setObject(unixTimeStamp ?? "", forKey: "userTimeStamp" as NSCopying)
         
         dictUser.setObject(TimeZone.current.identifier , forKey: "timeZone" as NSCopying)
         
@@ -359,7 +370,6 @@ extension UnavailableTimeSlotsCVC{
     }
     
 }
-
 
 
 

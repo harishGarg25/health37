@@ -114,6 +114,7 @@ class TimeSlotsCVC: UICollectionViewController,UICollectionViewDelegateFlowLayou
         formatter.dateFormat = "hh:mm a"
         formatter.locale = NSLocale(localeIdentifier: "en") as Locale
         let time = formatter.string(from: timeSlot)
+        cell.timeLabel.textColor = .black
         if self.bookedSlots.contains(time)
         {
             cell.timeLabel.textColor = .red

@@ -791,7 +791,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                         self.arrProfileData = (responseData?.object(forKey: kUserSavedDetails)as!NSArray).mutableCopy() as! NSMutableArray
                         
                         print("self.arrProfileData",self.arrProfileData)
-                        // self.appDelegate.health37UserInfo = self.appDelegate.getloginUser()
+                        self.saveDataInLocal(fileName : "profile_data" , data : self.arrProfileData)
                         
                         let imgUrl = (self.arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "user_avatar")
                         let strFullName = (self.arrProfileData.object(at: 0) as! NSDictionary).object(forKey: kFullName) as! String

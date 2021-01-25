@@ -47,26 +47,26 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
         
         //  print("strOtherFriendID",strOtherFriendID)
         DispatchQueue.main.async
+        {
+            if self.appDelegate.isInternetAvailable() == true
             {
-                if self.appDelegate.isInternetAvailable() == true
+                self.showActivity(text: "")
+                self.pageCureent = 1
+                if self.strFromGroup != "FromGroupScreen"
                 {
-                    self.showActivity(text: "")
-                    self.pageCureent = 1
-                    if self.strFromGroup != "FromGroupScreen"
-                    {
-                        self.performSelector(inBackground: #selector(self.updateGetProfileAPI), with: nil)
-                        self.performSelector(inBackground: #selector(self.updateAllPostListAPI), with: nil)
-                    }
-                    else
-                    {
-                        self.strOtherFriendID = self.dicGroupDetails.valueForNullableKey(key: "groupID")
-                        self.performSelector(inBackground: #selector(self.OtherUserAllPostAPI), with: nil)
-                    }
+                    self.performSelector(inBackground: #selector(self.updateGetProfileAPI), with: nil)
+                    self.performSelector(inBackground: #selector(self.updateAllPostListAPI), with: nil)
                 }
                 else
                 {
-                    self.onShowAlertController(title: kInternetError , message: kInternetErrorMessage.localized)
+                    self.strOtherFriendID = self.dicGroupDetails.valueForNullableKey(key: "groupID")
+                    self.performSelector(inBackground: #selector(self.OtherUserAllPostAPI), with: nil)
                 }
+            }
+            else
+            {
+                self.onShowAlertController(title: kInternetError , message: kInternetErrorMessage.localized)
+            }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLikeUnlike), name: NSNotification.Name(rawValue: "updateLikeUnlike"), object: nil)
@@ -243,13 +243,13 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             self.menuContainerViewController.toggleLeftSideMenuCompletion
-                { () -> Void in
+            { () -> Void in
             }
         }
         else
         {
             self.menuContainerViewController.toggleRightSideMenuCompletion
-                { () -> Void in
+            { () -> Void in
             }
         }
     }
@@ -379,17 +379,46 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func methodCall(_ sender: UIButton)
     {
-        let phoneNumber = (arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "phone_number") as? String ?? ""
-        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+        if let landlineNumber = (arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "landline_number") as? String ?? "" , landlineNumber != ""
+        {
+            if let phoneCallURL = URL(string: "tel://\(landlineNumber)") {
                 let application:UIApplication = UIApplication.shared
                 if (application.canOpenURL(phoneCallURL)) {
                     if #available(iOS 10.0, *) {
                         application.open(phoneCallURL, options: [:], completionHandler: nil)
                     } else {
-                         application.openURL(phoneCallURL as URL)
+                        application.openURL(phoneCallURL as URL)
                     }
+                }else
+                {
+                    self.onShowAlertController(title: "Error" , message: "Invalid Number".localized)
                 }
+            }else
+            {
+                self.onShowAlertController(title: "Error" , message: "Invalid Number".localized)
             }
+        }
+        else
+        {
+            let phoneNumber = (arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "phone_number") as? String ?? ""
+            if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+                let application:UIApplication = UIApplication.shared
+                if (application.canOpenURL(phoneCallURL)) {
+                    if #available(iOS 10.0, *) {
+                        application.open(phoneCallURL, options: [:], completionHandler: nil)
+                    } else {
+                        application.openURL(phoneCallURL as URL)
+                    }
+                }else
+                {
+                    self.onShowAlertController(title: "Error" , message: "Invalid Number".localized)
+                }
+            }else
+            {
+                self.onShowAlertController(title: "Error" , message: "Invalid Number".localized)
+            }
+        }
+        
     }
     
     @IBAction func methodFollowerFollowings(_ sender: UIButton)
@@ -1051,7 +1080,7 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
                         // Optional params
                         cell?.viewRating.contentMode = UIViewContentMode.scaleAspectFit
                         cell?.viewRating.maxRating = 5
-                        cell?.viewRating.minRating = Int(ratingCount)!
+                        cell?.viewRating.minRating = Int(ratingCount) ?? 0
                         cell?.viewRating.editable = false
                         //  cell?.viewRating.halfRatings = true
                         //  cell?.viewRating.floatRatings = false
@@ -1147,7 +1176,7 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
                     
                     cell?.viewRating.contentMode = UIViewContentMode.scaleAspectFit
                     cell?.viewRating.maxRating = 5
-                    cell?.viewRating.minRating = Int(ratingCount)!
+                    cell?.viewRating.minRating = Int(ratingCount) ?? 0
                     cell?.viewRating.editable = false
                     
                 }
@@ -1438,7 +1467,7 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
     func redirectToGoogleMap(coordinates : String) {
         
         if let url = URL(string: "comgooglemaps://?saddr=&daddr=\(coordinates)&directionsmode=driving"),
-            UIApplication.shared.canOpenURL(url) {
+           UIApplication.shared.canOpenURL(url) {
             print("comgoogle maps worked")
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler:nil)
@@ -1447,7 +1476,7 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
             }
         } else{
             if let url = URL(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(coordinates)&directionsmode=driving"),
-                UIApplication.shared.canOpenURL(url) {
+               UIApplication.shared.canOpenURL(url) {
                 print("google com maps worked")
                 if #available(iOS 10, *) {
                     UIApplication.shared.open(url, options: [:], completionHandler:nil)

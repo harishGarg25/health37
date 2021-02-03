@@ -64,7 +64,7 @@ class UnavailableTimeSlotsCVC:  UIViewController, UICollectionViewDelegate,UICol
             self.onShowAlertController(title: "" , message: "Please select slots".localized)
         }else
         {
-            self.showOptionAlert(title: "Alert".localized, message: "Are you sure to mark slots as unavailable?".localized, button1Title: "YES".localized, button2Title: "NO".localized, completion: { (success) in
+            self.showOptionAlert(title: "Alert".localized, message: "Are you sure you want to make it as un available?".localized, button1Title: "YES".localized, button2Title: "NO".localized, completion: { (success) in
                 if success
                 {
                     self.bookAppointment()
@@ -207,16 +207,17 @@ extension UnavailableTimeSlotsCVC{
                             self.showOptionAlert(title: "Alert".localized, message: "Marked Unavailable".localized, button1Title: "OK".localized, button2Title: "", completion: { (success) in
                                 if success
                                 {
-                                    if UserDefaults.standard.cat_parent_id == "4"
-                                    {
-                                        let controller = DoctorListTableViewController.instantiate(fromAppStoryboard: .Appointment)
-                                        controller.hospitalID = ""
-                                        self.navigationController?.pushViewController(controller, animated:true)
-                                    }else
-                                    {
-                                        let controller = DoctorAppointmentsTableViewController.instantiate(fromAppStoryboard: .Appointment)
-                                        self.navigationController?.pushViewController(controller, animated:true)
-                                    }
+                                    self.navigationController?.popViewController(animated: true)
+//                                    if UserDefaults.standard.cat_parent_id == "4"
+//                                    {
+//                                        let controller = DoctorListTableViewController.instantiate(fromAppStoryboard: .Appointment)
+//                                        controller.hospitalID = ""
+//                                        self.navigationController?.pushViewController(controller, animated:true)
+//                                    }else
+//                                    {
+//                                        let controller = DoctorAppointmentsTableViewController.instantiate(fromAppStoryboard: .Appointment)
+//                                        self.navigationController?.pushViewController(controller, animated:true)
+//                                    }
                                 }
                             })
                         }

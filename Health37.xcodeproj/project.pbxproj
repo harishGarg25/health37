@@ -2988,7 +2988,7 @@
 				TargetAttributes = {
 					D5E554F920774A0F00DBA3EC = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -4040,10 +4040,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Health37/Health37.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Zayed Alshehri (LTC77ZLF85)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Zayed Alshehri (LTC77ZLF85)";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3.4;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3.7;
 				DEVELOPMENT_TEAM = 478VRE34HP;
 				INFOPLIST_FILE = Health37/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -4052,7 +4052,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zonetech.health37;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = Dev29July2020;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/harishgarg/Desktop/health37/Health37/Assets/Health37-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4066,10 +4066,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Health37/Health37.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Zayed Alshehri (LTC77ZLF85)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Zayed Alshehri (LTC77ZLF85)";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3.4;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3.7;
 				DEVELOPMENT_TEAM = 478VRE34HP;
 				INFOPLIST_FILE = Health37/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -4078,7 +4078,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zonetech.health37;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = Dev29July2020;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/harishgarg/Desktop/health37/Health37/Assets/Health37-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

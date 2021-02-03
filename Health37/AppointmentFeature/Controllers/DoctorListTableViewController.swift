@@ -27,17 +27,17 @@ class DoctorListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Doctors List".localized
-        
         controlSegment.segments = LabelSegment.segments(withTitles: ["Appointments".localized, "Doctors List".localized],normalFont: UIFont(name: "HelveticaNeue-Medium", size: 15.0)!,normalTextColor: .lightGray,selectedFont: UIFont(name: "HelveticaNeue-Medium", size: 15.0)!,selectedTextColor: .white)
         
-        
+        controlSegment.setIndex(1, animated: false)
+
         if hospitalID != ""
         {
             if  let userid : String = UserDefaults.standard.object(forKey: kUserID) as? String
             {
                 if hospitalID == userid
                 {
-                    let logoutBarButtonItem = UIBarButtonItem(title: "ADD".localized, style: .done, target: self, action: #selector(editTapped))
+                    let logoutBarButtonItem = UIBarButtonItem(title: "Add Doctor".localized, style: .done, target: self, action: #selector(editTapped))
                     self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
                 }else
                 {
@@ -49,7 +49,7 @@ class DoctorListTableViewController: UITableViewController {
         {
             if UserDefaults.standard.cat_parent_id == "4"
             {
-                let logoutBarButtonItem = UIBarButtonItem(title: "ADD".localized, style: .done, target: self, action: #selector(editTapped))
+                let logoutBarButtonItem = UIBarButtonItem(title: "Add Doctor".localized, style: .done, target: self, action: #selector(editTapped))
                 self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
             }else
             {
@@ -221,13 +221,13 @@ class DoctorListTableViewController: UITableViewController {
     @objc func pressed(sender: UIButton!) {
         let alert = UIAlertController(title: "Action".localized, message: nil, preferredStyle: .actionSheet)
         
-//        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
-//            DispatchQueue.main.async {
-//                let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
-//                controller.doctorID = self.tableArray[sender.tag]["user_id"] as? String ?? ""
-//                self.navigationController?.pushViewController(controller, animated:true)
-//            }
-//        }))
+        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
+                controller.doctorID = self.tableArray[sender.tag]["user_id"] as? String ?? ""
+                self.navigationController?.pushViewController(controller, animated:true)
+            }
+        }))
         
         alert.addAction(UIAlertAction(title: "Edit".localized, style: .default, handler: { _ in
             DispatchQueue.main.async {
@@ -359,7 +359,6 @@ extension DoctorListTableViewController{
                             }
                         }
                         
-                        self.sortDataWithDate()
                         self.noAppLabel.isHidden = true
                         debugPrint(self.tableArray)
                         if self.tableArray.count == 0

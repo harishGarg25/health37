@@ -55,6 +55,8 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
     
     func subscriptionInformationUpdate()
     {
+        cancelButton.isHidden = true
+        upgradeView.isHidden = false
         if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
         {
             if let detailDict = detail[0] as? [String : Any]
@@ -72,33 +74,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
                 let started = "\(detailDict["package_months"] as? String ?? "") "//(\(detailDict["sub_start_date"] as? String ?? ""))
                 subscriptionPeriodLable.text = started
                 subscribeValidTillLable.text =  detailDict["sub_expiry_date"] as? String
-                
-                if let is_appointment_enable = detailDict["is_appointment_enable"] as? String
-                {
-                    if is_appointment_enable == "0" || is_appointment_enable == ""
-                    {
-                        upgradeView.isHidden = false
-                        cancelButton.isHidden = true
-                    }else
-                    {
-                        upgradeView.isHidden = true
-                        cancelButton.isHidden = false
-                    }
-                }
-                else
-                {
-                    upgradeView.isHidden = false
-                    cancelButton.isHidden = true
-                }
-            }else
-            {
-                upgradeView.isHidden = true
-                cancelButton.isHidden = false
             }
-        }else
-        {
-            upgradeView.isHidden = false
-            cancelButton.isHidden = true
         }
     }
     
@@ -114,6 +90,9 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
     //Picker Cancel
     @IBAction func cancelButton(_ sender: Any)
     {
+//        let controller = PriceSelectionViewController.instantiate(fromAppStoryboard: .Appointment)
+//        self.navigationController?.pushViewController(controller, animated:true)
+        
         self.showOptionAlert(title: "Alert".localized, message: "Are you sure you want to cancel the Subscription?".localized, button1Title: "Yes".localized, button2Title: "No".localized, completion: { (success) in
             if success
             {

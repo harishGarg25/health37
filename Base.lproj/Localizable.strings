@@ -104,7 +104,7 @@
 "ADD POST" = "أضف منشورا";
 "Continue reading" = "أكمل القراءة";
 "(0)" = "(0)";
-"Yes" = "نعم فعلا";
+"Yes" = "نعم";
 "No" = "لا";
 
 "Are you sure you want to Logout?" = "هل أنت متأكد أنك تريد تسجيل الخروج؟";
@@ -290,7 +290,7 @@
 "Write About Experience" = "اكتب عن الخبرة";
 "Add Photo" = "إضافة صورة";
 "100 characters" = "100 حرف";
-"Doctors List" = "قائمة الاطباء والمعالجين ";
+"Doctors List" = "قائمة الاطباء";
 "Add notes" = "اضف ملاحظات";
 "Enable  appointments" = "تمكين المواعيد";
 "Subscribe" = "اشترك";
@@ -321,10 +321,20 @@
 "Are you sure you want to cancel the Subscription?" = "هل أنت متأكد أنك تريد إلغاء الاشتراك؟";
 "Landline Number" = "رقم الهاتف الثابت";
 "Book Slots" = "فتحات الكتاب";
-"Mark Unavailable" = "وضع علامة على أنه غير متوفر";
+"Mark Unavailable" = "اجعله غير متاح";
 "Offline Booking" = "الحجز دون اتصال";
 "Its an offline booking done by you. You want to make it available again?" = "إنه حجز قمت به دون اتصال بالإنترنت. هل تريد إتاحته مرة أخرى؟";
 "Available" = "متاح";
 "Marked Available" = "تم وضع علامة متاح ";
 "Edit Slots" = "تحرير الفتحات";
 "Marked Unavailable" = "تم تعليمه بأنه غير متوفر";
+"Add Doctor" = "اضف طبيب";
+"Unavailable Slots" = "فتره الطبيب غير متاح";
+"Are you sure you want to make it as un available?" = "هل انت متاكد انك تريد جعله غير متاح؟";
+"Mark Slots" = "مارك فتحات";
+"Your free Subscription will strat from today." = "مدة التجربة ستبدأ من اليوم";
+"Start" = "بداية";
+"Free Trial" = "تجربة مجانية";
+"Month" = "شهر";
+"You have already subscribed the plan. Do you want to cancel existing plan and updgrade with new one?" =  "لقد اشتركت في الخطة بالفعل. هل تريد إلغاء الخطة الحالية وترقيتها بخطة جديدة؟";
+"You have already availed the free plan. Please select paid plan to continue." = "لقد اشتركت بالفعل في الخطة المجانية. يرجى تحديد الخطة المدفوعة للمتابعة؟";

@@ -279,7 +279,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         self.window!.rootViewController = navController
 //        if let rootWindow = self.window {
-//            let screenSize = DeviceType.iPhoneX.getSize()
+//            let screenSize = DeviceType.iPhoneSE1.getSize()
 //            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
 //        }
     }

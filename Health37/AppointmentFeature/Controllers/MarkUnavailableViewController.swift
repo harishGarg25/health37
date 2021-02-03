@@ -38,7 +38,7 @@ class MarkUnavailableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Book Slots".localized
+        self.title = "Mark Slots".localized
         timeSlotTF.placeholder = timeSlotTF.placeholder?.localized
         
         setupCalendarView()
@@ -120,6 +120,7 @@ class MarkUnavailableViewController: UITableViewController {
         controller.selectedDate = selectedDate.text?.accessibilityLabel
         controller.doctorID = self.doctorID
         controller.appointmentDetail = self.appointment
+        controller.appointmentDate = calendarView.selectedDates.first ?? Date()
         self.navigationController?.pushViewController(controller, animated:true)
     }
     

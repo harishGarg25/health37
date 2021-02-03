@@ -2024,11 +2024,36 @@ class TimelineScreen: UIViewController, UITableViewDataSource, UITableViewDelega
             let type = (arrAllNotifications.object(at: indexPath.row) as? NSDictionary ?? [:]).valueForNullableKey(key: "type")
             if type == "Appointment"
             {
-                let not_id = (arrAllNotifications.object(at: indexPath.row) as? NSDictionary ?? [:]).valueForNullableKey(key: "not_id")
-                let controller = ApptDetailTVC.instantiate(fromAppStoryboard: .Appointment)
-                controller.notificationID = not_id
+                let type = (arrAllNotifications.object(at: indexPath.row) as? NSDictionary ?? [:]).valueForNullableKey(key: "is_offline")
+                if type == "1"
+                {
+                    if UserDefaults.standard.getAppointmentStatus == "1"
+                    {
+                        if UserDefaults.standard.cat_parent_id == "4"
+                        {
+                            let controller = DoctorListTableViewController.instantiate(fromAppStoryboard: .Appointment)
+                            controller.hospitalID = ""
+                            self.navigationController?.pushViewController(controller, animated:true)
+                        }else
+                        {
+                            let controller = DoctorAppointmentsTableViewController.instantiate(fromAppStoryboard: .Appointment)
+                            self.navigationController?.pushViewController(controller, animated:true)
+                        }
+                    }
+                }
+                else
+                {
+                    let not_id = (arrAllNotifications.object(at: indexPath.row) as? NSDictionary ?? [:]).valueForNullableKey(key: "not_id")
+                    let controller = ApptDetailTVC.instantiate(fromAppStoryboard: .Appointment)
+                    controller.notificationID = not_id
+                    self.navigationController?.pushViewController(controller, animated:true)
+                }
+            } else if type == "Payment"
+            {
+                let controller = SubscriptionDetailScreen.instantiate(fromAppStoryboard: .Appointment)
                 self.navigationController?.pushViewController(controller, animated:true)
-            }else
+            }
+            else
             {
                 let Notifi: NotificationAddComment!
                 if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"

@@ -25,8 +25,9 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
     @IBOutlet weak var freeTrialButton: UIButton!
     @IBOutlet weak var freeTrialLable: UILabel!
     @IBOutlet weak var trialDurationLable: UILabel!
-
+    
     var planPrice: [PlanDetail] = []
+    var untouchedPlanPrice: [PlanDetail] = []
     var freePlan: [PlanDetail] = []
     var selectedPlan: PlanDetail?
     let timeslotecellID = "timeslotecell"
@@ -37,12 +38,12 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
     var currencyRates = [String : Any]()
     var selected6MonthPrice = String()
     var selectedYearPrice = String()
+    var is_appointment_enable : Bool = false
     
     var appointmentDetail: AppointmentDetail?
     lazy var currencyCtrl:CurrencyController = {
         return CurrencyController()
     }()
-    
     
     var cardViewController: CardViewController {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_1a28ff38-51e9-4d27-a799-d15ba678a420",environment: .sandbox)
@@ -69,61 +70,6 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
         return b
     }
     
-    
-    @IBAction func selectCurrency(_ sender: Any) {
-        let navCtrl = UINavigationController(rootViewController: self.currencyCtrl)
-        self.navigationController!.present(navCtrl, animated: true) {}
-    }
-    
-    @IBAction func continueButton(_ sender: Any) {
-        if selectedDurationIndex < 0
-        {
-            self.onShowAlertController(title: "Alert".localized , message: "Please Select Plan".localized)
-        }else
-        {
-            navigationController?.pushViewController(cardViewController, animated: true)
-        }
-    }
-    
-    @IBAction func freeSubscriptionButton(_ sender: Any) {
-        
-        self.showOptionAlert(title: "Alert".localized, message: "Your free Subscription will strat from today.".localized, button1Title: "OK".localized, button2Title: "".localized, completion: { (success) in
-            if success
-            {
-                self.selectedDurationIndex = -1
-                self.selectedPlan = self.freePlan[0]
-                let controller = SlotDetailViewController.instantiate(fromAppStoryboard: .Appointment)
-                controller.isFreeTrial = "yes"
-                controller.delegate = self
-                self.present(controller, animated: true, completion: nil)
-            }
-        })
-    }
-    
-    func sendData(detail: AppointmentDetail) {
-        appointmentDetail = detail
-        paymentAPI()
-    }
-    
-    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        switch status {
-        case .success:
-            print(cardToken!.token)
-            if let token = cardToken?.token
-            {
-                cardTokenString = token
-                paymentAPI()
-            }
-        case .failure:
-            print("failure")
-        }
-    }
-    
-    func onSubmit(controller: CardViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,6 +83,8 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
         countLable.text = "You can add up to 100 doctors".localized
         continueButton.setTitle("SUBSCRIBE".localized, for: .normal)
         freeTrialLable.text = "Free Trial".localized
+        selectedCurrency = "USD"
+        currencyText.text = "US Dollar"
         cardViewController.delegate = self
         cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
         continueButton.disableButton()
@@ -171,6 +119,132 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
     }
     
     
+    
+    @IBAction func selectCurrency(_ sender: Any) {
+        let navCtrl = UINavigationController(rootViewController: self.currencyCtrl)
+        self.navigationController!.present(navCtrl, animated: true) {}
+    }
+    
+    @IBAction func continueButton(_ sender: Any) {
+        if selectedDurationIndex < 0
+        {
+            self.onShowAlertController(title: "Alert".localized , message: "Please Select Plan".localized)
+        }else
+        {
+            if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
+            {
+                if let detailDict = detail[0] as? [String : Any]
+                {
+                    if let is_appointment_enable = detailDict["is_appointment_enable"] as? String
+                    {
+                        if is_appointment_enable == "1"
+                        {
+                            self.showOptionAlert(title: "Alert".localized, message: "You have already subscribed the plan. Do you want to cancel existing plan and updgrade with new one?".localized, button1Title: "Continue".localized, button2Title: "Cancel".localized, completion: { (success) in
+                                if success
+                                {
+                                    self.is_appointment_enable = true
+                                    self.navigationController?.pushViewController(self.cardViewController, animated: true)
+                                }
+                            })
+                        }else
+                        {
+                        }
+                    }else
+                    {
+                        navigationController?.pushViewController(cardViewController, animated: true)
+                    }
+                }
+                else
+                {
+                    navigationController?.pushViewController(cardViewController, animated: true)
+                }
+            }else
+            {
+                navigationController?.pushViewController(cardViewController, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func freeSubscriptionButton(_ sender: Any) {
+        
+        if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
+        {
+            if let detailDict = detail[0] as? [String : Any]
+            {
+                if let is_appointment_enable = detailDict["is_free_sub_applied"] as? String
+                {
+                    if is_appointment_enable == "1"
+                    {
+                        self.showOptionAlert(title: "", message: "You have already availed the free plan. Please select paid plan to continue.".localized, button1Title: "Ok".localized, button2Title: "".localized, completion: { (success) in
+                            if success
+                            {
+                            }
+                        })
+                    }else
+                    {
+                        showFreeSubscriptionAlert()
+                    }
+                }else
+                {
+                    showFreeSubscriptionAlert()
+                }
+            }
+            else
+            {
+                showFreeSubscriptionAlert()
+            }
+        }else
+        {
+            showFreeSubscriptionAlert()
+        }
+    }
+    
+    func showFreeSubscriptionAlert() {
+        self.showOptionAlert(title: "Alert".localized, message: "Your free Subscription will strat from today.".localized, button1Title: "Continue".localized, button2Title: "Cancel".localized, completion: { (success) in
+            if success
+            {
+                self.selectedDurationIndex = -1
+                self.selectedPlan = self.freePlan[0]
+                let controller = SlotDetailViewController.instantiate(fromAppStoryboard: .Appointment)
+                controller.isFreeTrial = "yes"
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    func sendData(detail: AppointmentDetail) {
+        appointmentDetail = detail
+        paymentAPI()
+    }
+    
+    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        switch status {
+        case .success:
+            print(cardToken!.token)
+            if let token = cardToken?.token
+            {
+                cardTokenString = token
+                if self.is_appointment_enable
+                {
+                    self.cancelSubscription()
+                }else
+                {
+                    paymentAPI()
+                }
+            }
+        case .failure:
+            self.hideActivity()
+            print("failure")
+        }
+    }
+    
+    func onSubmit(controller: CardViewController) {
+        self.showActivity(text: "")
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
     @objc func selectedCurrency(_ notification:Notification){
         if let currencies = notification.object as? Currency
         {
@@ -185,7 +259,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                 {
                     if planPrice[i].isFree == "0"
                     {
-                        let updatedPrice = String(format: "%.2f", (currency as NSString).floatValue * Float(planPrice[i].price.toInt()))
+                        let updatedPrice = String(format: "%.2f", (currency as NSString).floatValue * Float(untouchedPlanPrice[i].price.toInt()))
                         let priceFirst = "\(getSymbolForCurrencyCode(code: currencies.currencyCode ?? "")!) \(updatedPrice)"
                         planPrice[i].title = priceFirst
                         planPrice[i].price = updatedPrice
@@ -242,8 +316,12 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                                     let price = "\(plan["price"] as? String ?? "")"
                                     let months = plan["duration_in_months"] as? String ?? ""
                                     let isFree = plan["free_sub"] as? String ?? ""
-                                    let t1 = PlanDetail(id: id, title: title, descrition: name, price: price, months: months, isFree: isFree)
-                                    self.planPrice.append(t1)
+                                    if let is_active = plan["is_active"] as? String ?? "", is_active == "1"
+                                    {
+                                        let t1 = PlanDetail(id: id, title: title, descrition: name, price: price, months: months, isFree: isFree)
+                                        self.planPrice.append(t1)
+                                        self.untouchedPlanPrice.append(t1)
+                                    }
                                 }
                                 else if let free_sub : String = plan["free_sub"] as? String , free_sub == "1"
                                 {
@@ -255,11 +333,9 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                                     let isFree = plan["free_sub"] as? String ?? ""
                                     let t1 = PlanDetail(id: id, title: title, descrition: name, price: price, months: months, isFree: isFree)
                                     self.freePlan.append(t1)
-                                }
-                                else
-                                {
-                                    let duration_in_months = "\(plan["duration_in_months"] as? String ?? "") Months"
-                                    self.trialDurationLable.text = duration_in_months.localized
+                                    
+                                    let duration_in_months = "\(plan["duration_in_months"] as? String ?? "") \("Month".localized)"
+                                    self.trialDurationLable.text = duration_in_months
                                 }
                             }
                             self.timeSlotCollectionView.reloadData()
@@ -282,6 +358,29 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
         }
     }
     
+    @objc func cancelSubscription()
+    {
+        self.showActivity(text: "")
+        getallApiResultwithGetMethod(strMethodname: kMethodCancelSubsciption, Details: self.paymentParams()) { (responseData, error) in
+            if error == nil
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    if let response = responseData?["response"] as? String, response == "1"
+                    {
+                        self.paymentAPI()
+                    }
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
+                }
+            }
+        }
+    }
     
     @objc func paymentAPI()
     {
@@ -386,7 +485,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
         dictUser.setObject(selectedPlan?.months ?? "", forKey: "package_months" as NSCopying)
         dictUser.setObject(selectedPlan?.id ?? "", forKey: "sub_id" as NSCopying)
         dictUser.setObject(selectedPlan?.isFree ?? "", forKey: "is_free_sub_applied" as NSCopying)
-
+        
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             dictUser.setObject("ar", forKey: "language" as NSCopying)
@@ -497,7 +596,7 @@ extension PriceSelectionViewController: UICollectionViewDelegate, UICollectionVi
             selectedDurationIndex = indexPath.row
         }
         selectedPlan = planPrice[indexPath.row]
-       // priceSavingLabel.isHidden = indexPath.row == 0 ? true : false
+        // priceSavingLabel.isHidden = indexPath.row == 0 ? true : false
         continueButton.enableButton()
         collectionView.reloadData()
     }

@@ -15,8 +15,30 @@ class DoctorListTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var bioLable: UILabel!
     @IBOutlet weak var optionButton: UIButton!
-
+    @IBOutlet weak var cardView: UIView!
+    
     var sectionDate = String()
+    
+    override func prepareForReuse() {
+        cardView.setNeedsDisplay()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cardView.setNeedsDisplay()
+        setBorder()
+    }
+    
+    func setBorder() {
+        cardView.layer.cornerRadius = 8.0
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        cardView.layer.shadowOpacity = 0.2
+        cardView.layer.shadowRadius = 2
+        cardView.clipsToBounds = false
+        cardView.layer.masksToBounds = false
+        cardView.backgroundColor = .white
+    }
     
     var detail: [String : Any]! {
         didSet {
@@ -29,13 +51,15 @@ class DoctorListTableViewCell: UITableViewCell {
             })
             
             if UserDefaults.standard.object(forKey: "applanguage") != nil  && (UserDefaults.standard.object(forKey: "applanguage") as? String ?? "") == "ar"
-                   {
-                       bioLable.textAlignment = .right
-                   }
-                   else
-                   {
-                       bioLable.textAlignment = .left
-                   }
+            {
+                bioLable.textAlignment = .right
+            }
+            else
+            {
+                bioLable.textAlignment = .left
+            }
+            cardView.setNeedsDisplay()
+            cardView.layoutIfNeeded()
         }
     }
 }

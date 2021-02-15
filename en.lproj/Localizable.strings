@@ -318,16 +318,16 @@
 "Are you sure you want to cancel the Subscription?" = "Are you sure you want to cancel the Subscription?";
 "Landline Number" = "Landline Number";
 "Book Slots" = "Book Slots";
-"Mark Unavailable" = "Mark Unavailable";
+"Mark Offline" = "Mark Offline";
 "Offline Booking" = "Offline Booking";
 "Its an offline booking done by you. You want to make it available again?" = "Its an offline booking done by you. You want to make it available again?";
 "Available" = "Available";
 "Marked Available" = "Marked Available";
 "Edit Slots" = "Edit Slots";
-"Marked Unavailable" = "Marked Unavailable";
+"Offline booked" = "Offline booked";
 "Add Doctor" = "Add Doctor";
-"Unavailable Slots" = "Unavailable Slots";
-"Are you sure you want to make it as un available?" = "Are you sure you want to make it as un available?";
+"Offline Booking" = "Offline Booking";
+"Are you sure you want to make offline?" = "Are you sure you want to make offline?";
 "Mark Slots" = "Mark Slots";
 "Your free Subscription will strat from today." = "Your free Subscription will strat from today.";
 "Start" = "Start";
@@ -335,3 +335,5 @@
 "Month" = "Month";
 "You have already subscribed the plan. Do you want to cancel existing plan and updgrade with new one?" = "You have already subscribed the plan. Do you want to cancel existing plan and updgrade with new one?";
 "You have already availed the free plan. Please select paid plan to continue." = "You have already availed the free plan. Please select paid plan to continue.";
+"Action" = "Action";
+"Edit Doctor" = "Edit Doctor";

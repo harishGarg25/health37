@@ -105,7 +105,7 @@ class DoctorAppointmentsTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Action".localized, message: nil, preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Offline Booking".localized, style: .default, handler: { _ in
             DispatchQueue.main.async {
                 let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
                 if UserDefaults.standard.object(forKey: kUserID) != nil

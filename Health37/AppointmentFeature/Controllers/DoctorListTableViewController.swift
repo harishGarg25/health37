@@ -30,7 +30,7 @@ class DoctorListTableViewController: UITableViewController {
         controlSegment.segments = LabelSegment.segments(withTitles: ["Appointments".localized, "Doctors List".localized],normalFont: UIFont(name: "HelveticaNeue-Medium", size: 15.0)!,normalTextColor: .lightGray,selectedFont: UIFont(name: "HelveticaNeue-Medium", size: 15.0)!,selectedTextColor: .white)
         
         controlSegment.setIndex(1, animated: false)
-
+        
         if hospitalID != ""
         {
             if  let userid : String = UserDefaults.standard.object(forKey: kUserID) as? String
@@ -63,10 +63,7 @@ class DoctorListTableViewController: UITableViewController {
         backItem.addTarget(self, action: #selector(backTapped), for: UIControlEvents.touchUpInside)
         self.navigationItem.leftBarButtonItem  =  UIBarButtonItem(customView: backItem)
         
-        let myNib2 = UINib(nibName: "DoctorListTableViewCell", bundle: Bundle.main)
-        self.tableView.register(myNib2, forCellReuseIdentifier: "DoctorListTableViewCell")
-        let myNib = UINib(nibName: "ScheduleTableViewCell", bundle: Bundle.main)
-        self.tableView.register(myNib, forCellReuseIdentifier: "ScheduleTableViewCell")
+        tableViewSetup()
         
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && (UserDefaults.standard.object(forKey: "applanguage") as? String ?? "") == "ar"
         {
@@ -77,6 +74,17 @@ class DoctorListTableViewController: UITableViewController {
         {
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
         }
+    }
+    
+    func tableViewSetup() {
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 350
+        
+        let myNib2 = UINib(nibName: "DoctorListTableViewCell", bundle: Bundle.main)
+        self.tableView.register(myNib2, forCellReuseIdentifier: "DoctorListTableViewCell")
+        let myNib = UINib(nibName: "ScheduleTableViewCell", bundle: Bundle.main)
+        self.tableView.register(myNib, forCellReuseIdentifier: "ScheduleTableViewCell")
     }
     
     @IBAction func segmentedControl1ValueChanged(_ sender: BetterSegmentedControl) {
@@ -214,6 +222,7 @@ class DoctorListTableViewController: UITableViewController {
             cell.optionButton.addTarget(self, action: #selector(pressed), for: UIControlEvents.touchUpInside)
             cell.selectionStyle = .none
             cell.detail = tableArray[indexPath.row]
+            cell.layoutIfNeeded()
             return cell
         }
     }
@@ -221,7 +230,7 @@ class DoctorListTableViewController: UITableViewController {
     @objc func pressed(sender: UIButton!) {
         let alert = UIAlertController(title: "Action".localized, message: nil, preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Unavailable Slots".localized, style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Offline Booking".localized, style: .default, handler: { _ in
             DispatchQueue.main.async {
                 let controller = MarkUnavailableViewController.instantiate(fromAppStoryboard: .Appointment)
                 controller.doctorID = self.tableArray[sender.tag]["user_id"] as? String ?? ""
@@ -374,6 +383,7 @@ extension DoctorListTableViewController{
                             self.tableArray = self.doctorsList
                         }
                         self.tableView.reloadData()
+                        self.tableView.layoutIfNeeded()
                     }
                 }
             }

@@ -47,7 +47,7 @@ class UnavailableTimeSlotsCVC:  UIViewController, UICollectionViewDelegate,UICol
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
         }
         
-        continueButton.setTitle("Mark Unavailable".localized, for: .normal)
+        continueButton.setTitle("Mark Offline".localized, for: .normal)
         
         getBookedAppointmentDetail()
         
@@ -64,7 +64,7 @@ class UnavailableTimeSlotsCVC:  UIViewController, UICollectionViewDelegate,UICol
             self.onShowAlertController(title: "" , message: "Please select slots".localized)
         }else
         {
-            self.showOptionAlert(title: "Alert".localized, message: "Are you sure you want to make it as un available?".localized, button1Title: "YES".localized, button2Title: "NO".localized, completion: { (success) in
+            self.showOptionAlert(title: "Alert".localized, message: "Are you sure you want to make offline?".localized, button1Title: "Yes".localized, button2Title: "No".localized, completion: { (success) in
                 if success
                 {
                     self.bookAppointment()
@@ -204,7 +204,7 @@ extension UnavailableTimeSlotsCVC{
                         }
                         else
                         {
-                            self.showOptionAlert(title: "Alert".localized, message: "Marked Unavailable".localized, button1Title: "OK".localized, button2Title: "", completion: { (success) in
+                            self.showOptionAlert(title: "Alert".localized, message: "Offline booked".localized, button1Title: "OK".localized, button2Title: "", completion: { (success) in
                                 if success
                                 {
                                     self.navigationController?.popViewController(animated: true)

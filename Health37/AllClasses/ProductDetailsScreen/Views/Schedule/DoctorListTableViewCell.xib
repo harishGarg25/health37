@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="325" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QM-7h-pl3" customClass="CardView" customModule="Health37" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QM-7h-pl3">
                         <rect key="frame" x="10" y="8" width="305" height="104"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -101,6 +101,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bioLable" destination="igS-yJ-FLN" id="Dnh-Fu-OnK"/>
+                <outlet property="cardView" destination="6QM-7h-pl3" id="0S5-3Y-s0o"/>
                 <outlet property="nameLabel" destination="dQg-Sj-Kyg" id="SiZ-5M-Qkh"/>
                 <outlet property="optionButton" destination="7Zr-GO-37l" id="D8w-oc-dab"/>
                 <outlet property="profilePicture" destination="cBJ-wA-whs" id="GNu-aZ-sFD"/>

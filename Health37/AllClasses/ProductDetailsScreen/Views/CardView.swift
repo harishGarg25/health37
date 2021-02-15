@@ -9,9 +9,7 @@
 import UIKit
 
 class CardView: UIView {
-  
-  
-  
+    
   override func draw(_ rect: CGRect) {
     
     self.layer.cornerRadius = 8.0

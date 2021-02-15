@@ -14,6 +14,7 @@ import GoogleSignIn
 class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CountryListViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIWebViewDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet var btnSignIn: UIButton!
+    @IBOutlet var editSlot: UIButton!
     @IBOutlet var txtEmail: UITextField!
     @IBOutlet var txtName: UITextField!
     @IBOutlet var toolBar: UIToolbar!
@@ -27,7 +28,8 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
     @IBOutlet weak var experienceTF: UITextField!
     @IBOutlet weak var addPhotoLable: UILabel!
     @IBOutlet weak var limitLable: UILabel!
-    
+    @IBOutlet weak var subCategoryView: UIView!
+
     var isSltedTextF : Bool = false
     var categoryID = String()
     var isEdit : Bool = false
@@ -60,12 +62,14 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
         
         if isEdit
         {
-            self.title = "Edit Doctor Detail".localized
-            btnSignIn.setTitle("Update", for: .normal)
+            editSlot.isHidden = false
+            editSlot.setTitle("Edit Slots".localized, for: .normal)
+            btnSignIn.setTitle("Update".localized, for: .normal)
             txtName.text = (userDetail["full_name"] as? String ?? "")?.capitalized
             txtEmail.text = (userDetail["user_email"] as? String ?? "")
-            txtMainCategoryType.text = (userDetail["category_name"] as? String ?? nil)
-            txtSubCategoryType.text = (userDetail["sub_category_name"] as? String ?? nil)
+            txtMainCategoryType.text = (userDetail["category_name"] as? String ?? "")
+            txtSubCategoryType.text = (userDetail["sub_category_name"] as? String ?? "")
+            subCategoryView.isHidden = txtSubCategoryType.text?.count == 0 ? true : false
             experienceTF.text = (userDetail["user_brief"] as? String ?? nil)?.capitalized
             let url = URL.init(string: "\(userDetail["User_image"] as? String ?? "")")
             userImage.sd_setImage(with: url, placeholderImage: UIImage.init(named: "plaeholder.png"), options: .refreshCached, completed: { (img, error, cacheType, url) in
@@ -93,6 +97,8 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
         txtSubCategoryType.inputView = pickerHealth
         
         pickerHealth.backgroundColor = UIColor.white
+        
+        
         btnSignIn.layer.cornerRadius = 20.0
         btnSignIn.layer.cornerRadius = 20.0
         btnSignIn.layer.borderWidth = 1.0
@@ -394,6 +400,7 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
             
             self.showActivity(text: "")
             txtSubCategoryType.text = ""
+            self.subCategoryID = ""
             self.performSelector(inBackground: #selector(self.methodGetCategoryApi), with: nil)
         }
         else if isSltedTextF == false
@@ -421,6 +428,15 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
     {
         self.view.endEditing(true)
     }
+    
+    @IBAction func editSlotButton(_ sender: Any)
+    {
+        self.view.endEditing(true)
+        let controller = SlotDetailViewController.instantiate(fromAppStoryboard: .Appointment)
+        controller.userID = self.doctorID
+        self.navigationController?.pushViewController(controller, animated:true)
+    }
+    
     
     // MARK: - PikcerView DataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int
@@ -629,6 +645,7 @@ class AddUserScreen: UIViewController, UITextFieldDelegate, UIPickerViewDataSour
                         }
                         self.subCategoryID = (self.arrSubCategory.object(at: 0) as AnyObject).object(forKey: kCatID) as? String ?? ""
                     }
+                    self.subCategoryView.isHidden = self.txtSubCategoryType.text?.count == 0 ? true : false
                 }
                 else
                 {

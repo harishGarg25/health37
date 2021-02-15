@@ -25,6 +25,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
     @IBOutlet weak var freeTrialButton: UIButton!
     @IBOutlet weak var freeTrialLable: UILabel!
     @IBOutlet weak var trialDurationLable: UILabel!
+    @IBOutlet weak var freePlanView: UIView!
     
     var planPrice: [PlanDetail] = []
     var untouchedPlanPrice: [PlanDetail] = []
@@ -114,11 +115,34 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                 getCurrencyValue()
             }
         }
-        
+        subscriptionInformationUpdate()
         getPlansDetailAPI()
     }
     
-    
+    func subscriptionInformationUpdate()
+    {
+        if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
+        {
+            if let detailDict = detail[0] as? [String : Any]
+            {
+                let is_payment_done = "\(detailDict["is_payment_done"] as? Int ?? 0)"
+                freePlanView.isHidden = is_payment_done == "1"
+                if let is_free_sub_applied = detailDict["is_free_sub_applied"] as? String ?? "0"
+                {
+                    if is_free_sub_applied == "1"
+                    {
+                        if let is_payment_done = detailDict["is_payment_done"] as? String ?? "0"
+                        {
+                            if is_payment_done == "0"
+                            {
+                                is_appointment_enable = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func selectCurrency(_ sender: Any) {
         let navCtrl = UINavigationController(rootViewController: self.currencyCtrl)
@@ -226,22 +250,25 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             if let token = cardToken?.token
             {
                 cardTokenString = token
-                if self.is_appointment_enable
-                {
-                    self.cancelSubscription()
-                }else
-                {
-                    paymentAPI()
+                DispatchQueue.main.async {
+                    if self.is_appointment_enable
+                    {
+                        self.cancelSubscription()
+                    }else
+                    {
+                        self.paymentAPI()
+                    }
                 }
             }
         case .failure:
-            self.hideActivity()
+            UIApplication.shared.keyWindow?.stopIndicatingActivity()
             print("failure")
         }
     }
     
     func onSubmit(controller: CardViewController) {
-        self.showActivity(text: "")
+        cardViewController.view.endEditing(true)
+        UIApplication.shared.keyWindow?.startIndicatingActivity()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
@@ -376,6 +403,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             {
                 DispatchQueue.main.async {
                     self.hideActivity()
+                    UIApplication.shared.keyWindow?.stopIndicatingActivity()
                     self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
                 }
             }
@@ -396,6 +424,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                     else
                     {
                         self.hideActivity()
+                        UIApplication.shared.keyWindow?.stopIndicatingActivity()
                         self.onShowAlertController(title: "" , message: responseData?.object(forKey: "message")! as! String?)
                     }
                 }
@@ -404,6 +433,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             {
                 DispatchQueue.main.async {
                     self.hideActivity()
+                    UIApplication.shared.keyWindow?.stopIndicatingActivity()
                     self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
                 }
             }
@@ -425,6 +455,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                         }else
                         {
                             self.hideActivity()
+                            UIApplication.shared.keyWindow?.stopIndicatingActivity()
                             let alertController = UIAlertController(title: "", message: "Appointment Feature Enabled.".localized as String?, preferredStyle: .alert)
                             let yesAction = UIAlertAction(title: "OK".localized, style: .default) { (action) -> Void in
                                 self.navigationController?.popToRootViewController(animated: true)
@@ -436,6 +467,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                     else
                     {
                         self.hideActivity()
+                        UIApplication.shared.keyWindow?.stopIndicatingActivity()
                         self.onShowAlertController(title: "" , message: responseData?.object(forKey: "message")! as! String?)
                     }
                 }
@@ -444,6 +476,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             {
                 DispatchQueue.main.async {
                     self.hideActivity()
+                    UIApplication.shared.keyWindow?.stopIndicatingActivity()
                     self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
                 }
             }
@@ -511,6 +544,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 DispatchQueue.main.async {
                     self.hideActivity()
+                    UIApplication.shared.keyWindow?.stopIndicatingActivity()
                     guard let data = data else {
                         print(String(describing: error))
                         return

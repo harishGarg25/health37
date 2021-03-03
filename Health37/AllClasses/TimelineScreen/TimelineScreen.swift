@@ -2031,9 +2031,17 @@ class TimelineScreen: UIViewController, UITableViewDataSource, UITableViewDelega
                     {
                         if UserDefaults.standard.cat_parent_id == "4"
                         {
-                            let controller = DoctorListTableViewController.instantiate(fromAppStoryboard: .Appointment)
-                            controller.hospitalID = ""
-                            self.navigationController?.pushViewController(controller, animated:true)
+//                            let controller = DoctorListTableViewController.instantiate(fromAppStoryboard: .Appointment)
+//                            controller.hospitalID = ""
+//                            self.navigationController?.pushViewController(controller, animated:true)
+                            DispatchQueue.main.async {
+                                self.showOptionAlert(title: "".localized, message: "We do not have detail of this appointment because its an offline booking done by you.".localized, button1Title: "Ok".localized, button2Title: "".localized, completion: { (success) in
+                                    if success
+                                    {
+                                    
+                                    }
+                                })
+                            }
                         }else
                         {
                             let controller = DoctorAppointmentsTableViewController.instantiate(fromAppStoryboard: .Appointment)

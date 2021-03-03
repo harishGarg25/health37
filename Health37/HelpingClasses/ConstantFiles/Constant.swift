@@ -223,20 +223,15 @@ let kEnterSearchTextError = "Please enter search text."
 let kSelectCountryCodeError = "Please select country code."
 let kMobileNumError = "Please enter the phone number."
 let kMobileNumLengthError = "Phone Number must be of minimum 8 characters."
+let kLandlineNumLengthError = "Landline Number must be of minimum 8 characters."
 let kEnterPasswordError = "Please enter the password."
 let kEnterConfirmPasswordError = "Please enter the confirm password."
 let kPasswordsMatchingError = "Password and Confirm Password should be match."
-
 let kPasswordAcceptableLengthError = "Password must be of minimum 6 characters."
-
 let kEnterOTPNumberError = "Please enter the otp."
-
 let kEnterAddCommentError = "Please enter the add comments."
-
 let kEnterPostError = "Please write something or atleast select a photo."
-
 let kEnterOTPLengthError = "OTP must be of minimum 6 characters."
-
 let kEnterNewPassError = "Please enter new password."
 
 

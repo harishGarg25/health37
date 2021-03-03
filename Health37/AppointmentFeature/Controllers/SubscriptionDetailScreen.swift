@@ -55,7 +55,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
     
     func subscriptionInformationUpdate()
     {
-        cancelButton.isHidden = false
+        cancelButton.isHidden = true
         upgradeView.isHidden = true
         if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
         {

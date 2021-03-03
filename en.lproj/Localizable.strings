@@ -337,3 +337,5 @@
 "You have already availed the free plan. Please select paid plan to continue." = "You have already availed the free plan. Please select paid plan to continue.";
 "Action" = "Action";
 "Edit Doctor" = "Edit Doctor";
+"We do not have detail of this appointment because its an offline booking done by you." = "We do not have detail of this appointment because its an offline booking done by you.";
+"Landline Number must be of minimum 8 characters." = "Landline Number must be of minimum 8 characters.";

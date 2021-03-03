@@ -38,6 +38,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     @IBOutlet var viewSignUPBG: UIView!
     @IBOutlet var txtMobileNo: UITextField!
     @IBOutlet var txtCountryCode: UITextField!
+    @IBOutlet var txtCountryCodeLandline: UITextField!
     @IBOutlet var hospitalNameTF: UITextField!
     @IBOutlet weak var landlineTextField: UITextField!
     @IBOutlet weak var landlineView: UIView!
@@ -61,6 +62,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     
     var strLanguageSlt = NSString()
     var isSltedTextF : Bool = false
+    var isMobileCountryCode : Bool = false
     var categoryID = String()
     var subCategoryID = String()
     var dictSocialDetails = NSMutableDictionary()
@@ -308,6 +310,11 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             isGo = false
             errorMessage = kMobileNumLengthError.localized
         }
+        else if (landlineTextField.text?.count)!  >  0 && (landlineTextField.text?.count)!  <  kMobileNumerLenghtMin
+        {
+            isGo = false
+            errorMessage = kLandlineNumLengthError.localized
+        }
         else if txtPasswordSignup.text == ""
         {
             isGo = false
@@ -388,9 +395,17 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
         btnChooseLanguage.isSelected = false
         if textField.tag == 99
         {
+            isMobileCountryCode = true
             self.view.endEditing(true)
             let MainView = CountryListViewController(nibName: "CountryListViewController",delegate: self)
-            
+            self.present(MainView!, animated: true, completion: nil)
+            return false
+        }
+        else if textField.tag == 100
+        {
+            isMobileCountryCode = false
+            self.view.endEditing(true)
+            let MainView = CountryListViewController(nibName: "CountryListViewController",delegate: self)
             self.present(MainView!, animated: true, completion: nil)
             return false
         }
@@ -417,6 +432,13 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
         
         if (textField.text == "" && string == " ")
         {            return false
+        }
+        if (textField == landlineTextField)
+        {
+            if (string == " ")
+            {
+                return false
+            }
         }
         let newLength = textField.text!.count + string.count - range.length
         
@@ -1020,8 +1042,14 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     func didSelectCountry(_ country: [AnyHashable : Any]!)
     {
         let cou = country as NSDictionary
-        txtCountryCode.text = (cou.object(forKey: "dial_code") as! NSString) as String
-        strCountryName = (cou.object(forKey: "name") as! NSString) as String
+        if isMobileCountryCode
+        {
+            txtCountryCode.text = (cou.object(forKey: "dial_code") as! NSString) as String
+            strCountryName = (cou.object(forKey: "name") as! NSString) as String
+        }else
+        {
+            txtCountryCodeLandline.text = (cou.object(forKey: "dial_code") as! NSString) as String
+        }
     }
     // MARK:- CheckUser API Integration................
     func CheckUserParams() -> NSMutableDictionary
@@ -1057,13 +1085,25 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
                         dicUserInfo.setValue(self.categoryID, forKey: "user_cat")
                         dicUserInfo.setValue(self.strCountryName, forKey: "User_country")
                         dicUserInfo.setValue(self.hospitalNameTF.text ?? "", forKey: "hospital_name")
-                        dicUserInfo.setValue(self.landlineTextField.text ?? "", forKey: "landline_number")
                         dicUserInfo.setValue(self.subCategoryID, forKey: "sub_cat_id")
                         
                         UserDefaults.standard.set(self.categoryID, forKey: "catID")
                         UserDefaults.standard.set(self.txtTherapyType.text!, forKey: "catName")
                         UserDefaults.standard.set(self.txtCardiac.text!, forKey: "subCatName")
                         
+                        var landlineNumber = String()
+                        if !(self.txtCountryCodeLandline.text?.isEmpty ?? false)
+                        {
+                            if !(self.landlineTextField.text?.isEmpty ?? false)
+                            {
+                                landlineNumber = "\(self.txtCountryCodeLandline.text ?? "") \(self.landlineTextField.text ?? "")"
+                            }
+                        }else
+                        {
+                            landlineNumber = self.landlineTextField.text ?? ""
+                        }
+                        dicUserInfo.setValue(landlineNumber, forKey: "landline_number")
+
                         if self.dictSocialDetails.object(forKey: kSocialId) != nil
                         {
                             dicUserInfo.setValue(self.dictSocialDetails.object(forKey: kSocialId)!, forKey: kSocialId)

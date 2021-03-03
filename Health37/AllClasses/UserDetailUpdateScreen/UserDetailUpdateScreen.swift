@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, CountryListViewDelegate {
     
     @IBOutlet var txtUserName: UITextField!
     @IBOutlet var txtThinking: UITextField!
@@ -20,6 +20,7 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet var txtPassword: UITextField!
     @IBOutlet var txtNewPassword: UITextField!
     @IBOutlet var txtConfirmPass: UITextField!
+    @IBOutlet var txtLandlineCode: UITextField!
     @IBOutlet var scrollingBar: UIScrollView!
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var btnCancel: UIButton!
@@ -44,10 +45,12 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
     
     //Array
     var isSltedTextF : Bool = true
+    var isMobileCountryCode : Bool = false
     var categoryID = String()
     var subcategoryID = String()
-    var  arrSubCategory = NSMutableArray()
+    var arrSubCategory = NSMutableArray()
     var strYourSelf = ""
+    var strCountryName = ""
     
     
     override func viewDidLoad() {
@@ -126,11 +129,19 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 txtViewYourSelf.text = detailDict["user_brief"] as? String
                 txtClinic.text =  detailDict["parent_cat_name"] as? String
                 txtSubClinic.text =  detailDict["user_cat_name"] as? String
-                txtCountryCode.text =  detailDict["User_country"] as? String
+                txtCountryCode.text =  detailDict["country_code"] as? String
                 txtMobileNo.text =  detailDict["phone_number"] as? String
                 hospitalNameTF.text =  detailDict["hospital_name"] as? String
-                landlineTextField.text =  detailDict["landline_number"] as? String
-                
+                let landlineNumber =  detailDict["landline_number"] as? String
+                let array = landlineNumber?.components(separatedBy: " ")
+                if array?.count ?? 0 > 1
+                {
+                    txtLandlineCode.text = array?[0]
+                    landlineTextField.text = array?[1]
+                }else
+                {
+                    landlineTextField.text = array?[0]
+                }
                 if txtSubClinic.text?.count == 0
                 {
                     self.viewSubcategoryBG.isHidden = true
@@ -223,7 +234,23 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
-        if textField.tag == 11
+        if textField.tag == 99
+        {
+            isMobileCountryCode = true
+            self.view.endEditing(true)
+            let MainView = CountryListViewController(nibName: "CountryListViewController",delegate: self)
+            self.present(MainView!, animated: true, completion: nil)
+            return false
+        }
+        else if textField.tag == 100
+        {
+            isMobileCountryCode = false
+            self.view.endEditing(true)
+            let MainView = CountryListViewController(nibName: "CountryListViewController",delegate: self)
+            self.present(MainView!, animated: true, completion: nil)
+            return false
+        }
+        else if textField.tag == 11
         {
             isSltedTextF = true
             reloadPickerMethod()
@@ -239,17 +266,23 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 self.performSelector(inBackground: #selector(self.methodGetCategoryApi), with: nil)
             }
         }
-        
         return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if (textField.text == "" && string == " ")
-        {            return false
+        {
+            return false
+        }
+        if (textField == landlineTextField)
+        {
+            if (string == " ")
+            {
+                return false
+            }
         }
         let newLength = textField.text!.count + string.count - range.length
-        
         if (textField == txtPassword) || (textField == txtNewPassword) || (textField == txtConfirmPass)
         {
             return newLength > kPasswordLength ? false : true
@@ -265,6 +298,20 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
             return false
         }
         return true
+    }
+    
+    // MARK: - CountryPhoneCodePicker Delegate
+    func didSelectCountry(_ country: [AnyHashable : Any]!)
+    {
+        let cou = country as NSDictionary
+        if isMobileCountryCode
+        {
+            txtCountryCode.text = (cou.object(forKey: "dial_code") as! NSString) as String
+            strCountryName = (cou.object(forKey: "name") as! NSString) as String
+        }else
+        {
+            txtLandlineCode.text = (cou.object(forKey: "dial_code") as! NSString) as String
+        }
     }
     
     func reloadPickerMethod() {
@@ -329,7 +376,16 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
             isGo = false
             errorMessage = kEnterUsernameError.localized
         }
-        
+        else if (txtMobileNo.text?.count)!  <  kMobileNumerLenghtMin
+        {
+            isGo = false
+            errorMessage = kMobileNumLengthError.localized
+        }
+        else if (landlineTextField.text?.count)!  >  0 && (landlineTextField.text?.count)!  <  kMobileNumerLenghtMin
+        {
+            isGo = false
+            errorMessage = kLandlineNumLengthError.localized
+        }
         if !isGo
         {
             onShowAlertController(title: "Error" , message: errorMessage)
@@ -687,8 +743,20 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
         dictUser.setValue(self.txtCountryCode.text!, forKey: kCountrycode)
         dictUser.setValue(self.txtMobileNo.text!, forKey: kPhoneNumber)
         dictUser.setValue(self.hospitalNameTF.text!, forKey: "hospital_name")
-        dictUser.setValue(self.landlineTextField.text!, forKey: "landline_number")
+        dictUser.setValue(self.strCountryName, forKey: "User_country")
+        var landlineNumber = String()
+        if !(txtLandlineCode.text?.isEmpty ?? false)
+        {
+            if !(landlineTextField.text?.isEmpty ?? false)
+            {
+                landlineNumber = "\(txtLandlineCode.text ?? "") \(landlineTextField.text ?? "")"
+            }
+        }else
+        {
+            landlineNumber = landlineTextField.text ?? ""
+        }
         
+        dictUser.setValue(landlineNumber, forKey: "landline_number")
         if UserDefaults.standard.object(forKey: "catName") != nil
         {
             if UserDefaults.standard.object(forKey: "subCatName") == nil
@@ -710,12 +778,9 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
     {
         getallApiResultwithGetMethod(strMethodname: kMethodUpdateProfile, Details: self.updateProfileParams()) { (responseData, error) in
             DispatchQueue.main.async {
-                self.hideActivity()
-                
                 if error == nil
                 {
-                    if (responseData != nil) && responseData?.object(forKey: "response") as! String
-                        == "1"
+                    if (responseData != nil) && responseData?.object(forKey: "response") as! String == "1"
                     {
                         let dicData = responseData?.object(forKey: "REQUEST") as! NSDictionary
                         print("dicData",dicData)
@@ -736,6 +801,23 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                         dic.setObject(self.categoryID, forKey: kUserCat as NSCopying)
                         dic.setValue(self.hospitalNameTF.text ?? "", forKey: "hospital_name")
                         dic.setValue(self.landlineTextField.text ?? "", forKey: "landline_number")
+                        dic.setValue(self.strCountryName, forKey: "User_country")
+                        dic.setValue(self.txtCountryCode.text!, forKey: kCountrycode)
+                        
+                        getallApiResultwithGetMethod(strMethodname: kMethodGetProfile, Details: self.getProfileParams()) { (responseData, error) in
+                            self.hideActivity()
+                            if error == nil
+                            {
+                                DispatchQueue.main.async {
+                                    if (responseData != nil) && responseData?.object(forKey: "response") as! String == "1"
+                                    {
+                                        let arrProfileData = (responseData?.object(forKey: kUserSavedDetails)as!NSArray).mutableCopy() as! NSMutableArray
+                                        print("self.arrProfileData",arrProfileData)
+                                        self.saveDataInLocal(fileName : "profile_data" , data : arrProfileData)
+                                    }
+                                }
+                            }
+                        }
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserProfileUpdate"), object: nil, userInfo: dic as? [AnyHashable : Any])
                         
@@ -748,11 +830,34 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                     }
                     else
                     {
+                        self.hideActivity()
                         print("responseData",responseData!)
                     }
+                }else
+                {
+                    self.hideActivity()
                 }
             }
         }
+    }
+    
+    func getProfileParams() -> NSMutableDictionary
+    {
+        let dictUser = NSMutableDictionary()
+        if UserDefaults.standard.object(forKey: kUserID) != nil
+        {
+            dictUser.setObject(UserDefaults.standard.object(forKey: kUserID)!, forKey: kUserID as NSCopying)
+        }
+        
+        if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
+        {
+            dictUser.setObject("ar", forKey: "language" as NSCopying)
+        }
+        else
+        {
+            dictUser.setObject("en", forKey: "language" as NSCopying)
+        }
+        return dictUser
     }
     
     func getNotificationCounts() -> NSMutableDictionary

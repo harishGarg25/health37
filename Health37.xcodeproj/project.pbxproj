@@ -2257,6 +2257,7 @@
 		D53A097A207B9CF300FF02E0 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				D56C6B75207B654900D53925 /* TermsAndConditionsScreen */,
 				D53A097B207B9CF300FF02E0 /* ProfileVC.swift */,
 				D53A097C207B9CF300FF02E0 /* ProfileVC.xib */,
 			);
@@ -2458,7 +2459,6 @@
 				D53A0980207B9CF300FF02E0 /* PostScreen */,
 				D53A097A207B9CF300FF02E0 /* ProfileScreen */,
 				D56C6B7A207B6BF200D53925 /* SettingsScreen */,
-				D56C6B75207B654900D53925 /* TermsAndConditionsScreen */,
 				D56C6B4F207B24CE00D53925 /* TimelineScreen */,
 				D5E557182077A8B600DBA3EC /* SideMenuScreen */,
 				D5E557132077A09400DBA3EC /* MapScreen */,

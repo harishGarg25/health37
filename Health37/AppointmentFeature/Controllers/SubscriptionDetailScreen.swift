@@ -56,7 +56,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
     func subscriptionInformationUpdate()
     {
         cancelButton.isHidden = true
-        upgradeView.isHidden = true
+        upgradeView.isHidden = false
         if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
         {
             if let detailDict = detail[0] as? [String : Any]
@@ -80,13 +80,13 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
                     {
                         if let is_payment_done = detailDict["is_payment_done"] as? Int ?? 0
                         {
-                            upgradeView.isHidden = is_payment_done == 0
+                            //upgradeView.isHidden = is_payment_done == 0
                         }
                     }else
                     {
                         if let is_payment_done = detailDict["is_payment_done"] as? Int ?? 0
                         {
-                            upgradeView.isHidden = is_payment_done == 1
+                            //upgradeView.isHidden = is_payment_done == 1
                         }
                     }
                 }

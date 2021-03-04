@@ -128,10 +128,12 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 txtEmail.text = detailDict[kEmailGet] as? String
                 txtViewYourSelf.text = detailDict["user_brief"] as? String
                 txtClinic.text =  detailDict["parent_cat_name"] as? String
-                txtSubClinic.text =  detailDict["user_cat_name"] as? String
+                txtSubClinic.text =  detailDict["subcat_en"] as? String
                 txtCountryCode.text =  detailDict["country_code"] as? String
                 txtMobileNo.text =  detailDict["phone_number"] as? String
                 hospitalNameTF.text =  detailDict["hospital_name"] as? String
+                categoryID = detailDict["user_cat_id"] as? String ?? ""
+                subcategoryID = detailDict["sub_cat_id"] as? String ?? ""
                 let landlineNumber =  detailDict["landline_number"] as? String
                 let array = landlineNumber?.components(separatedBy: " ")
                 if array?.count ?? 0 > 1
@@ -142,6 +144,15 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                 {
                     landlineTextField.text = array?[0]
                 }
+                //https://dev.softprodigyphp.in/Health37//services.php?serviceName=payment&amount=200&currency=USD&token=tok_sfjzr6fh4azezbrki6dy6g2mii&language=en&sub_id=1&is_free_sub_applied=0&user_id=2700&package_months=6
+                print("categoryID",categoryID)
+                self.hospitalNameTF.frame.size.height = categoryID == "4" ? 40 : 0
+                hospitalNameTF.isHidden = !(categoryID == "4")
+                self.landlineView.frame.size.height = categoryID == "4" ? 40 : 0
+                landlineView.isHidden = !(categoryID == "4")
+                
+                self.viewBottomBtns.frame = CGRect.init(x: (self.viewBottomBtns.frame.origin.x), y: (self.landlineView.frame.origin.y) + 58 , width: (self.viewBottomBtns.frame.size.width), height: (self.viewBottomBtns.frame.size.height))
+                
                 if txtSubClinic.text?.count == 0
                 {
                     self.viewSubcategoryBG.isHidden = true
@@ -157,36 +168,6 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
     }
     override func viewWillAppear(_ animated: Bool)
     {
-        
-        if UserDefaults.standard.object(forKey: "catName") != nil
-        {
-            if UserDefaults.standard.object(forKey: "subCatName") == nil
-            {
-                self.categoryID = UserDefaults.standard.object(forKey:"catID")  as! String
-                print("categoryID",categoryID)
-                
-                hospitalNameTF.text = ""
-                self.hospitalNameTF.frame.size.height = categoryID == "4" ? 40 : 0
-                hospitalNameTF.isHidden = !(categoryID == "4")
-                landlineTextField.text = ""
-                self.landlineView.frame.size.height = categoryID == "4" ? 40 : 0
-                landlineView.isHidden = !(categoryID == "4")
-                
-                self.viewBottomBtns.frame = CGRect.init(x: (self.viewBottomBtns.frame.origin.x), y: (self.landlineView.frame.origin.y) + 58 , width: (self.viewBottomBtns.frame.size.width), height: (self.viewBottomBtns.frame.size.height))
-            }
-        }
-        
-        if UserDefaults.standard.cat_parent_id == "4"
-        {
-            hospitalNameTF.text = ""
-            self.hospitalNameTF.frame.size.height = UserDefaults.standard.cat_parent_id == "4" ? 40 : 0
-            hospitalNameTF.isHidden = !(UserDefaults.standard.cat_parent_id == "4")
-            landlineTextField.text = ""
-            self.landlineView.frame.size.height = UserDefaults.standard.cat_parent_id == "4" ? 40 : 0
-            landlineView.isHidden = !(UserDefaults.standard.cat_parent_id == "4")
-            
-            self.viewBottomBtns.frame = CGRect.init(x: (self.viewBottomBtns.frame.origin.x), y: (self.landlineView.frame.origin.y) + 58 , width: (self.viewBottomBtns.frame.size.width), height: (self.viewBottomBtns.frame.size.height))
-        }
         
         self.userInformationUpdate()
         
@@ -260,7 +241,6 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
             isSltedTextF = false
             if UserDefaults.standard.object(forKey: "catID") != nil//"subCatName") != nil
             {
-                self.categoryID = UserDefaults.standard.object(forKey:"catID")  as! String
                 print("categoryID",categoryID)
                 self.showActivity(text: "")
                 self.performSelector(inBackground: #selector(self.methodGetCategoryApi), with: nil)
@@ -549,7 +529,7 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
             {
                 txtSubClinic.text = (arrSubCategory.object(at: temp) as AnyObject).object(forKey: kCatName) as? String
             }
-            self.categoryID = (arrSubCategory.object(at: temp) as! NSDictionary).valueForNullableKey(key: kCatID)
+            self.subcategoryID = (arrSubCategory.object(at: temp) as! NSDictionary).valueForNullableKey(key: kCatID)
             
             UserDefaults.standard.set(txtSubClinic.text!, forKey: "subCatName")
         }
@@ -702,7 +682,6 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
                             }
                             if self.isSltedTextF == false
                             {
-                                self.categoryID = (self.arrSubCategory.object(at: 0) as! NSDictionary).valueForNullableKey(key: kCatID)
                                 self.subcategoryID = (self.arrSubCategory.object(at: 0) as! NSDictionary).valueForNullableKey(key: kCatID)
                             }
                             
@@ -761,7 +740,6 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
         {
             if UserDefaults.standard.object(forKey: "subCatName") == nil
             {
-                self.categoryID = UserDefaults.standard.object(forKey:"catID")  as! String
                 print("categoryID",categoryID)
                 
                 self.viewSubcategoryBG.isHidden = true
@@ -770,6 +748,8 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
         }
         
         dictUser.setObject(categoryID, forKey: kUserCat as NSCopying)
+        dictUser.setObject(subcategoryID, forKey: "sub_cat" as NSCopying)
+        
         
         return dictUser
     }

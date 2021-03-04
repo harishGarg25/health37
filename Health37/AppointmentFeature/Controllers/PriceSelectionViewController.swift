@@ -409,7 +409,6 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             }
         }
     }
-    
     @objc func paymentAPI()
     {
         self.showActivity(text: "")

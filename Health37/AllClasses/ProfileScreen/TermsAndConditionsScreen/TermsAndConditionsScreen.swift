@@ -87,7 +87,6 @@ class TermsAndConditionsScreen: UIViewController {
     ///SettingsScreenOpen
     @IBAction override func methodBack(_ sender: UIButton)
     {
-        
         self.menuContainerViewController.toggleLeftSideMenuCompletion
             { () -> Void in
         }

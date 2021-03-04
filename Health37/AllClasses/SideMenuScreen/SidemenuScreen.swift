@@ -48,8 +48,8 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
         {
             self.arr_tittle = ["الصفحة الرئيسية", "الجدول الزمني", "الملف الشخصي", "أصدقاء / اضافة اصدقاء", "اتصل بنا", "الخروج"]
-//            if UserDefaults.standard.getAppointmentFeatureActive == "0"
-//            {
+            if UserDefaults.standard.getAppointmentFeatureActive == "1"
+            {
                 if userType != "-111"
                 {
                     if UserDefaults.standard.getAppointmentStatus == "1"
@@ -71,7 +71,7 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
                 }
                 self.arr_tittle.insert("الاشتراك", at: 5)
                 self.arr_img.insert("subscription.png", at: 5)
-//            }
+            }
             lblSureLogout.text = "Are you sure, you want to Logout?".localized
             btnOk.setTitle("OK".localized, for: .normal)
             btnCancel.setTitle("CANCEL".localized, for: .normal)
@@ -79,8 +79,8 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
         else
         {
             self.arr_tittle = ["Home", "Timeline", "Profile", "Friends / Add Friends", "Contact Us", "Logout"]
-//            if UserDefaults.standard.getAppointmentFeatureActive == "0"
-//            {
+            if UserDefaults.standard.getAppointmentFeatureActive == "1"
+            {
                 if userType != "-111"
                 {
                     if UserDefaults.standard.getAppointmentStatus == "1"
@@ -101,7 +101,7 @@ class SidemenuScreen: UIViewController , UITableViewDelegate , UITableViewDataSo
                 }
                 self.arr_tittle.insert("Subscription", at: 5)
                 self.arr_img.insert("subscription.png", at: 5)
-//            }
+            }
         }
         tbl_menu.reloadData()
     }

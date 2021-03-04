@@ -316,8 +316,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         {
             getUserProfileInfo()
         }
-        
-        
     }
     ///sideMenu
     @objc override func methodSideMenu(_ sender : UIButton)

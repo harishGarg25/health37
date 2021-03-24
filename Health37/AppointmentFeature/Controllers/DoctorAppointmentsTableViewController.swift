@@ -247,8 +247,6 @@ class DoctorAppointmentsTableViewController: UITableViewController {
     @objc func buttonTapped(sender : UIButton) {
     }
 }
-
-
 extension DoctorAppointmentsTableViewController{
     
     @objc func getAppointment()

@@ -40,7 +40,8 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
     var selected6MonthPrice = String()
     var selectedYearPrice = String()
     var is_appointment_enable : Bool = false
-    
+    var successMessage = String()
+
     var appointmentDetail: AppointmentDetail?
     lazy var currencyCtrl:CurrencyController = {
         return CurrencyController()
@@ -127,11 +128,11 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
             {
                 let is_payment_done = "\(detailDict["is_payment_done"] as? Int ?? 0)"
                 freePlanView.isHidden = is_payment_done == "1"
-                if let is_free_sub_applied = detailDict["is_free_sub_applied"] as? String ?? "0"
+                if let is_free_sub_applied = detailDict["is_free_sub_applied"] as? String
                 {
                     if is_free_sub_applied == "1"
                     {
-                        if let is_payment_done = detailDict["is_payment_done"] as? String ?? "0"
+                        if let is_payment_done = detailDict["is_payment_done"] as? String
                         {
                             if is_payment_done == "0"
                             {
@@ -343,7 +344,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                                     let price = "\(plan["price"] as? String ?? "")"
                                     let months = plan["duration_in_months"] as? String ?? ""
                                     let isFree = plan["free_sub"] as? String ?? ""
-                                    if let is_active = plan["is_active"] as? String ?? "", is_active == "1"
+                                    if let is_active = plan["is_active"] as? String, is_active == "1"
                                     {
                                         let t1 = PlanDetail(id: id, title: title, descrition: name, price: price, months: months, isFree: isFree)
                                         self.planPrice.append(t1)
@@ -418,6 +419,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                 DispatchQueue.main.async {
                     if (responseData != nil) && responseData?.object(forKey: "response") as! String == "1"
                     {
+                        self.successMessage = responseData?.object(forKey: "message") as? String ?? "Congratulations you have subscribe  \(self.selectedPlan?.months ?? "6") months."
                         self.enableAppointment()
                     }
                     else
@@ -455,7 +457,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                         {
                             self.hideActivity()
                             UIApplication.shared.keyWindow?.stopIndicatingActivity()
-                            let alertController = UIAlertController(title: "", message: "Appointment Feature Enabled.".localized as String?, preferredStyle: .alert)
+                            let alertController = UIAlertController(title: "", message: self.successMessage, preferredStyle: .alert)
                             let yesAction = UIAlertAction(title: "OK".localized, style: .default) { (action) -> Void in
                                 self.navigationController?.popToRootViewController(animated: true)
                             }
@@ -551,7 +553,7 @@ class PriceSelectionViewController: UIViewController,CardViewControllerDelegate,
                     let dict = self.convertToDictionary(text: String(data: data, encoding: .utf8)!)
                     if let response = dict?["response"] as? String, response == "1"
                     {
-                        let alertController = UIAlertController(title: "", message: "Appointment Feature Enabled.".localized as String?, preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "", message: self.successMessage, preferredStyle: .alert)
                         let yesAction = UIAlertAction(title: "OK".localized, style: .default) { (action) -> Void in
                             self.navigationController?.popToRootViewController(animated: true)
                         }
@@ -624,6 +626,7 @@ extension PriceSelectionViewController: UICollectionViewDelegate, UICollectionVi
         }
         return UICollectionViewCell()
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == timeSlotCollectionView{
             selectedDurationIndex = indexPath.row
@@ -645,9 +648,11 @@ extension PriceSelectionViewController: UICollectionViewDelegate, UICollectionVi
         }
         return CGSize.zero
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

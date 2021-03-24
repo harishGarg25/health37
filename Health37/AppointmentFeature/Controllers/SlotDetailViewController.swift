@@ -82,6 +82,7 @@ class SlotDetailViewController: UIViewController, UITextFieldDelegate {
             self.availablToTime = ""
         }
     }
+    
     @IBAction func toDate(_ sender: UIButton){
         DropDownVC.show(present: self, anchorView: sender, dataSet: dateTimeUtility.getTimeInterwal(startFrom: availablFromTime)) { (string, index) in
             self.availablToTime = string

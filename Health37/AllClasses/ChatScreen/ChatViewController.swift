@@ -581,7 +581,7 @@ class ChatViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     //
                     //                    var frame = (cell?.lblPostDetails.frame)!
                     //                    frame.size.height = hh
-                    if let decodedString : String = stringDes.decode() {
+                    if let decodedString : String = stringDes.decode() as? String {
                         cell?.lblPostDetails.text = decodedString
                     }
                     else
@@ -694,7 +694,7 @@ class ChatViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     //                var frame = (cell?.lblMSG.frame)!
                     //                frame.size.height = hh
                     
-                    if let decodedString : String = stringDes.decode() {
+                    if let decodedString : String = stringDes.decode() as? String {
                         cell?.lblMSG.text = decodedString
                     }
                     else
@@ -780,7 +780,7 @@ class ChatViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     //
                     //                    var frame = (cell?.lblPostDetails.frame)!
                     //                    frame.size.height = hh
-                    if let decodedString : String = stringDes.decode() {
+                    if let decodedString : String = stringDes.decode() as? String{
                         cell?.lblPostDetails2.text = decodedString
                     }
                     else
@@ -871,7 +871,7 @@ class ChatViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     //
                     //                var frame = (cell?.lblMSG.frame)!
                     //                frame.size.height = hh
-                    if let decodedString : String = stringDes.decode() {
+                    if let decodedString : String = stringDes.decode() as? String {
                         cell?.lblMSG.text = decodedString
                     }
                     else

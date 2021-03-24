@@ -765,7 +765,7 @@ class HomeSearchScreen: UIViewController, UITableViewDataSource, UITableViewDele
                 
                 var frame = (cell?.lblPostDetails.frame)!
                 frame.size.height = hh
-                if let decodedString : String = stringDes.decode() {
+                if let decodedString : String = stringDes.decode() as? String {
                     cell?.lblPostDetails.text = decodedString
                 }
                 else

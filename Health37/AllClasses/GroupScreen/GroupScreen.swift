@@ -119,7 +119,8 @@ class GroupScreen: UIViewController, UITableViewDelegate,UITableViewDataSource, 
         DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             self.refreshControl.endRefreshing()
             self.refreshControl.isHidden = true
-        })    }
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

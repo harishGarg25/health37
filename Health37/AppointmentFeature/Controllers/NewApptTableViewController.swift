@@ -650,5 +650,3 @@ extension NewApptTableViewController{
     }
     
 }
-
-

@@ -122,6 +122,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             lblHeaderForgot.text = "FORGOT PASSWORD?".localized
             lblTitleEnterEmail.text = "Enter Your Email Address to retrieve Your Password.".localized
             
+        
             lblPassword.text = "Password".localized
             txtName.placeholder = "Name".localized
             txtEmail.placeholder = "Email".localized
@@ -187,7 +188,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     {
         
     }
-    
+
     func updateCategory()
     {
         if appDelegate.arrAllCategory.count > 0
@@ -401,6 +402,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
             self.present(MainView!, animated: true, completion: nil)
             return false
         }
+        
         else if textField.tag == 100
         {
             isMobileCountryCode = false
@@ -463,7 +465,6 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
     }
     
     // MARK: - UIButtonsMethod
-    //method Signin & Signup
     
     @IBAction func btnRemovelanguageClick(_ sender: UIButton)
     {
@@ -573,6 +574,7 @@ class LoginSignupScreen: UIViewController, UITextFieldDelegate, UIPickerViewData
         
         self.navigationController?.pushViewController(demoController, animated: true)
     }
+
     @IBAction func methodLanguageSlt(_ sender: UIButton)
     {
         if btnChooseLanguage.isSelected == false

@@ -161,13 +161,10 @@ class SettingsScreen: UIViewController, UITableViewDataSource, UITableViewDelega
         switch indexPath.row {
         case 0:
             self.menuContainerViewController.setMenuWidth(0.0, animated: false)
-            
             let window = UIApplication.shared.keyWindow!
             window.addSubview(viewChangeLangPopup)
             viewChangeLangPopup.frame = window.frame
-            
             break
-            
         case 1:
             let demoController = WebViewScreen(nibName: "WebViewScreen",bundle: nil)
             demoController.strWebURLFrom = "TermsAndCond"
@@ -180,15 +177,13 @@ class SettingsScreen: UIViewController, UITableViewDataSource, UITableViewDelega
             demoController.strWebURLFrom = "PrivacyPolicy"
             self.appDelegate.navController.pushViewController(demoController, animated: false)
             self.menuContainerViewController .setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
-                
             })
-            
             break
         default:
             break
         }
     }
-    
+
     func changeLanguagePassAPI(language : String)
     {
         if  let userid = "\(UserDefaults.standard.object(forKey: kUserID)!)" as? String

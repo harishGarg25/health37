@@ -253,10 +253,3 @@ extension TimeSlotsCVC{
     }
     
 }
-
-
-
-
-
-
-

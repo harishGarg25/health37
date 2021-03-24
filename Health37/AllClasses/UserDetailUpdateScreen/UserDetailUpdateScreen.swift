@@ -749,8 +749,6 @@ class UserDetailUpdateScreen: UIViewController, UIPickerViewDataSource, UIPicker
         
         dictUser.setObject(categoryID, forKey: kUserCat as NSCopying)
         dictUser.setObject(subcategoryID, forKey: "sub_cat" as NSCopying)
-        
-        
         return dictUser
     }
     

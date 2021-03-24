@@ -44,13 +44,7 @@ class TermsAndConditionsScreen: UIViewController {
     override func viewWillAppear(_ animated: Bool)
     {
         self.navigationController?.isNavigationBarHidden = false
-        
-      //  self.navigationBarWithBackButton(strTitle: "", leftbuttonImageName: "back-white")
         self.navigationItem.titleView = viewHeader
-      //  self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "settng"), style: .done, target: self, action: #selector(methodSettings(_:)))
-
-      //  self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "back-white"), style: .done, target: self, action: #selector(methodBack(_:)))
-        
         self.navigationItem.hidesBackButton = true
         
         if UserDefaults.standard.object(forKey: "applanguage") != nil  && UserDefaults.standard.object(forKey: "applanguage") as! String == "ar"
@@ -58,9 +52,7 @@ class TermsAndConditionsScreen: UIViewController {
             if  (UserDefaults.standard.object(forKey: "applanguageArabic") as? String ?? "") == "ArabicDevice"
             {
                 self.navigationItem.leftBarButtonItem = nil
-              //  self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "white_back"), style: .done, target: self, action: #selector(BackTo(_:)))
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "white_back"), style: .done, target: self, action: #selector(methodBack(_:)))
-
             }
             else
             {
@@ -72,8 +64,6 @@ class TermsAndConditionsScreen: UIViewController {
             if  (UserDefaults.standard.object(forKey: "applanguageArabic") as? String ?? "") == "ArabicDevice"
             {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "white_back"), style: .done, target: self, action: #selector(methodBack(_:)))
-
-              //  self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "white_back"), style: .done, target: self, action: #selector(BackTo(_:)))
             }
             else
             {

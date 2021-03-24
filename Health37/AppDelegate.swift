@@ -34,11 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var strUrlAuthanticateType = ""
     var currencyRates = [String : Any]()
-
+    
     var navController = UINavigationController()
     var strDeviceLanguage = ""
     var strNotificationTotal = ""
     var strNotificationUPTo = ""
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //   SDWebImageManager.shared().imageDownloader?.maxConcurrentDownloads = 3
@@ -193,8 +194,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 if (granted)
                 {
                     DispatchQueue.main.async
-                        {
-                            UIApplication.shared.registerForRemoteNotifications()
+                    {
+                        UIApplication.shared.registerForRemoteNotifications()
                     }
                     
                 }
@@ -206,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
             })
         }
-            
+        
         else
         {
             //If user is not on iOS 10 use the old methods we've been using
@@ -278,10 +279,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         navController.setNavigationBarHidden(true, animated: false)
         
         self.window!.rootViewController = navController
-//        if let rootWindow = self.window {
-//            let screenSize = DeviceType.iPhoneSE1.getSize()
-//            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
-//        }
+        //        if let rootWindow = self.window {
+        //            let screenSize = DeviceType.iPhoneSE1.getSize()
+        //            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
+        //        }
     }
     
     //MARK: - User Location Methods
@@ -371,9 +372,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-//        if url.scheme?.localizedCaseInsensitiveCompare("com.release.braintreepayments") == .orderedSame {
-//            return BTAppSwitch.handleOpen(url, options: options)
-//        }
+        //        if url.scheme?.localizedCaseInsensitiveCompare("com.release.braintreepayments") == .orderedSame {
+        //            return BTAppSwitch.handleOpen(url, options: options)
+        //        }
         return true
     }
     
@@ -895,7 +896,7 @@ enum NavigateScreen: String {
     case Appointment = "7"
     case Appointments = "8"
     case Appointmentss = "9"
-
+    
     var controller: UIViewController {
         
         let language: String!

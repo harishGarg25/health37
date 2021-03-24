@@ -379,7 +379,7 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func methodCall(_ sender: UIButton)
     {
-        if let landlineNumber = (arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "landline_number") as? String ?? "" , landlineNumber != ""
+        if let landlineNumber = (arrProfileData.object(at: 0) as! NSDictionary).object(forKey: "landline_number") as? String, landlineNumber != ""
         {
             if let phoneCallURL = URL(string: "tel://\(landlineNumber)") {
                 let application:UIApplication = UIApplication.shared
@@ -620,7 +620,7 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
         strPostImage = (arrAllPosts.object(at: sender.tag) as! NSDictionary).valueForNullableKey(key: "post_image")
         //        strPostContent = "\n Description:- " + (arrAllPosts.object(at: sender.tag) as! NSDictionary).valueForNullableKey(key: "post_content")
         let stringDesProfile = (arrAllPosts.object(at: sender.tag) as! NSDictionary).valueForNullableKey(key: "post_content")
-        if let decodedString : String = stringDesProfile.decode() {
+        if let decodedString : String = stringDesProfile.decode() as? String {
             strPostContent = decodedString
         }
         else
@@ -1252,7 +1252,7 @@ class OtherUserProfileScreen: UIViewController, UITableViewDataSource, UITableVi
                     var frame = (cell?.lblPostDetails.frame)!
                     frame.size.height = hh
                     
-                    if let decodedString : String = stringDes.decode() {
+                    if let decodedString : String = stringDes.decode() as? String {
                         cell?.lblPostDetails.text = decodedString
                     }
                     else

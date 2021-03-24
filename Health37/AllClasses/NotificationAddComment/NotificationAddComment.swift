@@ -806,7 +806,7 @@ class NotificationAddComment: UIViewController,UIGestureRecognizerDelegate, UITa
                 cell?.lblLikeCount.text = String.init(format: "(%@)", (arrPostDetails.object(at: indexPath.row) as! NSDictionary).object(forKey: "likes") as! CVarArg)
                 
                 let stringDesc = String.init(format: "(%@)", (arrPostDetails.object(at: indexPath.row) as! NSDictionary).object(forKey: "comments") as! CVarArg)
-                if let decodedString : String = stringDesc.decode() {
+                if let decodedString : String = stringDesc.decode() as? String {
                     cell?.lblComment.text = decodedString
                 }
                 else
@@ -825,7 +825,7 @@ class NotificationAddComment: UIViewController,UIGestureRecognizerDelegate, UITa
                 {
                     cell?.lblPostDetails.isHidden = false
                     
-                    if let decodedString : String = stringDescription.decode() {
+                    if let decodedString : String = stringDescription.decode() as? String {
                         stringDescription = decodedString
                     }
                     let hh = getLabelHeight(text: stringDescription, width: ScreenSize.SCREEN_WIDTH - 48, font: UIFont.init(name: "Lato-Regular", size: 13)!)
@@ -932,7 +932,7 @@ class NotificationAddComment: UIViewController,UIGestureRecognizerDelegate, UITa
                 let stringDes = (arrAllPostComments.object(at: indexPath.row) as! NSDictionary).object(forKey: "comment") as! String
                 if stringDes != ""
                 {
-                    if let decodedString : String = stringDes.decode() {
+                    if let decodedString : String = stringDes.decode() as? String {
                         cell?.lblComment.text = decodedString
                     }
                     else
@@ -1006,7 +1006,7 @@ class NotificationAddComment: UIViewController,UIGestureRecognizerDelegate, UITa
             
             cell?.lblName.text = "@" + dicComment.valueForNullableKey(key: "user_name")
             let stringDes1 = dicComment.valueForNullableKey(key: "tComment")
-            if let decodedString : String = stringDes1.decode() {
+            if let decodedString : String = stringDes1.decode() as? String {
                 cell?.lblDetails.text = decodedString
             }
             else

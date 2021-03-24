@@ -304,7 +304,7 @@ class ProductDetailsScreen: UIViewController , UITableViewDataSource, UITableVie
             if dicAllPosts.object(forKey: "post_content") as! String != ""
             {
                 let str =  dicAllPosts.object(forKey: "post_content") as! String
-                if let decodedString : String = str.decode() {
+                if let decodedString : String = str.decode() as? String {
                     cell?.lblPostDetails.text = decodedString
                 }
                 else
@@ -338,7 +338,7 @@ class ProductDetailsScreen: UIViewController , UITableViewDataSource, UITableVie
                 }
                 
                 frame.size.height = hh
-                if let decodedString : String = stringDes.decode() {
+                if let decodedString : String = stringDes.decode() as? String {
                     cell?.lblPostDetails.text = decodedString
                 }
                 else

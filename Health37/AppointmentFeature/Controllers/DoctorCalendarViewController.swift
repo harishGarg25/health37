@@ -330,4 +330,3 @@ extension DoctorCalendarViewController : UITableViewDelegate {
         print("schedule selected")
     }
 }
-

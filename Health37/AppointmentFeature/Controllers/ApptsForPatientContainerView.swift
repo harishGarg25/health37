@@ -98,10 +98,7 @@ extension ApptsForPatientContainerView: UITableViewDataSource, UITableViewDelega
         }
       }
     }
-    
-    
     return cell
-    
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -156,4 +153,3 @@ extension ApptsForPatientContainerView: NSFetchedResultsControllerDelegate {
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
   }
 }
-

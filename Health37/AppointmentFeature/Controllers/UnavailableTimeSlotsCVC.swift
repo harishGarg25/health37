@@ -369,11 +369,5 @@ extension UnavailableTimeSlotsCVC{
         }
         slotCollectionView.reloadData()
     }
-    
 }
-
-
-
-
-
 

@@ -26,7 +26,6 @@ let Base_URL = "https://dev.softprodigyphp.in/Health37/services.php?serviceName=
 //let Base_URL = "http://15.185.132.50/services.php?serviceName="
 //let Base_URL = "http://192.168.0.25/health-app/services.php?serviceName="
 
-
 //MARK:- IMAGE URL
 
 
@@ -100,7 +99,7 @@ let kMethodCancelSubsciption = "cancelSubscription"
 let kMethodSubsciptionPlans = "subcriptionPlanPrices"
 let kMethodBookOfflineSlot = "bookOfflineAppointment"
 let kMethodCancelOfflineSlot = "cancelOfflineBooking"
-
+let kGetSubscriptionDetail = "getSubscriptionDetail"
 
 
 //allSignupCategories
@@ -141,10 +140,7 @@ let kLastName = "last_name"
 let kSocialId        = "social_id"
 let kSocialType      = "social_type"
 let kDeviceName  = "IOS"
-
 let kUserSavedDetails = "user_data"
-
-
 let kUserID = "user_id"
 let kFullName = "full_name"
 let kCityID = "city_id"
@@ -158,40 +154,29 @@ let kCatID = "cat_id"
 let kParentID = "parent_id"
 let kUserCat = "user_cat"
 let kMasterCatID = "master_cat_id"
-
 let kFriendID = "friend_id"
 let kPageNo = "page"
 let kKeyWord = "keyword"
-
 let kPin = "pin"
 let kEmailGet = "user_email"
 let kCurrentPassword = "current"
 let kNewPassword = "newpass"
 let kPassword = "password"
 let kDefaultLanguage = "default_language"
-
-
 let kLatitude            = "user_lat"
 let kLongitude            = "user_lon"
 let kSecurityToken      = "security_token"
-
 let kName = "name"
 let kPhoneNumber = "phone_number"
 let kPhoneCode = "phone_code"
-
 let kProfilePic = "avatar"
-
 let kUsername = "user_name"
-
 let kUserBrief = "user_brief"
-
-
 let kStatus = "status"
 let kLastLogin = "user_last_login"
 let kCreatedAt = "created_at"
 let kUpdatedAt = "updated_at"
 let kPostImage = "post_image"
-
 let kPostData = "post_data"
 let kData = "data"
 
@@ -200,26 +185,16 @@ let kData = "data"
 //MARK:- Signup Page error message
 let kOTPSmsVerify = "The SMS verification code is invalid."
 let kPhoneVerification = "Verification failed, please check your phone number"
-
 let kEnterDescription = "Enter some description or query first."
-
-
 let kInternetError = "Please check internet connection"
 let kInternetErrorMessage = "Make sure your device is connected to the internet."
-
 let kEnterNameError = "Please enter the name."
 let kEnterUsernameError = "Please enter the user name."
 let kEnterFullnameError = "Please enter full name."
-
-
 let kEnterEmailError = "Please enter the email address."
-
 let kEnterRatingError = "Please enter your reviews."
-
 let kEnterVaildEmailError = "Please enter the valid email address."
-
 let kEnterSearchTextError = "Please enter search text."
-
 let kSelectCountryCodeError = "Please select country code."
 let kMobileNumError = "Please enter the phone number."
 let kMobileNumLengthError = "Phone Number must be of minimum 8 characters."
@@ -233,14 +208,9 @@ let kEnterAddCommentError = "Please enter the add comments."
 let kEnterPostError = "Please write something or atleast select a photo."
 let kEnterOTPLengthError = "OTP must be of minimum 6 characters."
 let kEnterNewPassError = "Please enter new password."
-
-
 let kTwitterConsumerKey             = "u5V4VyTz28lRK4vGdC2cC6Qgs"
 let kTwitterConsumerSecret          = "mCYJpgJQd1gX5RnUa1f739v5T1qLyPgrEEBe8uaLN7VFwDJrLK"
-
-
-//let  kGoogleClientID = "574624509150-q5m5cft5bmlumbjr4b6f0sjt1meuettk.apps.googleusercontent.com"
-let  kGoogleClientID = "527528127919-t5ukduci11r85tif7i13i33vl2titb94.apps.googleusercontent.com"
+let kGoogleClientID = "527528127919-t5ukduci11r85tif7i13i33vl2titb94.apps.googleusercontent.com"
 
 //// GoogleConsole ID and Pass =  rpc7979@gmail.com   Pass == shreeshyam
 

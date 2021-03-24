@@ -43,14 +43,11 @@ class PatientDetailTVC: UITableViewController {
         super.viewDidLoad()
         noLargeTitles()
         checkAppointments()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
     }
-    
-    
     
     func noLargeTitles(){
         if #available(iOS 11.0, *) {
@@ -72,7 +69,6 @@ class PatientDetailTVC: UITableViewController {
         if patient.email != nil {
             emailLabel.text = patient.email
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -200,4 +196,3 @@ extension PatientDetailTVC: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
     }
 }
-

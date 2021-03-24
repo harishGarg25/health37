@@ -51,14 +51,15 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
             arrowIcon.semanticContentAttribute = .forceRightToLeft
         }
         subscriptionInformationUpdate()
+        getSubscriptionDetailAPI()
     }
     
     func subscriptionInformationUpdate()
     {
         cancelButton.isHidden = true
-        upgradeView.isHidden = false
         if let detail = self.getDataInLocal(fileName : "profile_data") as? NSMutableArray
         {
+            debugPrint(detail)
             if let detailDict = detail[0] as? [String : Any]
             {
                 if let imgUrl = detailDict["user_avatar"] as? String
@@ -69,27 +70,7 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
                         self.userImage.sd_removeActivityIndicator()
                     })
                 }
-                
                 nameLable.text = detailDict[kFullName] as? String
-                let started = "\(detailDict["package_months"] as? String ?? "") "//(\(detailDict["sub_start_date"] as? String ?? ""))
-                subscriptionPeriodLable.text = started
-                subscribeValidTillLable.text =  detailDict["sub_expiry_date"] as? String
-                if let is_free_sub_applied = detailDict["is_free_sub_applied"] as? String ?? "0"
-                {
-                    if is_free_sub_applied == "1"
-                    {
-                        if let is_payment_done = detailDict["is_payment_done"] as? Int ?? 0
-                        {
-                            //upgradeView.isHidden = is_payment_done == 0
-                        }
-                    }else
-                    {
-                        if let is_payment_done = detailDict["is_payment_done"] as? Int ?? 0
-                        {
-                            //upgradeView.isHidden = is_payment_done == 1
-                        }
-                    }
-                }
             }
         }
     }
@@ -165,6 +146,46 @@ class SubscriptionDetailScreen: UIViewController, UINavigationControllerDelegate
             dictUser.setObject("en", forKey: "language" as NSCopying)
         }
         return dictUser
+    }
+    
+    @objc func getSubscriptionDetailAPI()
+    {
+        self.showActivity(text: "")
+        getallApiResultwithGetMethod(strMethodname: kGetSubscriptionDetail, Details: self.addPostParams()) { (responseData, error) in
+            if error == nil
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    self.upgradeView.isHidden = false
+                    if (responseData != nil) && responseData?.object(forKey: "response") as! String == "1"
+                    {
+                        debugPrint(responseData ?? "")
+                        if  let subscriptionDetail = responseData?["user_data"] as? [String : Any]
+                        {
+                            let started = "\(subscriptionDetail["package_months"] as? String ?? "") "
+                            self.subscriptionPeriodLable.text = started
+                            self.subscribeValidTillLable.text =  subscriptionDetail["validtill_date"] as? String
+                            if let is_payment_done = subscriptionDetail["is_applied_paid"] as? Int
+                            {
+                                self.upgradeView.isHidden = is_payment_done == 1
+                            }
+                        }
+                    }
+                    else
+                    {
+                        self.hideActivity()
+                        self.onShowAlertController(title: "" , message: responseData?.object(forKey: "message")! as! String?)
+                    }
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    self.hideActivity()
+                    self.onShowAlertController(title: "Error" , message: "Having some issue.Please try again.".localized)
+                }
+            }
+        }
     }
  
 }
